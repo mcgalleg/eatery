@@ -24,25 +24,23 @@ const cards = [
   },
 ];
 
-const customStructuredData = {
-	"@context": "https://schema.org",
-	"@type": "Product",
-	"name": "Rosita's New Mexican Cafe Gift Cards",
-	"image": "/rositas-gift-card.webp",
-	"description": "Surprise your friends with authentic New Mexican cuisine with Rosita's gift cards – available digitally or physically.",
-	"offers": {
-		"@type": "Offer",
-		"url": "https://www.toasttab.com/rositas/giftcards",
-		"priceCurrency": "USD"
-	}
-};
-
 export const frontmatter = {
 	title: "Gift Cards & Rewards for Rosita's New Mexican Cafe | Westminster Mexican Restaurant",
 	description: "Purchase Rosita's gift cards for authentic New Mexican cuisine and join Rosita Rewards for exclusive benefits. Buy digital or physical gift cards in Westminster and sign up for rewards online.",
   metaImage:"/rositas-gift-card.webp",
   canonicalUrl:"https://rositas.biz/gift-card",
-	structuredData: customStructuredData
+	structuredData: {
+		"@context": "https://schema.org",
+		"@type": "Product",
+		"name": "Rosita's New Mexican Cafe Gift Cards",
+		"image": "/rositas-gift-card.webp",
+		"description": "Surprise your friends with authentic New Mexican cuisine with Rosita's gift cards – available digitally or physically.",
+		"offers": {
+			"@type": "Offer",
+			"url": "https://www.toasttab.com/rositas/giftcards",
+			"priceCurrency": "USD"
+		}
+	}
 };
 ---
 
