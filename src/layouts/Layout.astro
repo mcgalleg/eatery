@@ -52,9 +52,7 @@ const jsonLD = structuredData || defaultStructuredData;
 		<link rel="canonical" href={canonicalUrl || 'https://rositas.biz'} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<script type="application/ld+json">
-			{JSON.stringify(jsonLD)}
-		</script>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLD)}></script>
 	</head>
 	<body class="bg-peach">
 		<Navbar client:load />
