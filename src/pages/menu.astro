@@ -1,0 +1,115 @@
+---
+// src/pages/menu.astro
+import Layout from '../layouts/Layout.astro';
+
+const sections = [
+  {
+    title: "Munchies",
+    items: [
+      { name: "JUST MADE CHIPS & SALSA", desc: "Fresh corn chips made to order with our house salsa." },
+      { name: "GUACAMOLE SALAD", desc: "Made in-house with fresh avocados, onions and tomatoes, served with fresh corn chips." },
+      { name: "QUESO DIP", desc: "Hot, spicy queso, served with fresh corn chips." },
+      { name: "CHILE CHEESE FRIES", desc: "Hot crispy fries, topped with New Mexican green chile and cheese." },
+      { name: "SUPER NACHOS", desc: "Chips topped with beans, beef, queso, guacamole, jalapeños and sour cream." }
+    ]
+  },
+  {
+    title: "New Mex Plates",
+    items: [
+      { name: "NEW CHICKEN FRIED STEAK", desc: "Steak coated in homemade golden brown batter. Served with green chile and two tortillas." },
+      { name: "PORK CHOPS", desc: "Two juicy pork chops served with green chile and two tortillas." },
+      { name: "GREEN CHILE", desc: "New Mexican green chile, served with two tortillas." },
+      { name: "NAVAJO EGG ROLL", desc: "Two deep-fried egg rolls stuffed with seasoned ground beef, potatoes, onions, jalapeño peppers, served with a side of green chile." },
+      { name: "CARNE ADOVADA", desc: "Marinated pork dish seasoned with oregano, garlic and chile caribe served with green chile and two tortillas." },
+      { name: "FAJITAS", desc: "Grilled seasoned steak, chicken, shrimp, onions, bell peppers, tomatoes served with sour cream, guacamole, two tortillas, and pico de gallo." },
+      { name: "CARNE ASADA", desc: "Grilled seasoned steak, onions and jalapeño peppers and two tortillas." },
+      { name: "MEXICAN EGG ROLL", desc: "Seasoned ground beef, eggs, onions, chili peppers stuffed in a flour tortilla and deep fried and smothered with green chile." }
+    ]
+  },
+  {
+    title: "Classic Eats",
+    items: [
+      { name: "STREET TACO", desc: "Seasoned steak, chicken or fish tacos filled with fresh cabbage, onion, crumbled goat cheese, and cilantro." },
+      { name: "CRUNCHY / BURNT / BURGER TACOS", desc: "Served with lettuce, cheddar cheese and pico de gallo." },
+      { name: "CRISPY TOSTADA", desc: "Choice of bean or guacamole." },
+      { name: "TAMALE", desc: "Smothered option available." },
+      { name: "TACO AL PASTOR", desc: "Marinated pork taco filled with fresh onion, pineapple, and cilantro." },
+      { name: "FLAUTA", desc: "Delicious shredded beef or chicken flauta, served with sour cream, guac and pico de gallo." },
+      { name: "ENCHILADA", desc: "Tasty red chile enchilada with choice of blue or yellow corn." },
+      { name: "RELLENO", desc: "Delicious crispy relleno smothered with New Mexican green chile." }
+    ]
+  },
+  {
+    title: "Faves",
+    items: [
+      { name: "SUPER BURRITO", desc: "Smothered burrito with your choice of filling, topped with cheese, lettuce and tomato." },
+      { name: "CHIMICHANGA", desc: "Deep fried burrito with choice of filling, smothered with New Mexican green chile and topped with lettuce, cheese and tomatoes." },
+      { name: "SMOTHERED BURRITO", desc: "Your choice of filling, wrapped in a tortilla smothered with New Mexican green chile." },
+      { name: "HAND HELD BURRITO", desc: "Your choice of filling and chile wrapped in a flour tortilla." },
+      { name: "MEXICAN HAMBURGER", desc: "Flour tortilla stuffed with a 1/3 lb. Beef patty, fried onions, refried beans, lettuce, cheese and smothered with green chile." }
+    ]
+  },
+  {
+    title: "Breakfast",
+    items: [
+      { name: "SCRAMBLED EGGS & CHORIZO", desc: "Two scrambled eggs mixed with Mexican sausage, served with fried potatoes, green chile, and two tortillas." },
+      { name: "TRADITIONAL", desc: "Two eggs, fried potatoes and choice of ham, bacon, sausage, or chorizo. Served with two tortillas or toast." },
+      { name: "HUEVOS MEXICANO", desc: "Two scrambled eggs mixed with onion, tomato, jalapeño, served with fried potatoes, green chile and two tortillas." },
+      { name: "HUEVOS RANCHEROS", desc: "Two eggs smothered with green chile, fried potatoes, refried beans, and two tortillas." },
+      { name: "RUBIOS SPECIAL", desc: "Carnitas with two eggs smothered with green chile. Served with refried beans, fried potatoes and two tortillas." },
+      { name: "ENCHILADAS RANCHERAS", desc: "Flat cheese enchiladas topped with egg(s)." },
+      { name: "SOUTHWEST", desc: "Two eggs smothered with green chile, fried potatoes, and two tortillas served with your choice of ham, bacon, sausage, or chorizo." }
+    ]
+  },
+  {
+    title: "Burgers & Stuff",
+    items: [
+      { name: "NEW TACO BURGER", desc: "Two crunchy taco shells, with smashed Angus chuck ground beef, sliced American cheese, chile arbor sauce, fresh lettuce, tomato, onion and fries." },
+      { name: "CHICKEN NUGGETS", desc: "Chicken nuggets and fries." },
+      { name: "BURGER DELUXE", desc: "1/3 pound premium ground beef patty, fresh lettuce, tomato, onions, pickles and steak fries." },
+      { name: "ITALIAN SAUSAGE SANDWICH", desc: "A toasted 7” bun filled with Italian sausage patty, melted mozzarella cheese, grilled chili strip and onions. Served with marinara sauce and steak fries." },
+      { name: "GREEN SALAD", desc: "Iceberg lettuce, tomato, cheese, avocado with steak and chicken as an option." },
+      { name: "TACO SALAD", desc: "Deep fried bowl stuffed with ground beef/chicken, lettuce, cheese, tomato & salsa." }
+    ]
+  },
+  {
+    title: "Sweets",
+    items: [
+      { name: "SOPAPILLA", desc: "Puffy piece of deep-fried dough served with honey and powdered sugar." },
+      { name: "FRIED ICE CREAM", desc: "Deep fried frozen ice cream in a breaded coating, on a crispy shell, topped with whip cream, chocolate and cherries." },
+      { name: "BISCOCHITOS", desc: "Half dozen homemade New Mexican cuisine crisp cookies, flavored with sugar, cinnamon, and anise." },
+      { name: "CHURROS", desc: "A Mexican pastry, fried dough sprinkled with cinnamon and powdered sugar." },
+      { name: "CACTUS JACK", desc: "Churros served with vanilla pudding, whipped cream and a cherry on top." },
+      { name: "FLAN", desc: "Delicate caramel custard dessert." }
+    ]
+  }
+];
+---
+
+<Layout title="Rosita's - New Mexican Cafe">
+
+  <main class="container mx-auto px-4 py-36">
+    <!-- Menu Sections -->
+    {sections.map(section => (
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold uppercase border-b-2 border-orange mb-6 pb-2">
+          {section.title}
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {section.items.map(item => (
+            <div class=" p-4 rounded-lg shadow-sm">
+              <h3 class="font-semibold text-lg">{item.name}</h3>
+              {item.desc && <p class="mt-2 text-gray-600 text-sm">{item.desc}</p>}
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <!-- Disclaimer -->
+    <p class="text-sm text-gray-500 mt-8">
+      *Consuming raw or undercooked meats may increase your risk of foodborne illness.
+    </p>
+  </main>
+</Layout>

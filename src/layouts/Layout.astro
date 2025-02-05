@@ -1,14 +1,65 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.svelte';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title: string;
+	description?: string;
+	metaImage?: string;
+	canonicalUrl?: string;
+	/** 
+	 * structuredData should be an object representing valid JSON-LD 
+	 * for the current page. If not provided, a default will be used.
+	 */
+	structuredData?: Record<string, any>;
+}
+
+const { title, description, metaImage, canonicalUrl, structuredData } = Astro.props;
+
+const defaultStructuredData = {
+	"@context": "https://schema.org",
+	"@type": "Product",
+	"name": "Rosita's New Mexican Cafe Gift Cards",
+	"image": "/rositas-gift-card.webp",
+	"description": "Surprise your friends with authentic New Mexican cuisine with Rosita's gift cards – available digitally or physically.",
+	"offers": {
+		"@type": "Offer",
+		"url": "https://www.toasttab.com/rositas/giftcards",
+		"priceCurrency": "USD"
+	}
+};
+
+// Use the page-specific structuredData if provided, otherwise the default
+const jsonLD = structuredData || defaultStructuredData;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={metaImage || '/Rositas-menu.webp'} />
+		<meta property="og:url" content={canonicalUrl || 'https://rositas.biz'} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={metaImage || '/Rositas-menu.webp'} />
+		<link rel="canonical" href={canonicalUrl || 'https://rositas.biz'} />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		<script type="application/ld+json">
+			{JSON.stringify(jsonLD)}
+		</script>
 	</head>
-	<body>
+	<body class="bg-peach">
+		<Navbar client:load />
 		<slot />
+		<Footer />
 	</body>
 </html>
 

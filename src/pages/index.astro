@@ -1,11 +1,40 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import FeaturedCards from '../components/FeaturedCards.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+/* Define your card data here */
+const cards = [
+    {
+        title: "New Breakfast & Brunch Menu",
+        subtitle: "NOW SERVING FRESH CLASSICS",
+        description:
+            "We are excited to announce that our breakfast menu at Rosita's is getting a delicious upgrade! Starting this week, you can enjoy American classics like fluffy pancakes, french toast and freshly baked pastries. We're also proud to introduce our selection of fresh juices and locally sourced coffee from Sweet Bloom Coffee to complement your meal. Come savor these new additions while experiencing the unique flavors of New Mexico. ",
+        image: "/pancakes.jpg",
+        link: "/menu#breakfast",
+        buttonText: "SEE NEW MENU",
+    },
+    {
+        title: "Sweet Bloom Coffee now at Rosita's",
+        description:
+            "We are thrilled to announce an exciting new partnership with Sweet Bloom Coffee Roasters, a name synonymous with exceptional coffee quality and craft in the Denver area. Starting this week, we will be serving Sweet Bloom's exquisite coffee, bringing a taste of their renowned expertise directly to your table.",
+        image: "/coffee.jpg",
+        link: "/menu#drinks",
+    },
+    {
+        title: "Get Your Order Delivered",
+        subtitle: "ORDER FROM US AND SAVE",
+        description:
+            "The food and drinks you love, delivered right to your door. Save up to 20% when you order directly through our website when compared to ordering through other delivery services! Order what you're craving without leaving your couch.",
+        image: "/Rositas-menu.webp",
+        link: "/order",
+        buttonText: "ORDER NOW",
+    },
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Rosita's - New Mexican Cafe">
+  <Hero />
+  <FeaturedCards cards={cards} />
+  <!-- Other content here -->
 </Layout>

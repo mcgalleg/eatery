@@ -1,0 +1,77 @@
+---
+/* Accept a cards prop which defaults to an empty array */
+const { cards = [] }: { cards?: Card[] } = Astro.props;
+
+interface Card {
+  title: string;
+  subtitle?: string;
+  description: string;
+  image: string;
+  link: string;
+  buttonText?: string;
+  buttons?: { text: string; link: string }[];
+}
+
+/* Helper function to check if a link is external */
+function isExternal(link: string): boolean {
+  return /^https?:\/\//.test(link);
+}
+---
+
+<section class="py-12 px-4 bg-peach">
+  <div class="max-w-7xl mx-auto">
+    {cards.map((card, index) => (
+      <div class="bg-white rounded-lg overflow-hidden shadow-lg mb-12">
+        <div class={`flex flex-col md:flex-row ${index % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
+          <!-- Image Section -->
+          <div class="md:w-1/2">
+            <img
+              src={card.image}
+              alt={card.title}
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Content Section -->
+          <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-green mb-4">
+              {card.title}
+            </h2>
+            {card.subtitle && (
+              <h3 class="text-2xl md:text-3xl font-bold text-orange mb-6">
+                {card.subtitle}
+              </h3>
+            )}
+            <p class="text-gray-700 text-lg mb-8 max-w-lg">
+              {card.description}
+            </p>
+            
+            {card.buttons ? (
+              <div class="flex flex-col md:flex-row gap-4">
+                {card.buttons.map((button) => (
+                  <a
+                    href={button.link}
+                    target={isExternal(button.link) ? "_blank" : undefined}
+                    rel={isExternal(button.link) ? "noopener noreferrer" : undefined}
+                    class="inline-block bg-grey text-white text-center py-4 px-8 rounded-full text-lg font-semibold hover:bg-orange transition-colors duration-300 w-full md:w-auto"
+                  >
+                    {button.text}
+                  </a>
+                ))}
+              </div>
+            ) : (
+              <a
+                href={card.link}
+                target={isExternal(card.link) ? "_blank" : undefined}
+                rel={isExternal(card.link) ? "noopener noreferrer" : undefined}
+                class="inline-block bg-grey text-white text-center py-4 px-8 rounded-full text-lg font-semibold hover:bg-orange transition-colors duration-300 w-full md:w-auto"
+              >
+                {card.buttonText || "LEARN MORE"}
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section> 

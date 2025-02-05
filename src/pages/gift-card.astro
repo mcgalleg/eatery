@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FeaturedCards from '../components/FeaturedCards.astro';
+
+/* Define the card data specific for this page */
+const cards = [
+  {
+    title: "Rosita's New Mexican Cafe Gift Cards",
+    description:
+      "Surprise your friends with authentic New Mexican cuisine from Westminster's favorite Mexican restaurant! Rosita's gift cards are perfect for local food lovers – use them for online orders or at our Westminster location. Choose between digital cards (sent via text/email) or physical cards purchased in-store.",
+    image: "/rositas-gift-card.webp",
+    link: "https://www.toasttab.com/rositas/giftcards",
+    buttonText: "Buy Gift Card",
+  },
+  {
+    title: "Rosita Rewards",
+    description:
+      "Get rewarded for enjoying delicious New Mexican cuisine! Join Rosita Rewards and start earning points from the comfort of your home. Sign up now to receive exclusive news and offers, and redeem your points at our location in Westminster.",
+    image: "/rositas-rewards.png",
+    buttons: [
+      { text: "Signup", link: "https://signup.rositas.biz/" },
+      { text: "Check Balance", link: "https://www.toasttab.com/rositas/rewards" }
+    ]
+  },
+];
+
+const customStructuredData = {
+	"@context": "https://schema.org",
+	"@type": "Product",
+	"name": "Rosita's New Mexican Cafe Gift Cards",
+	"image": "/rositas-gift-card.webp",
+	"description": "Surprise your friends with authentic New Mexican cuisine with Rosita's gift cards – available digitally or physically.",
+	"offers": {
+		"@type": "Offer",
+		"url": "https://www.toasttab.com/rositas/giftcards",
+		"priceCurrency": "USD"
+	}
+};
+
+export const frontmatter = {
+	title: "Gift Cards & Rewards for Rosita's New Mexican Cafe | Westminster Mexican Restaurant",
+	description: "Purchase Rosita's gift cards for authentic New Mexican cuisine and join Rosita Rewards for exclusive benefits. Buy digital or physical gift cards in Westminster and sign up for rewards online.",
+  metaImage:"/rositas-gift-card.webp",
+  canonicalUrl:"https://rositas.biz/gift-card",
+	structuredData: customStructuredData
+};
+---
+
+<Layout {...frontmatter}>
+  <main class="container max-w-7xl mx-auto px-4 py-36">
+    <!-- Use the FeaturedCards component, passing in the page-specific cards -->
+    <FeaturedCards cards={cards} />
+  </main>
+</Layout> 
