@@ -19,15 +19,21 @@ const { title, description, metaImage, canonicalUrl, structuredData } = Astro.pr
 
 const defaultStructuredData = {
 	"@context": "https://schema.org",
-	"@type": "Product",
-	"name": "Rosita's New Mexican Cafe Gift Cards",
-	"image": "/rositas-gift-card.webp",
-	"description": "Surprise your friends with authentic New Mexican cuisine with Rosita's gift cards – available digitally or physically.",
-	"offers": {
-		"@type": "Offer",
-		"url": "https://www.toasttab.com/rositas/giftcards",
-		"priceCurrency": "USD"
-	}
+		"@type": "Restaurant",
+		"name": "Rosita's New Mexican Cafe",
+		"image": "/rositas-restaurant.jpg",
+		"telephone": "+1-303-430-9155",
+		"address": {
+			"@type": "PostalAddress",
+			"streetAddress": "8050 Federal Blvd",
+			"addressLocality": "Westminster",
+			"addressRegion": "CO",
+			"postalCode": "80031",
+			"addressCountry": "US"
+		},
+		"url": "https://rositas.biz",
+		"priceRange": "$$",
+		"servesCuisine": ["New Mexican", "Mexican", "American", "Breakfast", "Brunch"]
 };
 
 // Use the page-specific structuredData if provided, otherwise the default

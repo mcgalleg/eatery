@@ -6,10 +6,10 @@ import FeaturedCards from '../components/FeaturedCards.astro';
 /* Define your card data here */
 const cards = [
     {
-        title: "New Breakfast & Brunch Menu",
+        title: "Breakfast & Brunch in Westminster",
         subtitle: "NOW SERVING FRESH CLASSICS",
         description:
-            "We are excited to announce that our breakfast menu at Rosita's is getting a delicious upgrade! Starting this week, you can enjoy American classics like fluffy pancakes, french toast and freshly baked pastries. We're also proud to introduce our selection of fresh juices and locally sourced coffee from Sweet Bloom Coffee to complement your meal. Come savor these new additions while experiencing the unique flavors of New Mexico. ",
+            "We are excited to debut our revamped Breakfast Westminster experience! Enjoy American breakfast favorites like fluffy pancakes, French toast, and freshly baked pastries—perfectly paired with locally sourced coffee. Start your day right in Westminster with our unique twist on breakfast.",
         image: "/pancakes.jpg",
         link: "/menu#breakfast",
         buttonText: "SEE NEW MENU",
@@ -31,9 +31,34 @@ const cards = [
         buttonText: "ORDER NOW",
     },
 ];
+
+export const frontmatter = {
+	title: "Breakfast Westminster | Rosita's New Mexican Cafe",
+	description: "Experience the best Breakfast Westminster at Rosita's New Mexican Cafe. Indulge in a mouth-watering breakfast and brunch menu, where authentic flavors meet modern flair in the heart of Westminster.",
+	metaImage: "/rositas-restaurant.jpg",
+	canonicalUrl: "https://rositas.biz",
+	structuredData: {
+		"@context": "https://schema.org",
+		"@type": "Restaurant",
+		"name": "Rosita's New Mexican Cafe",
+		"image": "/rositas-restaurant.jpg",
+		"telephone": "+1-303-430-9155",
+		"address": {
+			"@type": "PostalAddress",
+			"streetAddress": "8050 Federal Blvd",
+			"addressLocality": "Westminster",
+			"addressRegion": "CO",
+			"postalCode": "80031",
+			"addressCountry": "US"
+		},
+		"url": "https://rositas.biz",
+		"priceRange": "$$",
+		"servesCuisine": ["New Mexican", "Mexican", "American", "Breakfast", "Brunch"]
+	}
+};
 ---
 
-<Layout title="Rosita's - New Mexican Cafe">
+<Layout {...frontmatter}>
   <Hero />
   <FeaturedCards cards={cards} />
   <!-- Other content here -->
