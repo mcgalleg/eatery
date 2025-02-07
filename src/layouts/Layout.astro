@@ -62,7 +62,9 @@ const jsonLD = structuredData || defaultStructuredData;
 	</head>
 	<body class="bg-peach">
 		<Navbar client:load />
-		<slot />
+		<div >
+			<slot />
+		</div>
 		<Footer />
 	</body>
 </html>

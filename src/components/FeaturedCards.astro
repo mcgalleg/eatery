@@ -7,7 +7,7 @@ interface Card {
   subtitle?: string;
   description: string;
   image: string;
-  link: string;
+  link?: string;
   buttonText?: string;
   buttons?: { text: string; link: string }[];
 }
@@ -46,28 +46,33 @@ function isExternal(link: string): boolean {
               {card.description}
             </p>
             
-            {card.buttons ? (
-              <div class="flex flex-col md:flex-row gap-4">
-                {card.buttons.map((button) => (
+            {/* Render the button only if a button property exists */}
+            {(card.buttons || card.link || card.buttonText) && (
+              <>
+                {card.buttons ? (
+                  <div class="flex flex-col md:flex-row gap-4">
+                    {card.buttons.map((button) => (
+                      <a
+                        href={button.link}
+                        target={isExternal(button.link) ? "_blank" : undefined}
+                        rel={isExternal(button.link) ? "noopener noreferrer" : undefined}
+                        class="inline-block bg-grey text-white text-center py-4 px-8 rounded-full text-lg font-semibold hover:bg-orange transition-colors duration-300 w-full md:w-auto"
+                      >
+                        {button.text}
+                      </a>
+                    ))}
+                  </div>
+                ) : (
                   <a
-                    href={button.link}
-                    target={isExternal(button.link) ? "_blank" : undefined}
-                    rel={isExternal(button.link) ? "noopener noreferrer" : undefined}
+                    href={card.link}
+                    target={card.link && isExternal(card.link) ? "_blank" : undefined}
+                    rel={card.link && isExternal(card.link) ? "noopener noreferrer" : undefined}
                     class="inline-block bg-grey text-white text-center py-4 px-8 rounded-full text-lg font-semibold hover:bg-orange transition-colors duration-300 w-full md:w-auto"
                   >
-                    {button.text}
+                    {card.buttonText || "LEARN MORE"}
                   </a>
-                ))}
-              </div>
-            ) : (
-              <a
-                href={card.link}
-                target={isExternal(card.link) ? "_blank" : undefined}
-                rel={isExternal(card.link) ? "noopener noreferrer" : undefined}
-                class="inline-block bg-grey text-white text-center py-4 px-8 rounded-full text-lg font-semibold hover:bg-orange transition-colors duration-300 w-full md:w-auto"
-              >
-                {card.buttonText || "LEARN MORE"}
-              </a>
+                )}
+              </>
             )}
           </div>
         </div>
