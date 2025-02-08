@@ -38,7 +38,7 @@
       <!-- Logo/Brand (Centered) -->
       <div class="flex-shrink-0 mb-4 flex justify-center w-full md:w-auto md:mb-4">
         <a href="/" class="block">
-          <img src="/logo3.svg" alt="Uncle Julio's" class="h-16 md:h-24 w-auto" />
+          <img src="/rositas-logo.svg" alt="Uncle Julio's" class="h-16 md:h-20 w-auto" />
         </a>
       </div>
 
@@ -112,7 +112,7 @@
 
 <style>
   :global(.bg-nav-pattern) {
-    background-image: url('/Nav_BG.webp');
+    background-image: url('/Nav-BG.webp');
     background-position: bottom;
   }
 

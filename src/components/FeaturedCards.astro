@@ -21,7 +21,10 @@ function isExternal(link: string): boolean {
 <section class="py-12 px-4 bg-peach">
   <div class="max-w-7xl mx-auto">
     {cards.map((card, index) => (
-      <div class="bg-white rounded-lg overflow-hidden shadow-lg mb-12">
+      <div
+        class="bg-white rounded-lg overflow-hidden shadow-lg mb-12"
+        style="background-image: url('/texture-transparent.webp'); background-repeat: repeat;"
+      >
         <div class={`flex flex-col md:flex-row ${index % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
           <!-- Image Section -->
           <div class="md:w-1/2">
