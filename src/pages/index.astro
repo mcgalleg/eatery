@@ -5,36 +5,56 @@ import FeaturedCards from '../components/FeaturedCards.astro';
 
 /* Define your card data here */
 const cards = [
+    /*
     {
         title: "Breakfast & Brunch in Westminster",
         subtitle: "NOW SERVING FRESH CLASSICS",
         description:
-            "We are excited to debut our revamped Breakfast Westminster experience! Enjoy breakfast favorites like fluffy pancakes, French toast, and freshly baked pastries—perfectly paired with locally sourced coffee. Start your day right in Westminster with our unique twist on breakfast.",
+            "We are excited to debut our revamped Breakfast Westminster experience! Enjoy breakfast favorites like fluffy pancakes, French toast, Omlets and freshly baked pastries—perfectly paired with locally sourced Sweet Bloom coffee. Start your day right in Westminster with our unique twist on breakfast.",
         image: "/pancakes.jpg",
         link: "/menu#breakfast",
         buttonText: "SEE NEW MENU",
     },
+    */
+    {
+        title: "Southwest Breakfast in Westminster",
+        subtitle: "NOW SERVING FRESH CLASSIC SOUTHWEST BREAKFAST",
+        description:
+            "Experience the Southwest with our signature breakfast dishes. Start your day with our famous Huevos Rancheros, featuring perfectly cooked eggs smothered in our delcious green chile. Or try our Enchilada Ranchera with eggs - a hearty combination of corn tortillas, melted cheese, and red chile, topped with eggs.",
+        image: "/country-fried-steak-eggs.jpg",
+
+    },
+    {
+        title: "Southwest Breakfast Burritos",
+        subtitle: "MADE TO ORDER FRESH",
+        description:
+            "Get your day started with a hearty Southwest Breakfast Burrito, packed with fluffy scrambled eggs, our famous potatoes and green chile, and your choice of protein - from bacon and chorizo to tender carnitas! Available for dine-in, takeout, or delivery.",
+        image: "/breakfast-burritos.jpg",
+
+    },
+   
+    /*
     {
         title: "Sweet Bloom Coffee now at Rosita's Cafe",
         description:
             "We are thrilled to announce an exciting new partnership with Sweet Bloom Coffee Roasters, a name synonymous with exceptional coffee quality and craft in the Denver area. Starting this week, we will be serving Sweet Bloom's exquisite coffee, bringing a taste of their renowned expertise directly to your table.",
         image: "/coffee.jpg",
         link: "/menu#drinks",
-    },
+    },*/
     {
         title: "Get Your Order Delivered",
-        subtitle: "FREE BISCOCHITOS WHEN ORDERING DIRECT",
+        subtitle: "FREE SOPAPILLA'S WHEN ORDERING DIRECT",
         description:
-            "The food and drinks you love, delivered right to your door. Save up to 20% when you order directly through our website when compared to ordering through other delivery services! Order what you're craving and we'll throw in a free Biscochito with your order.",
-        image: "/Rositas-menu.webp",
+            "The food and drinks you love, delivered right to your door. Save up to 20% when you order directly through our website when compared to ordering through other delivery services! Order what you're craving and we'll throw in a free Sopapilla with your order when you use promo code 'SOPA'.",
+        image: "/Rositas-Delivery-Takeout.jpg",
         link: "https://order.toasttab.com/online/rositas",
         buttonText: "ORDER NOW",
     },
 ];
 
 export const frontmatter = {
-	title: "Breakfast Westminster | Rosita's New Mexican Cafe",
-	description: "Experience the best Breakfast Westminster at Rosita's New Mexican Cafe. Indulge in a mouth-watering breakfast and brunch menu, where authentic flavors meet modern flair in the heart of Westminster.",
+	title: "Breakfast Westminster | Best Breakfast Burritos | Rosita's",
+	description: "Looking for the best breakfast in Westminster? Rosita's New Mexican Cafe serves up authentic Southwest breakfast, including our famous breakfast burritos!  Homemade green chile, pan fried potatoes, and more.",
 	metaImage: "/rositas-restaurant.jpg",
 	canonicalUrl: "https://rositas.biz",
 	structuredData: {
@@ -53,7 +73,33 @@ export const frontmatter = {
 		},
 		"url": "https://rositas.biz",
 		"priceRange": "$$",
-		"servesCuisine": ["New Mexican", "Mexican", "American", "Breakfast", "Brunch"]
+		"servesCuisine": ["New Mexican", "Mexican", "American", "Breakfast", "Brunch"],
+		"hasMenu": "https://rositas.biz/menu",
+		"acceptsReservations": "false",
+		"openingHoursSpecification": [
+			{
+				"@type": "OpeningHoursSpecification",
+				"dayOfWeek": [
+          "Sunday",
+					"Monday",
+					"Tuesday",
+					"Wednesday",
+					"Thursday",
+					"Friday",
+					"Saturday",
+				],
+				"opens": "07:00",
+				"closes": "20:00"
+			},
+		],
+		"potentialAction": {
+			"@type": "OrderAction",
+			"target": {
+				"@type": "EntryPoint",
+				"urlTemplate": "https://order.toasttab.com/online/rositas"
+			},
+			"deliveryMethod": [{"@type": "DeliveryMethod", "name": "Direct"},{"@type":"DeliveryMethod", "name":"Third Party"}]
+		}
 	}
 };
 ---
@@ -61,7 +107,19 @@ export const frontmatter = {
 <Layout {...frontmatter}>
   <Hero />
   <FeaturedCards cards={cards} />
-  <!-- Other content here -->
+
+    <div class="container mx-auto px-4 pb-16">
+        <h2 class="text-3xl font-bold text-center mb-4">Best Unique Breakfast in Westminster</h2>
+        <p class="text-lg text-center mb-6">
+            At Rosita's, we're passionate about serving the best Southwest breakfast in Westminster.  We use fresh, high-quality ingredients and traditional recipes to create the breakfast satisfaction you're looking for.  Our breakfast burritos are a local favorite, made with our famous green chile smothered in our signature green chile. And if you'd like some pancakes and bacon, we have you covered there too!
+        </p>
+        <h3 class="text-2xl font-bold text-center mb-2">Our Breakfast Burrito Specialties</h3>
+        <ul class="list-disc list-inside text-center">
+            <li><strong>Classic Breakfast Burrito:</strong> Scrambled eggs, potatoes, cheese, and your choice of bacon, sausage, or chorizo.</li>
+            <li><strong>Green Chile Smothered Burrito:</strong>  Our classic breakfast burrito, smothered in our award-winning green chile.</li>
+            <li><strong>Super Breakfast Burrito:</strong> Breakfast burrito smothered in our green chile, topped with lettuce, cheese and tomatoes.</li>
+        </ul>
+    </div>
 
   <!-- New container added at the bottom of the page -->
   <div style="width: 100vw; background: url('/texture-transparent.webp') repeat, orange; padding-left: 2rem; padding-right: 2rem; padding-top: 5rem; padding-bottom: 7rem;">
