@@ -9,7 +9,12 @@ const sections = [
       { name: "JUST MADE CHIPS & SALSA", price: 5.14, desc: "Fresh corn chips made to order with our house salsa." },
       { name: "GUACAMOLE SALAD", price: 10, desc: "Made in-house with fresh avocados, onions and tomatoes, served with fresh corn chips." },
       { name: "QUESO DIP", price: 8.38, desc: "Hot, spicy queso, served with fresh corn chips." },
-      { name: "CHILE CHEESE FRIES", price: 12.43, desc: "Hot crispy fries, topped with New Mexican green chile and cheese." },
+      { 
+        name: "CHILE CHEESE FRIES", 
+        price: 12.43, 
+        desc: "Hot crispy fries, topped with New Mexican green chile and cheese.",
+        hasStartingPrice: true
+      },
       { name: "SUPER NACHOS", price: 11.36, desc: "Chips topped with beans, beef, queso, guacamole, jalapeños and sour cream." }
     ]
   },
@@ -18,7 +23,12 @@ const sections = [
     items: [
       { name: "NEW CHICKEN FRIED STEAK", price: 17.57, desc: "Steak coated in homemade golden brown batter. Served with green chile and two tortillas." },
       { name: "PORK CHOPS", price: 13.20, desc: "Two juicy pork chops served with green chile and two tortillas." },
-      { name: "GREEN CHILE", price: 14.44, desc: "New Mexican green chile, served with two tortillas." },
+      { 
+        name: "GREEN CHILE", 
+        price: 14.44, 
+        desc: "New Mexican green chile, served with two tortillas.",
+        hasStartingPrice: true
+      },
       { name: "NAVAJO EGG ROLL", price: 13.75, desc: "Two deep-fried egg rolls stuffed with seasoned ground beef, potatoes, onions, jalapeño peppers, served with a side of green chile." },
       { name: "CARNE ADOVADA", price: 22.84, desc: "Marinated pork dish seasoned with oregano, garlic and chile caribe served with green chile and two tortillas." },
       { name: "FAJITAS", price: 22.75, desc: "Grilled seasoned steak, chicken, shrimp, onions, bell peppers, tomatoes served with sour cream, guacamole, two tortillas, and pico de gallo." },
@@ -29,36 +39,110 @@ const sections = [
   {
     title: "Classic Eats",
     items: [
-      { name: "STREET TACO", price: 5.40, desc: "Seasoned steak, chicken or fish tacos filled with fresh cabbage, onion, crumbled goat cheese, and cilantro." },
-      { name: "CRUNCHY/BURNT/BURGER TACOS", price: 4.59, desc: "Served with lettuce, cheddar cheese and pico de gallo." },
+      { 
+        name: "STREET TACO", 
+        price: 5.40, 
+        desc: "Seasoned steak, chicken or fish tacos filled with fresh cabbage, onion, crumbled goat cheese, and cilantro.",
+        hasStartingPrice: true
+      },
+      { 
+        name: "CRUNCHY/BURNT/BURGER TACOS", 
+        price: 4.59, 
+        desc: "Served with lettuce, cheddar cheese and pico de gallo.",
+        hasStartingPrice: true
+      },
       { name: "CRISPY TOSTADA", price: 4.46, desc: "Choice of bean or guacamole." },
-      { name: "TAMALE", price: 3.15, desc: "Smothered option available." },
+      { 
+        name: "TAMALE", 
+        price: 3.15, 
+        desc: "Smothered option available.",
+        hasStartingPrice: true
+      },
       { name: "TACO AL PASTOR", price: 5.14, desc: "Marinated pork taco filled with fresh onion, pineapple, and cilantro." },
       { name: "FLAUTA", price: 5.68, desc: "Delicious shredded beef or chicken flauta, served with sour cream, guac and pico de gallo." },
-      { name: "ENCHILADA", price: 4.06, desc: "Tasty red chile enchilada with choice of blue or yellow corn." },
+      { 
+        name: "ENCHILADA", 
+        price: 4.06, 
+        desc: "Tasty red chile enchilada with choice of blue or yellow corn.",
+        hasStartingPrice: true
+      },
       { name: "RELLENO", price: 6.75, desc: "Delicious crispy relleno smothered with New Mexican green chile." }
     ]
   },
   {
     title: "Faves",
     items: [
-      { name: "SUPER BURRITO", price: 9.25, desc: "Smothered burrito with your choice of filling, topped with cheese, lettuce and tomato." },
-      { name: "CHIMICHANGA", price: 13.39, desc: "Deep fried burrito with choice of filling, smothered with New Mexican green chile and topped with lettuce, cheese and tomatoes." },
-      { name: "SMOTHERED BURRITO", price: 7.85, desc: "Your choice of filling, wrapped in a tortilla smothered with New Mexican green chile." },
-      { name: "HAND HELD BURRITO", price: 5.50, desc: "Your choice of filling and chile wrapped in a flour tortilla." },
-      { name: "MEXICAN HAMBURGER", price: 13.25, desc: "Flour tortilla stuffed with a 1/3 lb. Beef patty, fried onions, refried beans, lettuce, cheese and smothered with green chile." }
+      { 
+        name: "SUPER BURRITO", 
+        price: 9.25, 
+        desc: "Smothered burrito with your choice of filling, topped with cheese, lettuce and tomato.",
+        hasStartingPrice: true
+      },
+      { 
+        name: "CHIMICHANGA", 
+        price: 13.39, 
+        desc: "Deep fried burrito with choice of filling, smothered with New Mexican green chile and topped with lettuce, cheese and tomatoes.",
+        hasStartingPrice: true
+      },
+      { 
+        name: "SMOTHERED BURRITO", 
+        price: 7.85, 
+        desc: "Your choice of filling, wrapped in a tortilla smothered with New Mexican green chile.",
+        hasStartingPrice: true
+      },
+      { 
+        name: "HAND HELD BURRITO", 
+        price: 5.50, 
+        desc: "Your choice of filling and chile wrapped in a flour tortilla.",
+        hasStartingPrice: true
+      },
+      { 
+        name: "MEXICAN HAMBURGER", 
+        price: 13.25, 
+        desc: "Flour tortilla stuffed with a 1/3 lb. Beef patty, fried onions, refried beans, lettuce, cheese and smothered with green chile." 
+      }
     ]
   },
   {
     title: "Breakfast",
     items: [
-      { name: "SCRAMBLED EGGS & CHORIZO", price: 13.91, desc: "Two scrambled eggs mixed with Mexican sausage, served with fried potatoes, green chile, and two tortillas." },
-      { name: "TRADITIONAL", price: 13.91, desc: "Two eggs, fried potatoes and choice of ham, bacon, sausage, or chorizo. Served with two tortillas or toast." },
-      { name: "HUEVOS MEXICANO", price: 13.91, desc: "Two scrambled eggs mixed with onion, tomato, jalapeño, served with fried potatoes, green chile and two tortillas." },
-      { name: "HUEVOS RANCHEROS", price: 13.91, desc: "Two eggs smothered with green chile, fried potatoes, refried beans, and two tortillas." },
-      { name: "RUBIOS SPECIAL", price: 14.94, desc: "Carnitas with two eggs smothered with green chile. Served with refried beans, fried potatoes and two tortillas." },
-      { name: "ENCHILADAS RANCHERAS", price: 11.59, desc: "Flat cheese enchiladas topped with egg(s)." },
-      { name: "SOUTHWEST", price: 13.91, desc: "Two eggs smothered with green chile, fried potatoes, and two tortillas served with your choice of ham, bacon, sausage, or chorizo." }
+      { 
+        name: "SCRAMBLED EGGS & CHORIZO", 
+        price: 13.91, 
+        desc: "Two scrambled eggs mixed with Mexican sausage, served with fried potatoes, green chile, and two tortillas." 
+      },
+      { 
+        name: "TRADITIONAL", 
+        price: 13.91, 
+        desc: "Two eggs, fried potatoes and choice of ham, bacon, sausage, or chorizo. Served with two tortillas or toast.",
+        hasStartingPrice: true
+      },
+      { 
+        name: "HUEVOS MEXICANO", 
+        price: 13.91, 
+        desc: "Two scrambled eggs mixed with onion, tomato, jalapeño, served with fried potatoes, green chile and two tortillas." 
+      },
+      { 
+        name: "HUEVOS RANCHEROS", 
+        price: 13.91, 
+        desc: "Two eggs smothered with green chile, fried potatoes, refried beans, and two tortillas." 
+      },
+      { 
+        name: "RUBIOS SPECIAL", 
+        price: 14.94, 
+        desc: "Carnitas with two eggs smothered with green chile. Served with refried beans, fried potatoes and two tortillas." 
+      },
+      { 
+        name: "ENCHILADAS RANCHERAS", 
+        price: 11.59, 
+        desc: "Flat cheese enchiladas topped with egg(s)." 
+      },
+      { 
+        name: "SOUTHWEST", 
+        price: 13.91, 
+        desc: "Two eggs smothered with green chile, fried potatoes, and two tortillas served with your choice of ham, bacon, sausage, or chorizo.",
+        hasStartingPrice: true
+      }
     ]
   },
   {
@@ -68,7 +152,12 @@ const sections = [
       { name: "CHICKEN NUGGETS", price: 8.92, desc: "Chicken nuggets and fries." },
       { name: "BURGER DELUXE", price: 15.95, desc: "1/3 pound premium ground beef patty, fresh lettuce, tomato, onions, pickles and steak fries." },
       { name: "ITALIAN SAUSAGE SANDWICH", price: 18.12, desc: "A toasted 7 bun filled with Italian sausage patty, melted mozzarella cheese, grilled chili strip and onions. Served with marinara sauce and steak fries." },
-      { name: "GREEN SALAD", price: 12.43, desc: "Iceberg lettuce, tomato, cheese, avocado with steak and chicken as an option." },
+      { 
+        name: "GREEN SALAD", 
+        price: 12.43, 
+        desc: "Iceberg lettuce, tomato, cheese, avocado with steak and chicken as an option.",
+        hasStartingPrice: true
+      },
       { name: "TACO SALAD", price: 14.05, desc: "Deep fried bowl stuffed with ground beef/chicken, lettuce, cheese, tomato & salsa." }
     ]
   },
@@ -84,11 +173,60 @@ const sections = [
     ]
   }
 ];
+
+export const frontmatter = {
+  title: "Rosita's Menu | New Mexican Dishes in Westminster | Authentic Mexican Food",
+  description: "Explore Rosita's full menu featuring authentic New Mexican cuisine. Enjoy our famous green chile dishes, breakfast burritos, enchiladas, and homemade desserts in Westminster. Gluten-free options available.",
+  metaImage: "/rositas-menu.jpg",
+  canonicalUrl: "https://rositas.biz/menu",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    "name": "Rosita's New Mexican Cafe Menu",
+    "image": "/rositas-menu.jpg",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rositas.biz/menu"
+    },
+    "hasMenuSection": [
+      {
+        "@type": "MenuSection",
+        "name": "New Mex Plates",
+        "description": "Authentic New Mexican entrees including Carne Adovada, Chile Rellenos, and our famous Green Chile dishes",
+        "hasMenuItem": [
+          // Add 3-4 key items from each section
+        ]
+      },
+      // Repeat for other sections
+    ]
+  }
+};
 ---
 
-<Layout title="Rosita's - New Mexican Cafe">
+<Layout {...frontmatter}>
 
   <main class="container mx-auto px-4 py-36">
+    <h1 class="text-4xl font-bold text-center mb-8">Authentic New Mexican Menu in Westminster</h1>
+    <p class="text-lg text-center max-w-2xl mx-auto mb-12">
+      Since 1963, Rosita's has served traditional New Mexican recipes made with fresh ingredients. 
+      Explore our famous green chile dishes, homemade tamales, and signature breakfast burritos. 
+      All dishes made fresh daily in our Westminster kitchen.
+    </p>
+
+    <div class="text-center mb-16">
+      <h2 class="text-2xl font-bold mb-4">Customer Favorites</h2>
+      <ul class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+        <li>Green Chile Pork</li>
+        <li>Breakfast Burritos</li>
+        <li>Carne Adovada</li>
+        <li>Sopapillas</li>
+        <li>Chile Rellenos</li>
+        <li>Huevos Rancheros</li>
+        <li>Navajo Tacos</li>
+        <li>Flan</li>
+      </ul>
+    </div>
+
     <!-- Menu Sections -->
     {sections.map(section => (
       <section class="mb-12">
@@ -98,12 +236,15 @@ const sections = [
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           {section.items.map(item => (
-            <div class="p-4 rounded-lg shadow-sm">
+            <div class="p-4 rounded-lg shadow-sm" itemscope itemtype="https://schema.org/MenuItem">
               <div class="flex justify-between items-baseline">
-                <h3 class="font-semibold text-lg">{item.name}</h3>
-                <span class="text-md font-medium text-orange-500">${item.price.toFixed(2)}</span>
+                <h3 class="font-semibold text-lg" itemprop="name">{item.name}</h3>
+                <span class="text-md font-medium text-orange-500" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                  <span itemprop="priceCurrency" content="USD">$</span>
+                  <span itemprop="price">{item.price.toFixed(2)}</span>
+                </span>
               </div>
-              {item.desc && <p class="mt-2 text-gray-600 text-sm">{item.desc}</p>}
+              {item.desc && <p class="mt-2 text-gray-600 text-sm" itemprop="description">{item.desc}</p>}
             </div>
           ))}
         </div>
