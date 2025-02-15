@@ -50,12 +50,10 @@ export const frontmatter = {
 ---
 
 <Layout {...frontmatter}>
-  <main class="container max-w-7xl mx-auto px-4 py-36">
+  <main class="container max-w-7xl mx-auto">
     <!-- Use the FeaturedCards component, passing in the page-specific cards -->
-    <FeaturedCards 
-      title="Combined Services"
-      cards={cards}
-      class="mt-8 md:mt-12"
-    />
+    <div class="py-36">
+      <FeaturedCards cards={cards} />
+    </div>
   </main>
 </Layout> 
