@@ -102,6 +102,12 @@
       <!-- Menu items -->
       <div class="flex flex-col items-center justify-center h-full">
         <a 
+          href="/" 
+          class="text-white hover:text-gray-300 block px-3 py-2 rounded-md text-2xl mb-4"
+        >
+          HOME
+        </a>
+        <a 
           href="https://order.toasttab.com/online/rositas" 
           class="text-white hover:text-gray-300 block px-3 py-2 rounded-md text-2xl mb-4"
           target="_blank"
