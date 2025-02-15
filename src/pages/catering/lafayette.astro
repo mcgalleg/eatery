@@ -1,0 +1,113 @@
+---
+import CateringLayout from '../../layouts/CateringLayout.astro';
+
+const cityName = "Lafayette";
+
+const citySpecificContent = {
+  intro: "Bring the authentic flavors of Mexican cuisine to your Lafayette event with Rosita's catering service. We've been serving the Lafayette community with our renowned Southwest and New Mexican dishes for over 35 years, bringing quality and tradition to every gathering.",
+  locationBenefits: [
+    "Quick service throughout Lafayette",
+    "Easy access via Baseline & 287",
+    "Experienced with local venues",
+    "Perfect for business & community events",
+    "Family-owned with local expertise"
+  ]
+};
+
+const venues = {
+  corporate: [
+    "Lafayette Corporate Campus",
+    "South Boulder Road Business District",
+    "Lafayette Marketplace",
+    "Vista Business Park"
+  ],
+  events: [
+    "The Arts Hub",
+    "Bob L. Burger Recreation Center",
+    "Waneka Lake Park",
+    "Lafayette Senior Center"
+  ]
+};
+
+const faqs = [
+  {
+    question: "What areas of Lafayette do you serve?",
+    answer: "We serve all of Lafayette, including Old Town, Indian Peaks, and the business districts along South Boulder Road and Highway 287. Our central location allows us to efficiently deliver fresh, hot Mexican food to any Lafayette venue."
+  },
+  {
+    question: "How far in advance should I book catering in Lafayette?",
+    answer: "For Lafayette events, we recommend booking 2-3 weeks in advance, especially for popular venues like Waneka Lake Park or the Recreation Center. Peak seasons and community events may require additional advance notice."
+  },
+  {
+    question: "Do you offer special rates for Lafayette businesses?",
+    answer: "Yes! We provide competitive corporate rates for Lafayette businesses, particularly for regular catering services. We're experienced in catering everything from small office lunches to large corporate events."
+  },
+  {
+    question: "What's your typical delivery time to Lafayette locations?",
+    answer: "Most Lafayette locations can expect delivery within 30-45 minutes. We plan our routes carefully to ensure your food arrives fresh and on time, accounting for local traffic patterns."
+  },
+  {
+    question: "Can you cater outdoor events in Lafayette parks?",
+    answer: "Absolutely! We regularly cater at Waneka Lake Park, LaMont Does Park, and other Lafayette outdoor venues. We provide appropriate setup for outdoor catering and can accommodate various weather conditions."
+  }
+];
+
+const frontmatter = {
+  title: "Lafayette Mexican Catering | Rosita's Local Catering Service",
+  description: "Lafayette's trusted Mexican catering service. Authentic New Mexican cuisine for events in Old Town, local businesses & community venues. Book your Lafayette catering today!",
+  metaImage: "/rositas-catering.webp",
+  canonicalUrl: "https://rositas.biz/catering/lafayette",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "FoodService",
+    "name": "Rosita's Mexican Catering Lafayette",
+    "image": "/rositas-catering.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8050 N Federal Blvd",
+      "addressLocality": "Westminster",
+      "addressRegion": "CO",
+      "postalCode": "80031",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "39.8441",
+      "longitude": "-105.0242"
+    },
+    "priceRange": "$$",
+    "servesCuisine": ["Mexican", "New Mexican", "Southwestern", "Catering"],
+    "areaServed": ["Lafayette", "Old Town Lafayette", "Indian Peaks"],
+    "telephone": "720-797-8897",
+    "email": "catering@rositas.biz",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "07:00",
+      "closes": "20:00"
+    },
+    "hasMenu": {
+      "@type": "Menu",
+      "name": "Catering Menu",
+      "url": "https://rositas.biz/catering/lafayette"
+    }
+  }
+};
+---
+
+<CateringLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  metaImage={frontmatter.metaImage}
+  canonicalUrl={frontmatter.canonicalUrl}
+  structuredData={frontmatter.structuredData}
+  cityName={cityName}
+  venues={venues}
+  faqs={faqs}
+  citySpecificContent={citySpecificContent}
+/> 

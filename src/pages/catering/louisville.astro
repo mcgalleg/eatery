@@ -1,0 +1,113 @@
+---
+import CateringLayout from '../../layouts/CateringLayout.astro';
+
+const cityName = "Louisville";
+
+const citySpecificContent = {
+  intro: "Experience exceptional Mexican catering in Louisville, Colorado. Rosita's brings authentic Southwest and New Mexican cuisine to your events, serving the vibrant Louisville community with the same dedication to quality and service we've maintained for over 35 years.",
+  locationBenefits: [
+    "Convenient service to all Louisville locations",
+    "Easy access via US-36 & McCaslin",
+    "Perfect for Louisville Tech Center events",
+    "Ideal for local business gatherings",
+    "Family-owned with personalized service"
+  ]
+};
+
+const venues = {
+  corporate: [
+    "Colorado Technology Center",
+    "McCaslin Business District",
+    "Louisville Corporate Campus",
+    "Pearl Business Park"
+  ],
+  events: [
+    "Louisville Recreation Center",
+    "Memory Square Park",
+    "The Pavilion at Coal Creek Golf Course",
+    "Louisville Center for the Arts"
+  ]
+};
+
+const faqs = [
+  {
+    question: "What areas of Louisville do you serve?",
+    answer: "We serve all of Louisville, including the Colorado Technology Center, Downtown Louisville, and surrounding neighborhoods. Our location allows us to deliver hot, fresh Mexican food to any Louisville venue efficiently."
+  },
+  {
+    question: "How far in advance should I book catering in Louisville?",
+    answer: "For Louisville events, we recommend booking 2-3 weeks in advance. This is especially important for popular venues like the Recreation Center or during peak seasons and community events."
+  },
+  {
+    question: "Do you cater to Louisville businesses?",
+    answer: "Yes! We offer special corporate rates for Louisville businesses, particularly those in the Colorado Technology Center and McCaslin Business District. We're experienced in handling both small team lunches and large corporate events."
+  },
+  {
+    question: "What's your delivery time to Louisville locations?",
+    answer: "Most Louisville locations can expect delivery within 30-45 minutes. We carefully plan around local traffic patterns and business hours to ensure your food arrives fresh and on time."
+  },
+  {
+    question: "Can you accommodate outdoor events in Louisville?",
+    answer: "Absolutely! We frequently cater at Memory Square Park, Community Park, and other Louisville outdoor venues. We provide appropriate setup for outdoor catering and can adapt to various weather conditions."
+  }
+];
+
+const frontmatter = {
+  title: "Louisville Mexican Catering | Rosita's Local Catering Service",
+  description: "Louisville's trusted Mexican catering service. Authentic New Mexican cuisine for events in Downtown Louisville, Colorado Technology Center & local venues. Book your Louisville catering today!",
+  metaImage: "/rositas-catering.webp",
+  canonicalUrl: "https://rositas.biz/catering/louisville",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "FoodService",
+    "name": "Rosita's Mexican Catering Louisville",
+    "image": "/rositas-catering.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8050 N Federal Blvd",
+      "addressLocality": "Westminster",
+      "addressRegion": "CO",
+      "postalCode": "80031",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "39.8441",
+      "longitude": "-105.0242"
+    },
+    "priceRange": "$$",
+    "servesCuisine": ["Mexican", "New Mexican", "Southwestern", "Catering"],
+    "areaServed": ["Louisville", "Colorado Technology Center", "Downtown Louisville"],
+    "telephone": "720-797-8897",
+    "email": "catering@rositas.biz",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "07:00",
+      "closes": "20:00"
+    },
+    "hasMenu": {
+      "@type": "Menu",
+      "name": "Catering Menu",
+      "url": "https://rositas.biz/catering/louisville"
+    }
+  }
+};
+---
+
+<CateringLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  metaImage={frontmatter.metaImage}
+  canonicalUrl={frontmatter.canonicalUrl}
+  structuredData={frontmatter.structuredData}
+  cityName={cityName}
+  venues={venues}
+  faqs={faqs}
+  citySpecificContent={citySpecificContent}
+/> 

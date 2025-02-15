@@ -1,0 +1,113 @@
+---
+import CateringLayout from '../../layouts/CateringLayout.astro';
+
+const cityName = "Commerce City";
+
+const citySpecificContent = {
+  intro: "Elevate your Commerce City event with Rosita's authentic Mexican catering service. For over 35 years, we've been bringing our renowned Southwest and New Mexican cuisine to businesses, community gatherings, and special events throughout Commerce City and the surrounding areas.",
+  locationBenefits: [
+    "Quick access via I-270 & Highway 2",
+    "Serving North Commerce City & Historic Derby",
+    "Perfect for industrial & business parks",
+    "Ideal for community & sporting events",
+    "Family-owned with local expertise"
+  ]
+};
+
+const venues = {
+  corporate: [
+    "Mile High Business Center",
+    "Commerce City Industrial Park",
+    "Prairie Gateway Business Center",
+    "Victory Crossing District"
+  ],
+  events: [
+    "Dick's Sporting Goods Park",
+    "Belle Creek Family Center",
+    "Pioneer Park",
+    "Commerce City Recreation Center"
+  ]
+};
+
+const faqs = [
+  {
+    question: "What areas of Commerce City do you serve?",
+    answer: "We serve all of Commerce City, including Historic Derby, the Victory Crossing area, and the northern business districts. Our location allows us to efficiently deliver fresh, hot Mexican food to any Commerce City venue, from industrial parks to community centers."
+  },
+  {
+    question: "How far in advance should I book catering in Commerce City?",
+    answer: "For Commerce City events, we recommend booking 2-3 weeks in advance. This is especially important for large venues like Dick's Sporting Goods Park or during major community events and sporting tournaments."
+  },
+  {
+    question: "Do you cater to Commerce City businesses?",
+    answer: "Yes! We offer competitive corporate rates for Commerce City businesses, particularly those in the industrial parks and business centers. We're experienced in catering everything from warehouse staff lunches to corporate events."
+  },
+  {
+    question: "What's your delivery time to Commerce City locations?",
+    answer: "Most Commerce City locations can expect delivery within 30-45 minutes. We plan our routes carefully around industrial traffic patterns and peak hours to ensure your food arrives fresh and on time."
+  },
+  {
+    question: "Can you handle large-scale events in Commerce City?",
+    answer: "Absolutely! We have extensive experience catering large events at venues like Dick's Sporting Goods Park and community festivals. Our team is equipped to handle events of any size while maintaining our high quality standards."
+  }
+];
+
+const frontmatter = {
+  title: "Commerce City Mexican Catering | Rosita's Local Catering Service",
+  description: "Commerce City's trusted Mexican catering service. Authentic New Mexican cuisine for events at Dick's Sporting Goods Park, local businesses & community venues. Book your Commerce City catering today!",
+  metaImage: "/rositas-catering.webp",
+  canonicalUrl: "https://rositas.biz/catering/commerce-city",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "FoodService",
+    "name": "Rosita's Mexican Catering Commerce City",
+    "image": "/rositas-catering.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8050 N Federal Blvd",
+      "addressLocality": "Westminster",
+      "addressRegion": "CO",
+      "postalCode": "80031",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "39.8441",
+      "longitude": "-105.0242"
+    },
+    "priceRange": "$$",
+    "servesCuisine": ["Mexican", "New Mexican", "Southwestern", "Catering"],
+    "areaServed": ["Commerce City", "Historic Derby", "Victory Crossing"],
+    "telephone": "720-797-8897",
+    "email": "catering@rositas.biz",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "07:00",
+      "closes": "20:00"
+    },
+    "hasMenu": {
+      "@type": "Menu",
+      "name": "Catering Menu",
+      "url": "https://rositas.biz/catering/commerce-city"
+    }
+  }
+};
+---
+
+<CateringLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  metaImage={frontmatter.metaImage}
+  canonicalUrl={frontmatter.canonicalUrl}
+  structuredData={frontmatter.structuredData}
+  cityName={cityName}
+  venues={venues}
+  faqs={faqs}
+  citySpecificContent={citySpecificContent}
+/> 

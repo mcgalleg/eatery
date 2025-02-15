@@ -1,0 +1,113 @@
+---
+import CateringLayout from '../../layouts/CateringLayout.astro';
+
+const cityName = "Westminster";
+
+const citySpecificContent = {
+  intro: "Discover Westminster's premier Mexican catering service, conveniently located on Federal Blvd near 80th Ave. For 35 years, Rosita's has been the trusted choice for authentic Southwest and New Mexican cuisine in Westminster and the north Denver metro area.",
+  locationBenefits: [
+    "Proudly serving Westminster for over 35 years",
+    "Convenient Federal Blvd location near 80th Ave",
+    "Local Westminster family-owned business",
+    "Fast delivery throughout Westminster",
+    "Perfect for Westminster business parks & venues"
+  ]
+};
+
+const venues = {
+  corporate: [
+    "Westmoor Technology Park",
+    "Church Ranch Office Park",
+    "Westminster Promenade",
+    "Circle Point Corporate Center"
+  ],
+  events: [
+    "Church Ranch Event Center",
+    "The Westin Westminster",
+    "Legacy Ridge Golf Course",
+    "Westminster City Park"
+  ]
+};
+
+const faqs = [
+  {
+    question: "What areas of Westminster do you serve?",
+    answer: "We serve all of Westminster, from Federal Heights to Standley Lake, and everywhere in between. Our central location on Federal Blvd allows us to quickly reach any Westminster venue with hot, fresh Mexican food."
+  },
+  {
+    question: "How far in advance should I book catering in Westminster?",
+    answer: "For Westminster events, we recommend booking at least 2 weeks in advance, especially for popular venues like the Church Ranch Event Center or large corporate events. Peak seasons may require more advance notice."
+  },
+  {
+    question: "Do you offer special rates for Westminster businesses?",
+    answer: "Yes! We offer corporate rates for Westminster businesses, especially for regular catering services. We're proud to serve many businesses in Westminster's tech corridor and retail centers."
+  },
+  {
+    question: "What's your delivery time within Westminster?",
+    answer: "Most Westminster locations can expect delivery within 20-30 minutes. Being centrally located in Westminster allows us to provide quick, efficient service to all areas."
+  },
+  {
+    question: "Do you cater outdoor events in Westminster parks?",
+    answer: "Absolutely! We regularly cater at Westminster City Park, Standley Lake, and other Westminster outdoor venues. We provide appropriate setup for outdoor catering, including covered serving stations when needed."
+  }
+];
+
+const frontmatter = {
+  title: "Westminster Mexican Catering | Rosita's Local Catering Service",
+  description: "Westminster's trusted Mexican catering service. Authentic New Mexican cuisine for events near Federal Blvd & 80th. Serving Westminster businesses, venues & homes with local delivery. Book your Westminster catering today!",
+  metaImage: "/rositas-catering.webp",
+  canonicalUrl: "https://rositas.biz/catering",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "FoodService",
+    "name": "Rosita's Mexican Catering Westminster",
+    "image": "/rositas-catering.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8050 N Federal Blvd",
+      "addressLocality": "Westminster",
+      "addressRegion": "CO",
+      "postalCode": "80031",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "39.8441",
+      "longitude": "-105.0242"
+    },
+    "priceRange": "$$",
+    "servesCuisine": ["Mexican", "New Mexican", "Southwestern", "Catering"],
+    "areaServed": ["Westminster", "Denver", "Arvada", "Broomfield", "Thornton"],
+    "telephone": "720-797-8897",
+    "email": "catering@rositas.biz",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "07:00",
+      "closes": "20:00"
+    },
+    "hasMenu": {
+      "@type": "Menu",
+      "name": "Catering Menu",
+      "url": "https://rositas.biz/catering"
+    }
+  }
+};
+---
+
+<CateringLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  metaImage={frontmatter.metaImage}
+  canonicalUrl={frontmatter.canonicalUrl}
+  structuredData={frontmatter.structuredData}
+  cityName={cityName}
+  venues={venues}
+  faqs={faqs}
+  citySpecificContent={citySpecificContent}
+/> 

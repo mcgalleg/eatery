@@ -1,0 +1,113 @@
+---
+import CateringLayout from '../../layouts/CateringLayout.astro';
+
+const cityName = "Broomfield";
+
+const citySpecificContent = {
+  intro: "Discover Broomfield's premier Mexican catering service, serving Interlocken and beyond. For over 35 years, Rosita's has been the trusted choice for authentic Southwest and New Mexican cuisine in Broomfield and the surrounding communities.",
+  locationBenefits: [
+    "Fast service to all Broomfield neighborhoods",
+    "Easy access to US-36 & Interlocken",
+    "Serving Broomfield for over 35 years",
+    "Perfect for Broomfield businesses & venues",
+    "Local family-owned business"
+  ]
+};
+
+const venues = {
+  corporate: [
+    "Interlocken Business Park",
+    "Oracle Campus",
+    "Arista Place",
+    "Via West Office Park"
+  ],
+  events: [
+    "1STBANK Center",
+    "Omni Interlocken Hotel",
+    "Chateaux at Fox Meadows",
+    "Broomfield Community Center"
+  ]
+};
+
+const faqs = [
+  {
+    question: "What areas of Broomfield do you serve?",
+    answer: "We serve all of Broomfield, from Interlocken to North Park, including FlatIron Crossing area and surrounding communities. Our location allows us to quickly reach any Broomfield venue with hot, fresh Mexican food."
+  },
+  {
+    question: "How far in advance should I book catering in Broomfield?",
+    answer: "For Broomfield events, we recommend booking at least 2 weeks in advance, especially for popular venues like the 1STBANK Center or large corporate events. Peak seasons may require more advance notice."
+  },
+  {
+    question: "Do you offer special rates for Broomfield businesses?",
+    answer: "Yes! We offer corporate rates for Broomfield businesses, especially for regular catering services. We're proud to serve many businesses in Interlocken, Arista, and Broomfield's growing business districts."
+  },
+  {
+    question: "What's your delivery time within Broomfield?",
+    answer: "Most Broomfield locations can expect delivery within 30-45 minutes. We're conveniently located to serve all of Broomfield quickly and efficiently."
+  },
+  {
+    question: "Do you cater outdoor events in Broomfield parks?",
+    answer: "Absolutely! We regularly cater at Broomfield County Commons, The Bay Aquatic Park, and other Broomfield outdoor venues. We provide appropriate setup for outdoor catering, including covered serving stations when needed."
+  }
+];
+
+const frontmatter = {
+  title: "Broomfield Mexican Catering | Rosita's Local Catering Service",
+  description: "Broomfield's trusted Mexican catering service. Authentic New Mexican cuisine for events in Interlocken & FlatIron. Serving Broomfield businesses & venues with local delivery. Book your Broomfield catering today!",
+  metaImage: "/rositas-catering.webp",
+  canonicalUrl: "https://rositas.biz/catering/broomfield",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "FoodService",
+    "name": "Rosita's Mexican Catering Broomfield",
+    "image": "/rositas-catering.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8050 N Federal Blvd",
+      "addressLocality": "Westminster",
+      "addressRegion": "CO",
+      "postalCode": "80031",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "39.8441",
+      "longitude": "-105.0242"
+    },
+    "priceRange": "$$",
+    "servesCuisine": ["Mexican", "New Mexican", "Southwestern", "Catering"],
+    "areaServed": ["Broomfield", "Interlocken", "FlatIron", "Arista"],
+    "telephone": "720-797-8897",
+    "email": "catering@rositas.biz",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "07:00",
+      "closes": "20:00"
+    },
+    "hasMenu": {
+      "@type": "Menu",
+      "name": "Catering Menu",
+      "url": "https://rositas.biz/catering/broomfield"
+    }
+  }
+};
+---
+
+<CateringLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  metaImage={frontmatter.metaImage}
+  canonicalUrl={frontmatter.canonicalUrl}
+  structuredData={frontmatter.structuredData}
+  cityName={cityName}
+  venues={venues}
+  faqs={faqs}
+  citySpecificContent={citySpecificContent}
+/> 
