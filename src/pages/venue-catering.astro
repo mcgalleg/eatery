@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FeaturedCards from '../components/FeaturedCards.astro';
+
+/* Define the card data specific for this page */
+const cards = [
+{
+    title: "Relax, we'll come to you! - Catering",
+    subtitle: "AUTHENTIC SOUTHWEST CATERING",
+    description:
+      "Bring the authentic flavors of New Mexico to your next event! From our famous green chile to hand-rolled enchiladas, Rosita's catering brings over 60 years of Southwest cooking tradition to your special occasion. Our customizable catering packages are perfect for corporate events, weddings, or family celebrations - featuring our most popular dishes like our Street Taco Fiesta and premium Caballero Dinner service.",
+    image: "/Rositas-menu.webp",
+    link: "/catering",
+    buttonText: "View Packages",
+  },
+  {
+    title: "Book the cafe for a private event - Westminster venue",
+    subtitle: "GROUP DINING EVENTS AT OUR RESTAURANT",
+    description:
+      "Make your next private event truly memorable by hosting it at Rosita's Westminster venue. Our two private spaces are the perfect setting for any occasion, from intimate gatherings to large parties. Your guests will love the delicious Southwest food and friendly atmosphere, and you'll appreciate the convenience of having everything you need in one place.",
+    image: "/rositas-restaurant-westminster.webp",
+    link: "/venue",
+    buttonText: "Learn More",
+  },
+ 
+];
+
+export const frontmatter = {
+	title: "Catering Services & Private Venue Rental | Rosita's Southwest Cafe Westminster",
+	description: "Experience authentic Southwest catering and private event spaces at Rosita's. Perfect for corporate events, weddings, and celebrations with over 60 years of culinary tradition.",
+  metaImage: "/rositas-restaurant-westminster.webp",
+  canonicalUrl: "https://rositas.biz/venue-catering",
+	structuredData: {
+		"@context": "https://schema.org",
+		"@type": "Service",
+		"name": "Rosita's Southwest Cafe Catering & Venue Services",
+		"image": "/rositas-restaurant-westminster.webp",
+		"description": "Professional catering services and private event spaces featuring authentic Southwest cuisine. Available for corporate events, weddings, and special occasions in Westminster.",
+		"provider": {
+			"@type": "Restaurant",
+			"name": "Rosita's Southwest Cafe",
+			"areaServed": "Westminster"
+		},
+		"offers": {
+			"@type": "Offer",
+			"availability": "https://schema.org/InStock"
+		}
+	}
+};
+---
+
+<Layout {...frontmatter}>
+  <main class="container max-w-7xl mx-auto px-4 py-36">
+    <!-- Use the FeaturedCards component, passing in the page-specific cards -->
+    <FeaturedCards cards={cards} />
+  </main>
+</Layout> 

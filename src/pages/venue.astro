@@ -1,0 +1,272 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+export const venueSpaces = [
+  {
+    title: "Fiesta Room",
+    capacity: "Up to 40 guests",
+    description: "Perfect for small parties and intimate gatherings. Ideal for birthday celebrations, business meetings, or family events.",
+    price: "Contact for pricing",
+    features: [
+      "Private dining space",
+      "Perfect for intimate gatherings",
+      "Dedicated service staff",
+    ]
+  },
+  {
+    title: "Main Dining Room (El Jefe)",
+    capacity: "Up to 100 guests",
+    description: "Reserve our main dining area for larger celebrations. Perfect for wedding rehearsals, corporate events, or large family gatherings.",
+    price: "Contact for pricing",
+    features: [
+    "Private dining space",  
+    "Spacious dining area",
+      "Flexible seating arrangements",
+      "Dedicated service staff",
+    ]
+  },
+  {
+    title: "Full Restaurant (La Casa)",
+    capacity: "Up to 150 guests",
+    description: "Exclusive access to the entire restaurant. Be the most popular host in town with our full-service venue experience.",
+    price: "Contact for pricing",
+    features: [
+      "Complete restaurant buyout",
+      "Private parking",
+      "Custom floor plan",
+      "Twe dining rooms",
+      "Dedicated service staff",
+    ]
+  }
+];
+
+export const cateringPackages = [
+  {
+    title: "Caballero Dinner",
+    price: 22.75,
+    description: "Our premium dining package perfect for elegant events.",
+    includes: [
+      "Choice of: Carne Asada (Ribeye Steak), Pollo Asado (Chicken Breast), or Carne Adovada",
+      "Three hot sides from our selection",
+      "Garden salad with ranch dressing*",
+      "White corn tortilla chips* & salsa*",
+      "Guacamole*",
+      "Choice of flour* or corn tortillas*",
+      "Soft drinks and iced tea"
+    ]
+  },
+  {
+    title: "Street Taco Fiesta",
+    price: 16.25,
+    description: "Popular build-your-own taco bar perfect for casual celebrations.",
+    includes: [
+      "Oven roasted chicken and beef",
+      "Two hot sides from our selection",
+      "White corn tortilla chips* & salsa*",
+      "Fresh taco fixings (cabbage, goat cheese, onions, cilantro)",
+      "Choice of flour* or corn tortillas*",
+      "Spicy red taco sauce & tomatillo salsa",
+      "Soft drinks and iced tea"
+    ]
+  }
+];
+
+export const frontmatter = {
+	title: "Private Event Venue & Banquet Hall in Westminster, CO | Rosita's Cafe",
+	description: "Host your next private event at Rosita's Mexican Kitchen in Westminster. Our versatile venue spaces accommodate 40-150 guests with authentic New Mexican catering. Perfect for corporate events, celebrations & parties.",
+	metaImage: "/rositas-restaurant-westminster.webp",
+	canonicalUrl: "https://rositas.biz/venue",
+	structuredData: {
+		"@context": "https://schema.org",
+		"@type": "Restaurant",
+		"name": "Rosita's Southwest Cafe",
+		"image": "/rositas-restaurant-westminster.webp",
+		"address": {
+			"@type": "PostalAddress",
+			"streetAddress": "8050 N Federal Blvd",
+			"addressLocality": "Westminster",
+			"addressRegion": "CO",
+			"postalCode": "80221",
+			"addressCountry": "US"
+		},
+		"geo": {
+			"@type": "GeoCoordinates",
+			"latitude": "39.833333",
+			"longitude": "-105.016667"
+		},
+		"url": "https://rositas.biz/venue",
+		"telephone": "303-430-9155",
+		"priceRange": "$$",
+		"openingHours": "[Mo-Su 7:00-20:00]",
+		"hasOfferCatalog": {
+			"@type": "OfferCatalog",
+			"name": "Event Spaces and Catering",
+			"itemListElement": [
+				...venueSpaces.map(space => ({
+					"@type": "Offer",
+					"itemOffered": {
+						"@type": "Service",
+						"name": space.title,
+						"description": space.description
+					}
+				})),
+				...cateringPackages.map(pkg => ({
+					"@type": "Offer",
+					"itemOffered": {
+						"@type": "Service",
+						"name": pkg.title,
+						"description": pkg.description,
+						"price": pkg.price.toFixed(2),
+						"priceCurrency": "USD"
+					}
+				}))
+			]
+		}
+	}
+};
+---
+
+<Layout 
+	title={frontmatter.title}
+	description={frontmatter.description}
+	metaImage={frontmatter.metaImage}
+	canonicalUrl={frontmatter.canonicalUrl}
+	structuredData={frontmatter.structuredData}
+>
+	<main class="container mx-auto px-4 py-36">
+		<h1 class="text-3xl font-bold text-center mb-8">Private Event Venue & Catering</h1>
+
+		<!-- Introduction -->
+		<section class="mb-12 max-w-4xl mx-auto text-center">
+			<p class="text-xl mb-6">
+				Looking for the perfect venue to host your next party in Westminster? Look no further than Rosita's Mexican Kitchen! Located just off the Denver Boulder Turnpike, we're the perfect spot to entertain your family and friends with authentic New Mexican cuisine.
+			</p>
+			<p class="text-xl mb-6">
+				Whether you're celebrating a birthday, anniversary, or holiday, Rosita's is the perfect place to gather. Our private party rooms can accommodate small or large groups at affordable prices.
+			</p>
+		</section>
+
+		<!-- Event Inclusions -->
+		<section class="mb-12 max-w-4xl mx-auto">
+			<h2 class="text-2xl font-bold uppercase border-b-2 border-orange mb-6 pb-2">All Private Events Include</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+				<div class="p-6 rounded-lg shadow-sm bg-white">
+					<ul class="space-y-3">
+						<li class="flex items-center">
+							<span class="text-orange mr-2">✓</span>
+							Three hour event window
+						</li>
+						<li class="flex items-center">
+							<span class="text-orange mr-2">✓</span>
+							Complimentary chips & salsa
+						</li>
+						<li class="flex items-center">
+							<span class="text-orange mr-2">✓</span>
+							Fountain drinks, tea, and coffee
+						</li>
+					</ul>
+				</div>
+				<div class="p-6 rounded-lg shadow-sm bg-white">
+					<ul class="space-y-3">
+						<li class="flex items-center">
+							<span class="text-orange mr-2">✓</span>
+							Professional event staff
+						</li>
+						<li class="flex items-center">
+							<span class="text-orange mr-2">✓</span>
+							Custom room setup
+						</li>
+						<li class="flex items-center">
+							<span class="text-orange mr-2">✓</span>
+							Dedicated event coordinator
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<!-- Venue Spaces -->
+		<section class="mb-12">
+			<h2 class="text-2xl font-bold uppercase border-b-2 border-orange mb-6 pb-2">Venue Spaces</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+				{venueSpaces.map(space => (
+					<div class="p-6 rounded-lg shadow-sm bg-white">
+						<div class="flex justify-between items-baseline mb-2">
+							<h3 class="font-semibold text-xl">{space.title}</h3>
+							<span class="text-orange font-medium">{space.capacity}</span>
+						</div>
+						<p class="text-gray-600 mb-4">{space.description}</p>
+						<ul class="space-y-2">
+							{space.features.map(feature => (
+								<li class="flex items-center text-sm">
+									<span class="text-orange mr-2">•</span>
+									{feature}
+								</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<!-- Catering Packages -->
+		<section class="mb-12">
+			<h2 class="text-2xl font-bold uppercase border-b-2 border-orange mb-6 pb-2">Catering Packages</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+				{cateringPackages.map(pkg => (
+					<div class="p-6 rounded-lg shadow-sm bg-white">
+						<div class="flex justify-between items-baseline mb-2">
+							<h3 class="font-semibold text-xl">{pkg.title}</h3>
+							<span class="text-orange font-medium">${pkg.price.toFixed(2)} per person</span>
+						</div>
+						<p class="text-gray-600 mb-4">{pkg.description}</p>
+						<h4 class="font-medium mb-2">Package Includes:</h4>
+						<ul class="space-y-2">
+							{pkg.includes.map(item => (
+								<li class="flex items-center text-sm">
+									<span class="text-orange mr-2">•</span>
+									{item}
+								</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<!-- Additional Information -->
+		<section class="mb-12 max-w-4xl mx-auto">
+			<h2 class="text-2xl font-bold uppercase border-b-2 border-orange mb-6 pb-2">Additional Information</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+				<div class="p-6 rounded-lg shadow-sm bg-white">
+					<h3 class="font-semibold text-lg mb-3">Booking & Deposits</h3>
+					<ul class="space-y-2">
+						<li class="text-sm">• Deposit required to secure date</li>
+						<li class="text-sm">• Final guest count due 7 days prior</li>
+						<li class="text-sm">• Customizable menu options</li>
+					</ul>
+				</div>
+				<div class="p-6 rounded-lg shadow-sm bg-white">
+					<h3 class="font-semibold text-lg mb-3">Important Notes</h3>
+					<ul class="space-y-2">
+						<li class="text-sm">• Items marked with * are gluten-free</li>
+						<li class="text-sm">• 20% gratuity will be applied</li>
+						<li class="text-sm">• Separate tabs for alcoholic beverages</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact Information -->
+		<div class="text-center mt-12">
+			<p class="text-xl mb-4">Ready to plan your event?</p>
+			<p class="mb-2">Call us at: <a href="tel:7207978897" class="text-orange hover:underline">(720) 797-8897</a></p>
+			<p>Email: <a href="mailto:catering@rositas.biz" class="text-orange hover:underline">catering@rositas.biz</a></p>
+		</div>
+
+		<!-- Disclaimer -->
+		<div class="text-sm text-gray-500 mt-8 text-center">
+			<p>Prices and availability subject to change. Please contact us for the most current information and to discuss your specific event needs.</p>
+		</div>
+	</main>
+</Layout>

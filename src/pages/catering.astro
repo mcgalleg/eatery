@@ -1,0 +1,410 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+export const cateringPackages = [
+  {
+    title: "Special Delivery & Setup",
+    price: 69,
+    description: "Professional delivery and setup with quality packaging within 15 miles",
+    includes: [
+      "Warming Kit",
+      "Serving Ware",
+      "Disposable Plates",
+      "Napkin Rolls"
+    ]
+  },
+  {
+    title: "Full-Service Staffed Event",
+    price: 7,
+    description: "Professional staff service for 2-3 hour events (price per person)",
+    perPerson: true,
+    includes: [
+      "Professional staff in black attire",
+      "Dedicated event captain",
+      "Premium copper chafers",
+      "Complete serving setup",
+      "Buffet management",
+      "Clean-up service"
+    ]
+  }
+];
+
+export const menuPackages = [
+  {
+    title: "Premium Entrees",
+    items: [
+      { 
+        name: "Carne Asada", 
+        price: 15,
+        description: "Dive into the heart of New Mexican tradition with our Carne Asada. This 6oz ribeye steak is grilled to juicy perfection with grilled onions, jalapeños and warm tortillas."
+      },
+      { 
+        name: "Classic Fajitas", 
+        price: 15,
+        description: "Ignite your taste buds with our tasty fajitas! Includes your choice of protein, warm tortillas, onions, bell peppers, cheese, sour cream, guacamole and salsa."
+      },
+      { 
+        name: "Pork Chop Dinner", 
+        price: 13,
+        description: "Juicy pork chop served with New Mexican green chile and warm tortillas"
+      },
+      { 
+        name: "Taco Fiesta", 
+        price: 13,
+        description: "Seasoned steak, fish or chicken tacos filled with fresh cabbage, onion, crumbled goat cheese, and cilantro. Served on soft white corn tortilla."
+      },
+      { 
+        name: "Enchiladas", 
+        price: 11,
+        description: "Delicious enchiladas, made from New Mexican red chile, cheddar cheese and corn tortillas. A catering favorite."
+      }
+    ],
+    note: "All entrees include choice of two sides"
+  },
+  {
+    title: "Enhancement Stations",
+    items: [
+      { 
+        name: "Beverage Station", 
+        price: 3, 
+        description: "Self-service drink station includes fresh Coffee, filtered Water, house-made Lemonade, and fresh-brewed Iced Tea",
+        perGuest: true
+      },
+      { 
+        name: "Appetizer Station", 
+        price: 6, 
+        description: "Fresh-made Corn Chips with Queso, house Salsa, and assorted Veggie & Fruit Trays",
+        perGuest: true
+      },
+      { 
+        name: "Premium Bar Package", 
+        price: 18, 
+        description: "Complete bar service including Champagne, Red & White Wine selection, 2 signature Margaritas, and 3 Beer options",
+        perGuest: true
+      }
+    ]
+  }
+];
+
+export const enhancements = {
+  drinks: [
+    { name: "Bottled Soda", price: 3, description: "Assorted soft drinks" },
+    { name: "Bottled Water", price: 2, description: "Purified drinking water" },
+    { name: "Virgin Margarita", price: 12, description: "Alcohol-free margarita mix ready for spiking" }
+  ],
+  desserts: [
+    { name: "Sopapillas & Honey", price: 4, description: "Fried pastry with honey drizzle" },
+    { name: "Churros & Chocolate", price: 4, description: "Cinnamon-sugar sticks with dipping sauce" },
+    { name: "Cookie Assortment", price: 2, description: "Variety pack of homemade cookies" }
+  ],
+  extras: [
+    { 
+      name: "Additional Side Dish", 
+      price: 3, 
+      description: "Add a third side dish to any entree",
+      perPerson: true
+    },
+    { 
+      name: "Fruit & Veggie Trays", 
+      price: 39.99, 
+      description: "Separate trays of seasonal assortments served with Ranch and Yogurt dips",
+      serves: 20
+    }
+  ]
+};
+
+export const sideOptions = [
+  { name: "Green Chile", description: "New Mexico-style famous green chile" },
+  { name: "Spanish Rice", description: "Tomato-infused traditional rice" },
+  { name: "Calabacitas", description: "Seasonal squash medley (availability varies)" },
+  { name: "Fried Potatoes", description: "Pan fried potatoes" },
+  { name: "Refried Beans", description: "Delicious refried beans" },
+  { name: "Black Beans", description: "Whole beans in mild broth" },
+  { name: "Cheese Enchiladas", description: "Corn tortillas with melted cheese and mild red chile" },
+  { name: "Garden Salad", description: "Fresh mixed greens with vegetables" }
+];
+
+export const additionalServices = [
+  { 
+    name: "Champagne Pour Service", 
+    price: 199, 
+    description: "Professional champagne pouring service (up to 100 guests)",
+    note: "Perfect for toasts and celebrations"
+  },
+  { 
+    name: "Cake Cutting Service", 
+    price: 199, 
+    description: "Professional dessert service with plating (up to 100 guests)",
+    note: "Includes plates and utensils"
+  },
+  { 
+    name: "Bussing Service", 
+    price: 199, 
+    description: "Dedicated cleanup crew (up to 100 guests)",
+    note: "Keeps your event space tidy throughout"
+  },
+  { 
+    name: "Equipment Rental Deposit", 
+    price: 250, 
+    description: "Refundable deposit for equipment rental",
+    note: "Required for all equipment rentals"
+  },
+  { 
+    name: "Outdoor Setup", 
+    price: 250, 
+    description: "Buffet tent with 3 tables setup",
+    note: "Perfect for outdoor events"
+  },
+  { 
+    name: "Additional Hour", 
+    price: 250, 
+    description: "Extended service time (up to 100 guests)",
+    note: "Per hour beyond standard service time"
+  },
+  { 
+    name: "Tear Down Service", 
+    price: 250, 
+    description: "Complete venue cleanup service (up to 100 guests)",
+    note: "Follows specific venue requirements"
+  }
+];
+
+export const frontmatter = {
+  title: "Mexican Catering Westminster CO | Best Mexican Food Catering Near You",
+  description: "Local Mexican catering in Westminster, CO. Authentic New Mexican cuisine for events & parties. Family-owned since 1985, serving Denver metro area. Order Mexican catering near you!",
+  metaImage: "/rositas-catering.webp",
+  canonicalUrl: "https://rositas.biz/catering",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "FoodService",
+    "name": "Rosita's Mexican Catering Westminster",
+    "image": "/rositas-catering.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8050 N Federal Blvd",
+      "addressLocality": "Westminster",
+      "addressRegion": "CO",
+      "postalCode": "80221",
+      "addressCountry": "US"
+    },
+    "priceRange": "$$",
+    "servesCuisine": ["Mexican", "New Mexican", "Southwestern", "Catering"],
+    "areaServed": ["Westminster", "Denver", "Arvada", "Broomfield", "Thornton"],
+    "telephone": "720-797-8897",
+    "email": "catering@rositas.biz",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127"
+    }
+  }
+};
+---
+
+<Layout 
+  title={frontmatter.title}
+  description={frontmatter.description}
+  metaImage={frontmatter.metaImage}
+  canonicalUrl={frontmatter.canonicalUrl}
+  structuredData={frontmatter.structuredData}
+>
+  <main class="container mx-auto px-4 py-36">
+    <h1 class="text-4xl font-bold text-center mb-8">Westminster's Premier Mexican Catering Service</h1>
+
+    <!-- Introduction -->
+    <section class="mb-12 max-w-4xl mx-auto text-center">
+      <p class="text-xl mb-6">
+        Looking for authentic Mexican catering near you? Rosita's has been Westminster's go-to Mexican catering service, delivering authentic Southwest and New Mexican cuisine throughout the Denver metro area.
+      </p>
+      <p class="text-xl mb-6">
+        We proudly serve Westminster, Denver, Arvada, Broomfield, Thornton, and surrounding areas with professional catering services for all occasions - from corporate lunches to weddings and special celebrations.
+      </p>
+      <div class="bg-orange-50 p-6 rounded-lg mt-8">
+        <h2 class="text-2xl font-semibold mb-4">Why Choose Rosita's Mexican Catering?</h2>
+        <ul class="text-left space-y-2">
+          <li class="flex items-center"><span class="text-orange mr-2">✓</span> Local Westminster business with 35+ years of experience</li>
+          <li class="flex items-center"><span class="text-orange mr-2">✓</span> Authentic New Mexican recipes made fresh</li>
+          <li class="flex items-center"><span class="text-orange mr-2">✓</span> Flexible catering packages for any event size</li>
+          <li class="flex items-center"><span class="text-orange mr-2">✓</span> Professional setup and service available</li>
+          <li class="flex items-center"><span class="text-orange mr-2">✓</span> Serving within 15 miles of Westminster</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Catering Packages -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold uppercase border-b-2 border-orange mb-6 pb-2">Catering Packages</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {cateringPackages.map(pkg => (
+          <div class="p-6 rounded-lg shadow-sm bg-white">
+            <div class="flex justify-between items-baseline mb-2">
+              <h3 class="font-semibold text-xl">{pkg.title}</h3>
+              <span class="text-orange font-medium">
+                ${pkg.price}{pkg.perPerson ? '/person' : ''}
+              </span>
+            </div>
+            <p class="text-gray-600 mb-4">{pkg.description}</p>
+            <ul class="space-y-2">
+              {pkg.includes.map(item => (
+                <li class="flex items-center text-sm">
+                  <span class="text-orange mr-2">•</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Menu Packages -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold uppercase border-b-2 border-orange mb-6 pb-2">Menu Options</h2>
+      
+      <!-- Premium Entrees -->
+      <div class="mb-8">
+        <h3 class="text-xl font-semibold mb-4">{menuPackages[0].title}</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {menuPackages[0].items.map(item => (
+            <div class="p-4 rounded-lg shadow-sm bg-white">
+              <div class="flex justify-between items-baseline mb-2">
+                <span class="font-medium">{item.name}</span>
+                <span class="text-orange">${item.price}/person</span>
+              </div>
+              {item.description && <p class="text-sm text-gray-600">{item.description}</p>}
+            </div>
+          ))}
+        </div>
+        {menuPackages[0].note && <p class="text-sm text-gray-600 mt-2">{menuPackages[0].note}</p>}
+      </div>
+
+      <!-- Side Dishes -->
+      <div class="mb-8">
+        <h3 class="text-xl font-semibold mb-4">Side Dishes</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {sideOptions.map(side => (
+            <div class="p-4 bg-white rounded-lg shadow-sm">
+              <h3 class="font-medium mb-1">{side.name}</h3>
+              <p class="text-sm text-gray-600">{side.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Enhancement Stations -->
+      <div class="mb-8">
+        <h3 class="text-xl font-semibold mb-4">{menuPackages[1].title}</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {menuPackages[1].items.map(item => (
+            <div class="p-4 rounded-lg shadow-sm bg-white">
+              <div class="flex justify-between items-baseline mb-2">
+                <span class="font-medium">{item.name}</span>
+                <span class="text-orange">${item.price}/guest</span>
+              </div>
+              {item.description && <p class="text-sm text-gray-600">{item.description}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhancements -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold uppercase border-b-2 border-orange mb-6 pb-2">Enhancements</h2>
+      
+      <h3 class="text-xl font-semibold mb-4">Beverages</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        {enhancements.drinks.map(drink => (
+          <div class="p-4 bg-white rounded-lg shadow-sm">
+            <div class="flex justify-between items-baseline mb-2">
+              <span class="font-medium">{drink.name}</span>
+              <span class="text-orange">${drink.price}</span>
+            </div>
+            <p class="text-sm text-gray-600">{drink.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-xl font-semibold mb-4">Desserts</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        {enhancements.desserts.map(dessert => (
+          <div class="p-4 bg-white rounded-lg shadow-sm">
+            <div class="flex justify-between items-baseline mb-2">
+              <span class="font-medium">{dessert.name}</span>
+              <span class="text-orange">${dessert.price}</span>
+            </div>
+            <p class="text-sm text-gray-600">{dessert.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-xl font-semibold mb-4">Additional Options</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        {enhancements.extras.map(extra => (
+          <div class="p-4 bg-white rounded-lg shadow-sm">
+            <div class="flex justify-between items-baseline mb-2">
+              <span class="font-medium">{extra.name}</span>
+              <span class="text-orange">
+                ${extra.price}{extra.perPerson ? '/person' : ''}
+                {extra.serves ? ` (serves ${extra.serves})` : ''}
+              </span>
+            </div>
+            <p class="text-sm text-gray-600">{extra.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Additional Services -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold uppercase border-b-2 border-orange mb-6 pb-2">Additional Services</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {additionalServices.map(service => (
+          <div class="p-4 bg-white rounded-lg shadow-sm">
+            <div class="flex justify-between items-baseline mb-2">
+              <span class="font-medium">{service.name}</span>
+              <span class="text-orange">${service.price}</span>
+            </div>
+            <p class="text-sm text-gray-600 mb-1">{service.description}</p>
+            {service.note && <p class="text-sm text-orange-600 italic">{service.note}</p>}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Service Area -->
+    <section class="mb-12 bg-gray-50 p-6 rounded-lg">
+      <h2 class="text-2xl font-bold uppercase border-b-2 border-orange mb-6 pb-2">Mexican Catering Service Area</h2>
+      <p class="mb-4">Based in Westminster, we provide Mexican catering services to:</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="p-3 bg-white rounded shadow-sm text-center">Westminster</div>
+        <div class="p-3 bg-white rounded shadow-sm text-center">Arvada</div>
+        <div class="p-3 bg-white rounded shadow-sm text-center">Broomfield</div>
+        <div class="p-3 bg-white rounded shadow-sm text-center">Thornton</div>
+        <div class="p-3 bg-white rounded shadow-sm text-center">Northglenn</div>
+        <div class="p-3 bg-white rounded shadow-sm text-center">Denver</div>
+        <div class="p-3 bg-white rounded shadow-sm text-center">Louisville</div>
+        <div class="p-3 bg-white rounded shadow-sm text-center">Lafayette</div>
+      </div>
+      <p class="text-sm text-gray-600 mt-4">* Delivery fees may apply based on distance</p>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="text-center mt-12 bg-orange-50 p-8 rounded-lg">
+      <h2 class="text-2xl font-bold mb-6">Book Your Mexican Catering in Westminster</h2>
+      <p class="mb-4">Contact Westminster's favorite Mexican caterers:</p>
+      <p class="mb-2">Call: <a href="tel:7207978897" class="text-orange hover:underline">(720) 797-8897</a></p>
+      <p>Email: <a href="mailto:catering@rositas.biz" class="text-orange hover:underline">catering@rositas.biz</a></p>
+      <p class="font-medium mt-4">Visit Us: 8050 N Federal Blvd, Westminster, CO 80221</p>
+      <p class="text-sm text-gray-600 mt-4">Available Monday-Friday 9am-5pm</p>
+    </section>
+
+    <!-- Additional Information -->
+    <section class="mt-12 text-sm text-gray-600">
+      <p class="mb-2">• 30% non-refundable deposit required to reserve date</p>
+      <p class="mb-2">• Final balance due 10 business days before event</p>
+      <p class="mb-2">• We accept all major credit cards, cash, and checks</p>
+      <p>• Prices subject to change. Please contact us for current pricing and availability.</p>
+    </section>
+  </main>
+</Layout> 

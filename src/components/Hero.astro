@@ -1,8 +1,30 @@
+---
+interface Props {
+  image: string;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  buttonText?: string;
+  buttonLink?: string;
+  showSecondButton?: boolean;
+}
+
+const {
+  image,
+  title = "Best Southwest Mexican Breakfast",
+  subtitle = "in Westminster, Colorado",
+  description = "Famous breakfast burritos, authentic green chile, and Southwest Mexican breakfast dishes made fresh daily",
+  buttonText = "View Menu",
+  buttonLink = "/menu",
+  showSecondButton = false
+} = Astro.props;
+---
+
 <section class="relative h-[80vh] w-full overflow-hidden" aria-label="Welcome to Rosita's Restaurant">
   <!-- Background Image -->
   <div class="absolute inset-0 z-0">
     <img
-      src="/Rositas-menu.webp"
+      src={image}
       alt="Rosita's Restaurant - Best Southwest Mexican Breakfast in Westminster"
       class="w-full h-full object-cover"
       width="1920"
@@ -17,27 +39,28 @@
   <div class="relative z-10 max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col justify-center h-full text-white pt-32">
       <h1 class="text-5xl md:text-6xl font-bold mb-6">
-        <span class="block">Best Southwest Mexican Breakfast</span>
-        <span class="block">in Westminster, Colorado</span>
+        <span class="block">{title}</span>
+        <span class="block">{subtitle}</span>
       </h1>
       <p class="text-xl md:text-2xl mb-8 max-w-2xl">
-        Famous breakfast burritos, authentic green chile, and Southwest Mexican breakfast dishes made fresh daily
+        {description}
       </p>
       <div class="flex gap-4">
         <a
-          href="/menu"
+          href={buttonLink}
           class="bg-orange hover:bg-white hover:text-black text-white px-8 py-3 rounded-md text-lg font-semibold transition-colors"
-          aria-label="View our full menu"
+          aria-label={buttonText}
         >
-          View Menu
+          {buttonText}
         </a>
-        <!-- 
-        <a
-          href="/reservations"
-          class="bg-transparent border-2 border-white hover:bg-white hover:text-black text-white px-8 py-3 rounded-md text-lg font-semibold transition-colors"
-        >
-          Make Reservation
-        </a>-->
+        {showSecondButton && (
+          <a
+            href="/reservations"
+            class="bg-transparent border-2 border-white hover:bg-white hover:text-black text-white px-8 py-3 rounded-md text-lg font-semibold transition-colors"
+          >
+            Make Reservation
+          </a>
+        )}
       </div>
     </div>
   </div>

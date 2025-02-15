@@ -44,10 +44,10 @@
 
       <!-- Right Menu -->
       <div class="hidden md:flex items-center space-x-2 lg:space-x-4 mb-4">
-        {#each ['GROUPS & CATERING', 'GIFT CARDS & REWARDS'] as item, i}
+        {#each ['VENUE & CATERING', 'GIFT CARDS & REWARDS'] as item, i}
           <div class="relative">
             <a 
-              href={i === 0 ? '/about' : '/gift-card'} 
+              href={i === 0 ? '/venue-catering' : '/gift-card'} 
               class="text-white hover:text-yellow px-2 lg:px-3 py-2 rounded-md relative menu-item whitespace-nowrap text-sm lg:text-base"
             >
               {item}
@@ -101,10 +101,23 @@
 
       <!-- Menu items -->
       <div class="flex flex-col items-center justify-center h-full">
-        <a href="https://order.toasttab.com/online/rositas" class="text-white hover:text-gray-300 block px-3 py-2 rounded-md text-2xl mb-4">ORDER ONLINE</a>
-        <a href="/menu" class="text-white hover:text-gray-300 block px-3 py-2 rounded-md text-2xl mb-4">MENU</a>
-        <a href="/about" class="text-white hover:text-gray-300 block px-3 py-2 rounded-md text-2xl mb-4">GROUPS & CATERING</a>
-        <a href="/contact" class="text-white hover:text-gray-300 block px-3 py-2 rounded-md text-2xl">CONTACT</a>
+        <a 
+          href="https://order.toasttab.com/online/rositas" 
+          class="text-white hover:text-gray-300 block px-3 py-2 rounded-md text-2xl mb-4"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ORDER ONLINE
+        </a>
+        <a href="/menu" class="text-white hover:text-gray-300 block px-3 py-2 rounded-md text-2xl mb-4">
+          MENU
+        </a>
+        <a href="/venue-catering" class="text-white hover:text-gray-300 block px-3 py-2 rounded-md text-2xl mb-4">
+          VENUE & CATERING
+        </a>
+        <a href="/gift-card" class="text-white hover:text-gray-300 block px-3 py-2 rounded-md text-2xl">
+          GIFT CARDS & REWARDS
+        </a>
       </div>
     </div>
   {/if}
