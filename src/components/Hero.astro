@@ -1,10 +1,13 @@
-<section class="relative h-[80vh] w-full overflow-hidden">
+<section class="relative h-[80vh] w-full overflow-hidden" aria-label="Welcome to Rosita's Restaurant">
   <!-- Background Image -->
   <div class="absolute inset-0 z-0">
     <img
       src="/Rositas-menu.webp"
-      alt="Uncle Julio's Restaurant"
+      alt="Rosita's Restaurant - Best Southwest Mexican Breakfast in Westminster"
       class="w-full h-full object-cover"
+      width="1920"
+      height="1080"
+      loading="eager"
     />
     <!-- Dark Overlay -->
     <div class="absolute inset-0 bg-black/40"></div>
@@ -14,16 +17,17 @@
   <div class="relative z-10 max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col justify-center h-full text-white pt-32">
       <h1 class="text-5xl md:text-6xl font-bold mb-6">
-        Experience the Best Breakfast & Brunch in Westminster
+        <span class="block">Best Southwest Mexican Breakfast</span>
+        <span class="block">in Westminster, Colorado</span>
       </h1>
       <p class="text-xl md:text-2xl mb-8 max-w-2xl">
-        Experience New Mexican cuisine made from scratch with the freshest
-        ingredients
+        Famous breakfast burritos, authentic green chile, and Southwest Mexican breakfast dishes made fresh daily
       </p>
       <div class="flex gap-4">
         <a
           href="/menu"
           class="bg-orange hover:bg-white hover:text-black text-white px-8 py-3 rounded-md text-lg font-semibold transition-colors"
+          aria-label="View our full menu"
         >
           View Menu
         </a>

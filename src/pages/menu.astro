@@ -13,7 +13,7 @@ export const sections = [
       { 
         name: "CHILE CHEESE FRIES", 
         price: 12.43, 
-        desc: "Hot crispy fries, topped with New Mexican green chile and cheese.",
+        desc: "Hot crispy fries, topped with Southwest green chile and cheese.",
         hasStartingPrice: true
       },
       { name: "SUPER NACHOS", price: 11.36, desc: "Chips topped with beans, beef, queso, guacamole, jalapeños and sour cream." }
@@ -27,7 +27,7 @@ export const sections = [
       { 
         name: "GREEN CHILE", 
         price: 14.44, 
-        desc: "New Mexican green chile, served with two tortillas.",
+        desc: "Southwest green chile, served with two tortillas.",
         hasStartingPrice: true
       },
       { name: "NAVAJO EGG ROLL", price: 13.75, desc: "Two deep-fried egg rolls stuffed with seasoned ground beef, potatoes, onions, jalapeño peppers, served with a side of green chile." },
@@ -67,7 +67,7 @@ export const sections = [
         desc: "Tasty red chile enchilada with choice of blue or yellow corn.",
         hasStartingPrice: true
       },
-      { name: "RELLENO", price: 6.75, desc: "Delicious crispy relleno smothered with New Mexican green chile." }
+      { name: "RELLENO", price: 6.75, desc: "Delicious crispy relleno smothered with Southwest green chile." }
     ]
   },
   {
@@ -82,13 +82,13 @@ export const sections = [
       { 
         name: "CHIMICHANGA", 
         price: 13.39, 
-        desc: "Deep fried burrito with choice of filling, smothered with New Mexican green chile and topped with lettuce, cheese and tomatoes.",
+        desc: "Deep fried burrito with choice of filling, smothered with Southwest green chile and topped with lettuce, cheese and tomatoes.",
         hasStartingPrice: true
       },
       { 
         name: "SMOTHERED BURRITO", 
         price: 7.85, 
-        desc: "Your choice of filling, wrapped in a tortilla smothered with New Mexican green chile.",
+        desc: "Your choice of filling, wrapped in a tortilla smothered with Southwest green chile.",
         hasStartingPrice: true
       },
       { 
@@ -167,7 +167,7 @@ export const sections = [
     items: [
       { name: "SOPAPILLA", price: 2.71, desc: "Puffy piece of deep-fried dough served with honey and powdered sugar." },
       { name: "FRIED ICE CREAM", price: 9.20, desc: "Deep fried frozen ice cream in a breaded coating, on a crispy shell, topped with whip cream, chocolate and cherries." },
-      { name: "BISCOCHITOS", price: 4.12, desc: "Half dozen homemade New Mexican cuisine crisp cookies, flavored with sugar, cinnamon, and anise." },
+      { name: "BISCOCHITOS", price: 4.12, desc: "Half dozen homemade Southwest cuisine crisp cookies, flavored with sugar, cinnamon, and anise." },
       { name: "CHURROS", price: 3.68, desc: "A Mexican pastry, fried dough sprinkled with cinnamon and powdered sugar." },
       { name: "CACTUS JACK", price: 5.41, desc: "Churros served with vanilla pudding, whipped cream and a cherry on top." },
       { name: "FLAN", price: 3.79, desc: "Delicate caramel custard dessert." }
@@ -177,34 +177,52 @@ export const sections = [
 
 // Then use the exported sections in frontmatter
 export const frontmatter = {
-	title: "Rosita's Menu | New Mexican & Classic Dishes | Westminster",
-	description: "Explore Rosita's full menu! Authentic New Mexican cuisine, classic American dishes, breakfast, and more. Located in Westminster, CO. Order online or dine-in.",
-	metaImage: "/rositas-restaurant.jpg", // Replace with a suitable image
+	title: "Rosita's Cafe Menu - Authentic Southwest Food in Westminster, CO",
+	description: "View Rosita's complete menu featuring authentic Southwest dishes, street tacos, burritos, breakfast favorites, and homemade desserts. Family-owned Cafe in Westminster serving since [year]. Daily specials and vegetarian options available.",
+	metaImage: "/Rositas-menu.webp", // Recommend creating a menu-specific image
 	canonicalUrl: "https://rositas.biz/menu",
 	structuredData: {
 		"@context": "https://schema.org",
-		"@type": "Menu",
-		"name": "Rosita's New Mexican Cafe Menu",
-		"url": "https://rositas.biz/menu",
-		"mainEntityOfPage": {
-			"@type": "WebPage",
-			"@id": "https://rositas.biz/menu"
+		"@type": "Cafe",
+		"name": "Rosita's Southwest Cafe",
+		"image": "/Rositas-menu.webp",
+		"address": {
+			"@type": "PostalAddress",
+			"streetAddress": "8050 N Federal Blvd",
+			"addressLocality": "Westminster",
+			"addressRegion": "CO",
+			"postalCode": "80221",
+			"addressCountry": "US"
 		},
-		"hasMenuSection": sections.map(section => ({
-			"@type": "MenuSection",
-			"name": section.title,
-			"description": `Rosita's ${section.title} menu section.`, // Add short descriptions if you have them
-			"hasMenuItem": section.items.map(item => ({
-				"@type": "MenuItem",
-				"name": item.name,
-				"description": item.desc,
-				"offers": {
-					"@type": "Offer",
-					"priceCurrency": "USD",
-					"price": item.price.toFixed(2)
-				}
-			})),
-		})),
+		"geo": {
+			"@type": "GeoCoordinates",
+			"latitude": "39.833333",
+			"longitude": "-105.016667"
+		},
+		"url": "https://rositas.biz",
+		"telephone": "303-430-9155",
+		"servesCuisine": ["Southwest", "Mexican", "Southwestern"],
+		"priceRange": "$$",
+		"openingHours": "[Mo-Su 7:00-20:00]",
+		"menu": {
+			"@type": "Menu",
+			"name": "Rosita's Full Menu",
+			"hasMenuSection": sections.map(section => ({
+				"@type": "MenuSection",
+				"name": section.title,
+				"description": `${section.title} - Authentic Southwest dishes at Rosita's Cafe Westminster.`,
+				"hasMenuItem": section.items.map(item => ({
+					"@type": "MenuItem",
+					"name": item.name,
+					"description": item.desc,
+					"offers": {
+						"@type": "Offer",
+						"price": item.price.toFixed(2),
+						"priceCurrency": "USD"
+					}
+				}))
+			}))
+		}
 	}
 };
 ---
@@ -217,34 +235,46 @@ export const frontmatter = {
   structuredData={frontmatter.structuredData}
 >
   <main class="container mx-auto px-4 py-36">
-    <h1 class="text-3xl font-bold text-center mb-8">Rosita's Menu</h1>
+    <h1 class="text-3xl font-bold text-center mb-8" itemprop="name">Rosita's Southwest Cafe Menu</h1>
     <!-- Menu Sections -->
     {sections.map(section => (
-      <section class="mb-12">
-        <h2 class="text-2xl font-bold uppercase border-b-2 border-orange mb-6 pb-2">
+      <section class="mb-12" itemprop="hasMenuSection">
+        <h2 class="text-2xl font-bold uppercase border-b-2 border-orange mb-6 pb-2" itemprop="name">
           {section.title}
         </h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           {section.items.map(item => (
-            <div class="p-4 rounded-lg shadow-sm">
+            <div class="p-4 rounded-lg shadow-sm" itemprop="hasMenuItem">
               <div class="flex justify-between items-baseline">
-                <h3 class="font-semibold text-lg">{item.name}</h3>
-                <span class="text-md font-medium text-orange-500">
+                <h3 class="font-semibold text-lg" itemprop="name">{item.name}</h3>
+                <span class="text-md font-medium text-orange-500" itemprop="offers">
                   {item.hasStartingPrice ? 'Starting at $' : '$'}
-                  {item.price.toFixed(2)}
+                  <span itemprop="price">{item.price.toFixed(2)}</span>
                 </span>
               </div>
-              {item.desc && <p class="mt-2 text-gray-600 text-sm">{item.desc}</p>}
+              {item.desc && <p class="mt-2 text-gray-600 text-sm" itemprop="description">{item.desc}</p>}
             </div>
           ))}
         </div>
       </section>
     ))}
 
-    <!-- Disclaimer -->
-    <p class="text-sm text-gray-500 mt-8">
-      *Consuming raw or undercooked meats may increase your risk of foodborne illness.
-    </p>
+    <!-- Add additional SEO content -->
+    <div class="mt-12 text-gray-700">
+      <h2 class="text-xl font-bold mb-4">About Our Menu</h2>
+      <p class="mb-4">
+        Experience authentic Southwest cuisine at Rosita's Cafe in Westminster, Colorado. Our family recipes have been perfected over generations, featuring fresh ingredients and traditional cooking methods. From our famous green chile to hand-rolled enchiladas, every dish is prepared with care and attention to detail.
+      </p>
+      <p class="mb-4">
+        We offer vegetarian options, gluten-sensitive choices, and can accommodate most dietary restrictions. All our salsas and sauces are made fresh daily. Don't forget to try our homemade sopapillas and traditional Southwest desserts!
+      </p>
+    </div>
+
+    <!-- Disclaimer with allergen information -->
+    <div class="text-sm text-gray-500 mt-8">
+      <p class="mb-2">*Consuming raw or undercooked meats may increase your risk of foodborne illness.</p>
+      <p>Please inform your server of any food allergies. Prices subject to change. Not all ingredients are listed on the menu.</p>
+    </div>
   </main>
 </Layout>
