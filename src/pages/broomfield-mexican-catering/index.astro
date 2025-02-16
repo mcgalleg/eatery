@@ -1,0 +1,193 @@
+---
+import CateringLayout from '../../layouts/CateringLayout.astro';
+
+const cityName = "Broomfield";
+const pageTitle = "Broomfield Mexican Catering | Interlocken & FlatIron Crossing Specialists";
+const pageDescription = "Premium Mexican catering in Broomfield with quick delivery. Trusted caterer for Interlocken business park, FlatIron Crossing events, and 1stBank Center gatherings. Experienced in corporate lunches and tech company events.";
+const pageKeywords = "Broomfield Mexican catering, Interlocken business park catering, FlatIron Crossing event food, 1stBank Center catering, Broomfield corporate lunch delivery, authentic Mexican catering Broomfield CO";
+
+const citySpecificContent = {
+  intro: "Your Broomfield catering specialists, serving the tech corridor and business districts with authentic Southwest and New Mexican cuisine. From corporate lunches at Interlocken to community events at 1stBank Center, we bring fresh, authentic flavors to your Broomfield gathering.",
+  locationBenefits: [
+    "Quick delivery to all Broomfield locations",
+    "Interlocken & FlatIron specialists",
+    "Tech company catering expertise",
+    "Large venue experience (1stBank Center)",
+    "Corporate lunch programs available"
+  ]
+};
+
+const venues = {
+  corporate: [
+    "Interlocken Business Park",
+    "Oracle Campus",
+    "FlatIron Business Park",
+    "Arista Place"
+  ],
+  events: [
+    "1stBank Center",
+    "Broomfield Community Center",
+    "FlatIron Crossing Mall",
+    "Bay Aquatic Park"
+  ]
+};
+
+const faqs = [
+  {
+    question: "What areas of Broomfield do you serve?",
+    answer: "We serve all of Broomfield, with special focus on the Interlocken Business Park, FlatIron area, and Arista neighborhood. Our service reaches every corner of Broomfield with hot, fresh Mexican food."
+  },
+  {
+    question: "How far in advance should I book catering in Broomfield?",
+    answer: "For Broomfield events, we recommend booking 2-3 weeks in advance, especially for corporate functions and tech company events. Large venues like 1stBank Center may require additional advance notice."
+  },
+  {
+    question: "Do you offer special rates for Broomfield businesses?",
+    answer: "Yes! We offer corporate rates and recurring catering programs for Broomfield businesses, especially in the Interlocken and FlatIron areas. Many tech companies trust us for their regular catering needs."
+  },
+  {
+    question: "What's your delivery time within Broomfield?",
+    answer: "Most Broomfield locations can expect delivery within 25-40 minutes. We plan our routes carefully around US-36 and Interlocken traffic patterns to ensure timely delivery."
+  },
+  {
+    question: "Do you cater outdoor events in Broomfield?",
+    answer: "Absolutely! We regularly cater at Commons Park, Bay Aquatic Park, and other Broomfield outdoor venues. We provide appropriate setup for outdoor catering, including covered serving stations when needed."
+  }
+];
+
+// Enhanced structured data specific to Broomfield catering
+const broomfieldStructuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": ["Restaurant", "FoodEstablishment", "CateringService"],
+    "name": "Rosita's New Mexican Cafe - Broomfield Catering",
+    "image": "/rositas-catering-broomfield.jpg",
+    "telephone": "+1-303-430-9155",
+    "priceRange": "$$",
+    "servesCuisine": ["New Mexican", "Mexican", "Catering"],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127",
+      "bestRating": "5"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Broomfield",
+      "containedIn": "Colorado"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8050 Federal Blvd",
+      "addressLocality": "Westminster",
+      "addressRegion": "CO",
+      "postalCode": "80031",
+      "addressCountry": "US"
+    },
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "39.9205",
+        "longitude": "-105.0867"
+      },
+      "geoRadius": "15000"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Broomfield Mexican Catering Services",
+    "provider": {
+      "@type": "FoodEstablishment",
+      "name": "Rosita's New Mexican Cafe"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Broomfield",
+      "containedIn": "Colorado"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Catering Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Corporate Catering",
+            "description": "Specialized service for Broomfield businesses and tech companies"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Full-Service Catering",
+            "description": "Complete catering service including setup, service, and cleanup"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Drop-off Catering",
+            "description": "Fresh Mexican food delivered to your Broomfield location"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "EventVenue",
+    "name": "Broomfield Catering Venues",
+    "events": venues.events.map(venue => ({
+      "@type": "Event",
+      "location": {
+        "@type": "Place",
+        "name": venue,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Broomfield",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "availabilityStarts": "2024-01-01",
+        "availabilityEnds": "2024-12-31"
+      }
+    }))
+  }
+];
+---
+
+<CateringLayout
+  title={pageTitle}
+  description={pageDescription}
+  metaImage="/images/broomfield-catering-hero.jpg"
+  canonicalUrl="/broomfield-mexican-catering"
+  cityName={cityName}
+  keywords={pageKeywords}
+  structuredData={broomfieldStructuredData}
+  venues={venues}
+  faqs={faqs}
+  citySpecificContent={citySpecificContent}
+>
+  <!-- Page content will go here -->
+</CateringLayout> 

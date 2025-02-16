@@ -1,0 +1,193 @@
+---
+import CateringLayout from '../../layouts/CateringLayout.astro';
+
+const cityName = "Commerce City";
+const pageTitle = "Commerce City Mexican Catering | Dick's Sporting Goods Park & Industrial Hub";
+const pageDescription = "Reliable Mexican catering in Commerce City with quick delivery. Preferred caterer for Dick's Sporting Goods Park events, industrial businesses, and Rocky Mountain Arsenal gatherings. Experienced in large sporting events and business lunches.";
+const pageKeywords = "Commerce City Mexican catering, Dick's Sporting Goods Park catering, industrial park lunch delivery, Rocky Mountain Arsenal events, Commerce City corporate catering, authentic Mexican catering Commerce City CO";
+
+const citySpecificContent = {
+  intro: "Your Commerce City catering experts, specializing in both major sporting events and industrial business catering. From game day celebrations at Dick's Sporting Goods Park to business lunches in the industrial district, we deliver authentic Southwest and New Mexican cuisine to your Commerce City location.",
+  locationBenefits: [
+    "Quick delivery throughout Commerce City",
+    "Major sporting event expertise",
+    "Industrial district specialists",
+    "Game day catering programs",
+    "Business lunch delivery experts"
+  ]
+};
+
+const venues = {
+  corporate: [
+    "Mile High Business Center",
+    "Industrial District",
+    "Prairie Gateway",
+    "Victory Crossing"
+  ],
+  events: [
+    "Dick's Sporting Goods Park",
+    "Rocky Mountain Arsenal",
+    "Belle Creek Family Center",
+    "Bison Ridge Recreation Center"
+  ]
+};
+
+const faqs = [
+  {
+    question: "What areas of Commerce City do you serve?",
+    answer: "We serve all of Commerce City, with special focus on the Dick's Sporting Goods Park area, industrial district, and Rocky Mountain Arsenal vicinity. Our service reaches every part of Commerce City with hot, fresh Mexican food."
+  },
+  {
+    question: "How far in advance should I book catering in Commerce City?",
+    answer: "For Commerce City events, we recommend booking 2-3 weeks in advance. Sporting events at Dick's Sporting Goods Park and large industrial gatherings may require additional advance notice."
+  },
+  {
+    question: "Do you offer special rates for Commerce City businesses?",
+    answer: "Yes! We offer corporate rates and recurring catering programs for Commerce City businesses, especially in the industrial district. Many local companies trust us for their regular catering needs."
+  },
+  {
+    question: "What's your delivery time within Commerce City?",
+    answer: "Most Commerce City locations can expect delivery within 25-45 minutes. We plan our routes carefully around I-270 and industrial district traffic patterns to ensure timely delivery."
+  },
+  {
+    question: "Do you cater outdoor events in Commerce City?",
+    answer: "Absolutely! We regularly cater at Dick's Sporting Goods Park, Rocky Mountain Arsenal, and other Commerce City outdoor venues. We provide appropriate setup for outdoor catering, including covered serving stations when needed."
+  }
+];
+
+// Enhanced structured data specific to Commerce City catering
+const commerceCityStructuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": ["Restaurant", "FoodEstablishment", "CateringService"],
+    "name": "Rosita's New Mexican Cafe - Commerce City Catering",
+    "image": "/rositas-catering-commerce-city.jpg",
+    "telephone": "+1-303-430-9155",
+    "priceRange": "$$",
+    "servesCuisine": ["New Mexican", "Mexican", "Catering"],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127",
+      "bestRating": "5"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Commerce City",
+      "containedIn": "Colorado"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8050 Federal Blvd",
+      "addressLocality": "Westminster",
+      "addressRegion": "CO",
+      "postalCode": "80031",
+      "addressCountry": "US"
+    },
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "39.8083",
+        "longitude": "-104.9339"
+      },
+      "geoRadius": "20000"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Commerce City Mexican Catering Services",
+    "provider": {
+      "@type": "FoodEstablishment",
+      "name": "Rosita's New Mexican Cafe"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Commerce City",
+      "containedIn": "Colorado"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Catering Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Sporting Event Catering",
+            "description": "Specialized service for Dick's Sporting Goods Park and sports events"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Industrial Business Catering",
+            "description": "Customized catering for Commerce City industrial businesses"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Drop-off Catering",
+            "description": "Fresh Mexican food delivered to your Commerce City location"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "EventVenue",
+    "name": "Commerce City Catering Venues",
+    "events": venues.events.map(venue => ({
+      "@type": "Event",
+      "location": {
+        "@type": "Place",
+        "name": venue,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Commerce City",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "availabilityStarts": "2024-01-01",
+        "availabilityEnds": "2024-12-31"
+      }
+    }))
+  }
+];
+---
+
+<CateringLayout
+  title={pageTitle}
+  description={pageDescription}
+  metaImage="/images/commerce-city-catering-hero.jpg"
+  canonicalUrl="/commerce-city-mexican-catering"
+  cityName={cityName}
+  keywords={pageKeywords}
+  structuredData={commerceCityStructuredData}
+  venues={venues}
+  faqs={faqs}
+  citySpecificContent={citySpecificContent}
+>
+  <!-- Page content will go here -->
+</CateringLayout> 

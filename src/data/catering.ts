@@ -43,7 +43,7 @@ export const cateringPackages: CateringPackage[] = [
   {
     title: "Special Delivery & Setup",
     price: 69,
-    description: "Professional delivery and setup with quality packaging within 15 miles",
+    description: "Our team will deliver delicious New Mexican food to your event location on time and set everything up for you, including wire chafers and fuel. We'll provide all the serving ware, disposable plates, napkins, and cutlery you need, so your guests can enjoy a hassle-free self-serve experience.",
     includes: [
       "Warming Kit",
       "Serving Ware",

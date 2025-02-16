@@ -1,0 +1,193 @@
+---
+import CateringLayout from '../../layouts/CateringLayout.astro';
+
+const cityName = "Denver";
+const pageTitle = "Denver Mexican Catering | Downtown, DTC & RiNo Event Specialists";
+const pageDescription = "Premium Mexican catering throughout Denver with quick delivery. Trusted by Denver Tech Center businesses, LoDo corporate offices, and RiNo event venues. Experienced with large downtown venues and intimate gatherings across the Mile High City.";
+const pageKeywords = "Denver Mexican catering, Denver Tech Center corporate catering, LoDo lunch catering, RiNo event food service, downtown Denver catering, Union Station Mexican food, Broncos Stadium catering, Mile High authentic Mexican catering";
+
+const citySpecificContent = {
+  intro: "Denver's premier Mexican catering service, expertly serving the Mile High City from downtown to DTC. With dedicated delivery routes avoiding rush hour traffic, we ensure your authentic Southwest and New Mexican cuisine arrives fresh and on time for corporate meetings, sporting events, and special occasions.",
+  locationBenefits: [
+    "Strategic delivery routes across Denver",
+    "Rush-hour optimized scheduling",
+    "Corporate account specialists for DTC",
+    "Large venue expertise (Broncos Stadium, Convention Center)",
+    "Downtown & Tech Center delivery experts"
+  ]
+};
+
+const venues = {
+  corporate: [
+    "Denver Tech Center",
+    "Union Station",
+    "RiNo Office Hub",
+    "Downtown Business District"
+  ],
+  events: [
+    "EXDO Event Center",
+    "Mile High Station",
+    "Broncos Stadium",
+    "Denver Botanic Gardens"
+  ]
+};
+
+const faqs = [
+  {
+    question: "What areas of Denver do you serve?",
+    answer: "We primarily serve North Denver, LoDo, RiNo, and the Denver Tech Center areas. Our location allows us to quickly reach any Denver venue with hot, fresh Mexican food, with special focus on downtown and northern neighborhoods."
+  },
+  {
+    question: "How far in advance should I book catering in Denver?",
+    answer: "For Denver events, we recommend booking at least 2-3 weeks in advance, especially for popular downtown venues or large corporate events. Major venues like Broncos Stadium or Denver Botanic Gardens may require more advance notice."
+  },
+  {
+    question: "Do you offer special rates for Denver businesses?",
+    answer: "Yes! We offer corporate rates for Denver businesses, especially for regular catering services. We're proud to serve many businesses in Denver's tech corridor, downtown district, and emerging business areas."
+  },
+  {
+    question: "What's your delivery time within Denver?",
+    answer: "Delivery times vary by location within Denver. North Denver locations can expect delivery within 30-45 minutes, while downtown and Tech Center deliveries may take 45-60 minutes depending on traffic. We plan carefully around Denver's rush hours."
+  },
+  {
+    question: "Do you cater outdoor events in Denver parks?",
+    answer: "Absolutely! We regularly cater at City Park, Sloan's Lake Park, Commons Park, and other Denver outdoor venues. We provide appropriate setup for outdoor catering, including covered serving stations when needed."
+  }
+];
+
+// Enhanced structured data specific to Denver catering
+const denverStructuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": ["Restaurant", "FoodEstablishment", "CateringService"],
+    "name": "Rosita's New Mexican Cafe - Denver Catering",
+    "image": "/rositas-catering-denver.jpg",
+    "telephone": "+1-303-430-9155",
+    "priceRange": "$$",
+    "servesCuisine": ["New Mexican", "Mexican", "Catering"],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127",
+      "bestRating": "5"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Denver",
+      "containedIn": "Colorado"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8050 Federal Blvd",
+      "addressLocality": "Westminster",
+      "addressRegion": "CO",
+      "postalCode": "80031",
+      "addressCountry": "US"
+    },
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "39.7392",
+        "longitude": "-104.9903"
+      },
+      "geoRadius": "30000"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Denver Mexican Catering Services",
+    "provider": {
+      "@type": "FoodEstablishment",
+      "name": "Rosita's New Mexican Cafe"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Denver",
+      "containedIn": "Colorado"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Catering Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Full-Service Catering",
+            "description": "Complete catering service including setup, service, and cleanup"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Drop-off Catering",
+            "description": "Fresh Mexican food delivered to your Denver location"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Corporate Catering",
+            "description": "Specialized service for Denver businesses and corporate events"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "EventVenue",
+    "name": "Denver Catering Venues",
+    "events": venues.events.map(venue => ({
+      "@type": "Event",
+      "location": {
+        "@type": "Place",
+        "name": venue,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Denver",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "availabilityStarts": "2024-01-01",
+        "availabilityEnds": "2024-12-31"
+      }
+    }))
+  }
+];
+---
+
+<CateringLayout
+  title={pageTitle}
+  description={pageDescription}
+  metaImage="/images/denver-catering-hero.jpg"
+  canonicalUrl="/denver-mexican-catering"
+  cityName={cityName}
+  keywords={pageKeywords}
+  structuredData={denverStructuredData}
+  venues={venues}
+  faqs={faqs}
+  citySpecificContent={citySpecificContent}
+>
+  <!-- Page content will go here -->
+</CateringLayout> 

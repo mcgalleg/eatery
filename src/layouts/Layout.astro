@@ -8,6 +8,7 @@ interface Props {
 	description?: string;
 	metaImage?: string;
 	canonicalUrl?: string;
+	keywords?: string;
 	/** 
 	 * structuredData should be an object representing valid JSON-LD 
 	 * for the current page. If not provided, a default will be used.
@@ -15,25 +16,36 @@ interface Props {
 	structuredData?: Record<string, any>;
 }
 
-const { title, description, metaImage, canonicalUrl, structuredData } = Astro.props;
+const { 
+	title, 
+	description = "Best Southwest Mexican Breakfast in Westminster, CO | Rosita's Cafe",
+	metaImage = "/rositas-restaurant.jpg",
+	canonicalUrl,
+	keywords = "Mexican restaurant, Southwest food, Denver catering, Mexican catering, Westminster restaurant",
+	structuredData 
+} = Astro.props;
+
+const siteUrl = 'https://rositas.biz';
+const fullCanonicalUrl = canonicalUrl ? `${siteUrl}${canonicalUrl}` : Astro.url.href;
+const fullImageUrl = metaImage.startsWith('http') ? metaImage : `${siteUrl}${metaImage}`;
 
 const defaultStructuredData = {
 	"@context": "https://schema.org",
-		"@type": "Restaurant",
-		"name": "Rosita's New Mexican Cafe",
-		"image": "/rositas-restaurant.jpg",
-		"telephone": "+1-303-430-9155",
-		"address": {
-			"@type": "PostalAddress",
-			"streetAddress": "8050 Federal Blvd",
-			"addressLocality": "Westminster",
-			"addressRegion": "CO",
-			"postalCode": "80031",
-			"addressCountry": "US"
-		},
-		"url": "https://rositas.biz",
-		"priceRange": "$$",
-		"servesCuisine": ["New Mexican", "Mexican", "American", "Breakfast", "Brunch"]
+	"@type": "Restaurant",
+	"name": "Rosita's New Mexican Cafe",
+	"image": "/rositas-restaurant.jpg",
+	"telephone": "+1-303-430-9155",
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": "8050 Federal Blvd",
+		"addressLocality": "Westminster",
+		"addressRegion": "CO",
+		"postalCode": "80031",
+		"addressCountry": "US"
+	},
+	"url": "https://rositas.biz",
+	"priceRange": "$$",
+	"servesCuisine": ["New Mexican", "Mexican", "American", "Breakfast", "Brunch"]
 };
 
 // Use the page-specific structuredData if provided, otherwise the default
@@ -44,21 +56,33 @@ const jsonLD = structuredData || defaultStructuredData;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<!-- Basic Meta Tags -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords} />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href={fullCanonicalUrl} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+		<!-- Open Graph Meta Tags -->
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content={metaImage || '/Rositas-menu.webp'} />
-		<meta property="og:url" content={canonicalUrl || 'https://rositas.biz'} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={fullCanonicalUrl} />
+		<meta property="og:image" content={fullImageUrl} />
+		<meta property="og:site_name" content="Rosita's New Mexican Cafe" />
+		<meta property="og:locale" content="en_US" />
+
+		<!-- Twitter Card Meta Tags -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={metaImage || '/Rositas-menu.webp'} />
-		<link rel="canonical" href={canonicalUrl || 'https://rositas.biz'} />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLD)}></script>
+		<meta name="twitter:image" content={fullImageUrl} />
+
+		<!-- Structured Data -->
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLD)} />
 	</head>
 	<body class="bg-peach">
 		<Navbar client:load />

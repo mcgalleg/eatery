@@ -1,0 +1,192 @@
+---
+import CateringLayout from '../../layouts/CateringLayout.astro';
+
+const cityName = "Louisville";
+const pageTitle = "Louisville Mexican Catering Services | Rosita's New Mexican Restaurant";
+const pageDescription = "Premier Mexican catering services in Louisville, CO. Authentic New Mexican cuisine perfect for corporate events, tech company lunches, and private parties. Serving Downtown Louisville, Colorado Technology Center, and surrounding areas with 35+ years of catering excellence.";
+const pageKeywords = "Louisville Mexican catering, Louisville corporate catering, Louisville wedding catering, Colorado Technology Center catering, Downtown Louisville catering, authentic Mexican food Louisville, New Mexican catering Louisville";
+
+const citySpecificContent = {
+  intro: "Experience Louisville's trusted Mexican catering service. For over 35 years, Rosita's has been delivering authentic Southwest and New Mexican cuisine to Louisville's tech companies, businesses, and special occasions.",
+  locationBenefits: [
+    "Quick service to all Louisville areas",
+    "Specialized tech company catering",
+    "Serving Louisville for over 35 years",
+    "Perfect for corporate events",
+    "Experienced with local venue catering"
+  ]
+};
+
+const venues = {
+  corporate: [
+    "Colorado Technology Center",
+    "Downtown Louisville",
+    "McCaslin Business District",
+    "Pearl Street Mall"
+  ],
+  events: [
+    "Louisville Recreation Center",
+    "Memory Square Park",
+    "Coal Creek Golf Course",
+    "Louisville Center for the Arts"
+  ]
+};
+
+const faqs = [
+  {
+    question: "What areas of Louisville do you serve?",
+    answer: "We serve all of Louisville, including Downtown, Colorado Technology Center, McCaslin area, and surrounding neighborhoods. Our location allows us to quickly reach any Louisville venue with hot, fresh Mexican food."
+  },
+  {
+    question: "How far in advance should I book catering in Louisville?",
+    answer: "For Louisville events, we recommend booking at least 2 weeks in advance, especially for corporate events and tech company lunches. Popular venues and peak seasons may require more advance notice."
+  },
+  {
+    question: "Do you offer special rates for Louisville businesses?",
+    answer: "Yes! We offer corporate rates for Louisville businesses, especially for regular catering services. We're proud to serve many tech companies and businesses in the Colorado Technology Center and downtown area."
+  },
+  {
+    question: "What's your delivery time within Louisville?",
+    answer: "Most Louisville locations can expect delivery within 30-45 minutes. We plan carefully around local traffic patterns and tech campus schedules to ensure your food arrives fresh and on time."
+  },
+  {
+    question: "Do you cater outdoor events in Louisville?",
+    answer: "Absolutely! We regularly cater at Memory Square Park, Community Park, and other Louisville outdoor venues. We provide appropriate setup for outdoor catering, including covered serving stations when needed."
+  }
+];
+
+// Enhanced structured data specific to Louisville catering
+const louisvilleStructuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": ["Restaurant", "FoodEstablishment", "CateringService"],
+    "name": "Rosita's New Mexican Cafe - Louisville Catering",
+    "image": "/rositas-catering-louisville.jpg",
+    "telephone": "+1-303-430-9155",
+    "priceRange": "$$",
+    "servesCuisine": ["New Mexican", "Mexican", "Catering"],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127",
+      "bestRating": "5"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Louisville",
+      "containedIn": "Colorado"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8050 Federal Blvd",
+      "addressLocality": "Westminster",
+      "addressRegion": "CO",
+      "postalCode": "80031",
+      "addressCountry": "US"
+    },
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "39.9778",
+        "longitude": "-105.1319"
+      },
+      "geoRadius": "15000"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Louisville Mexican Catering Services",
+    "provider": {
+      "@type": "FoodEstablishment",
+      "name": "Rosita's New Mexican Cafe"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Louisville",
+      "containedIn": "Colorado"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Catering Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Full-Service Catering",
+            "description": "Complete catering service including setup, service, and cleanup"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Tech Company Catering",
+            "description": "Specialized service for Louisville tech companies and corporate events"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Drop-off Catering",
+            "description": "Fresh Mexican food delivered to your Louisville location"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "EventVenue",
+    "name": "Louisville Catering Venues",
+    "events": venues.events.map(venue => ({
+      "@type": "Event",
+      "location": {
+        "@type": "Place",
+        "name": venue,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Louisville",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "availabilityStarts": "2024-01-01",
+        "availabilityEnds": "2024-12-31"
+      }
+    }))
+  }
+];
+---
+<CateringLayout
+  title={pageTitle}
+  description={pageDescription}
+  metaImage="/images/louisville-catering-hero.jpg"
+  canonicalUrl="/louisville-mexican-catering"
+  cityName={cityName}
+  keywords={pageKeywords}
+  structuredData={louisvilleStructuredData}
+  venues={venues}
+  faqs={faqs}
+  citySpecificContent={citySpecificContent}
+>
+  <!-- Page content will go here -->
+</CateringLayout> 

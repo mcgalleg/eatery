@@ -2,6 +2,9 @@
 import CateringLayout from '../../layouts/CateringLayout.astro';
 
 const cityName = "Westminster";
+const pageTitle = "Westminster Mexican Catering | Rosita's Local Catering Service";
+const pageDescription = "Westminster's trusted Mexican catering service. Authentic New Mexican cuisine for events near Federal Blvd & 80th. Serving Westminster businesses, venues & homes with local delivery. Book your Westminster catering today!";
+const pageKeywords = "Westminster Mexican catering, Westminster corporate catering, Westminster wedding catering, Federal Heights catering, Church Ranch catering, authentic Mexican food Westminster, New Mexican catering Westminster";
 
 const citySpecificContent = {
   intro: "Discover Westminster's premier Mexican catering service, conveniently located on Federal Blvd near 80th Ave. For 35 years, Rosita's has been the trusted choice for authentic Southwest and New Mexican cuisine in Westminster and the north Denver metro area.",
@@ -52,62 +55,139 @@ const faqs = [
   }
 ];
 
-const frontmatter = {
-  title: "Westminster Mexican Catering | Rosita's Local Catering Service",
-  description: "Westminster's trusted Mexican catering service. Authentic New Mexican cuisine for events near Federal Blvd & 80th. Serving Westminster businesses, venues & homes with local delivery. Book your Westminster catering today!",
-  metaImage: "/rositas-catering.webp",
-  canonicalUrl: "https://rositas.biz/catering",
-  structuredData: {
+// Enhanced structured data specific to Westminster catering
+const westminsterStructuredData = [
+  {
     "@context": "https://schema.org",
-    "@type": "FoodService",
-    "name": "Rosita's Mexican Catering Westminster",
-    "image": "/rositas-catering.webp",
+    "@type": ["Restaurant", "FoodEstablishment", "CateringService"],
+    "name": "Rosita's New Mexican Cafe - Westminster Catering",
+    "image": "/rositas-catering-westminster.jpg",
+    "telephone": "+1-303-430-9155",
+    "priceRange": "$$",
+    "servesCuisine": ["New Mexican", "Mexican", "Catering"],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127",
+      "bestRating": "5"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Westminster",
+      "containedIn": "Colorado"
+    },
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "8050 N Federal Blvd",
+      "streetAddress": "8050 Federal Blvd",
       "addressLocality": "Westminster",
       "addressRegion": "CO",
       "postalCode": "80031",
       "addressCountry": "US"
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "39.8441",
-      "longitude": "-105.0242"
-    },
-    "priceRange": "$$",
-    "servesCuisine": ["Mexican", "New Mexican", "Southwestern", "Catering"],
-    "areaServed": ["Westminster", "Denver", "Arvada", "Broomfield", "Thornton"],
-    "telephone": "720-797-8897",
-    "email": "catering@rositas.biz",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "127"
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "opens": "07:00",
-      "closes": "20:00"
-    },
-    "hasMenu": {
-      "@type": "Menu",
-      "name": "Catering Menu",
-      "url": "https://rositas.biz/catering"
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "39.8441",
+        "longitude": "-105.0242"
+      },
+      "geoRadius": "15000"
     }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Westminster Mexican Catering Services",
+    "provider": {
+      "@type": "FoodEstablishment",
+      "name": "Rosita's New Mexican Cafe"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Westminster",
+      "containedIn": "Colorado"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Catering Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Full-Service Catering",
+            "description": "Complete catering service including setup, service, and cleanup"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Corporate Event Catering",
+            "description": "Specialized service for Westminster businesses and corporate events"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Drop-off Catering",
+            "description": "Fresh Mexican food delivered to your Westminster location"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "EventVenue",
+    "name": "Westminster Catering Venues",
+    "events": venues.events.map(venue => ({
+      "@type": "Event",
+      "location": {
+        "@type": "Place",
+        "name": venue,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Westminster",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "availabilityStarts": "2024-01-01",
+        "availabilityEnds": "2024-12-31"
+      }
+    }))
   }
-};
+];
 ---
 
 <CateringLayout
-  title={frontmatter.title}
-  description={frontmatter.description}
-  metaImage={frontmatter.metaImage}
-  canonicalUrl={frontmatter.canonicalUrl}
-  structuredData={frontmatter.structuredData}
+  title={pageTitle}
+  description={pageDescription}
+  metaImage="/images/westminster-catering-hero.jpg"
+  canonicalUrl="/westminster-mexican-catering"
   cityName={cityName}
+  keywords={pageKeywords}
+  structuredData={westminsterStructuredData}
   venues={venues}
   faqs={faqs}
   citySpecificContent={citySpecificContent}
-/> 
+>
+  <!-- Page content will go here -->
+</CateringLayout> 

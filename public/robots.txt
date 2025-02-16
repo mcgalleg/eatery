@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://rositas.biz/sitemap-index.xml
+
+# Disallow patterns
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/ 

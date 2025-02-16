@@ -9,6 +9,7 @@ export interface Props {
   canonicalUrl: string;
   cityName: string;
   structuredData: any;
+  keywords?: string;
   venues?: {
     corporate: string[];
     events: string[];
@@ -32,8 +33,47 @@ const {
   cityName,
   venues,
   faqs,
-  citySpecificContent
+  citySpecificContent,
+  keywords
 } = Astro.props;
+
+// Generate catering-specific keywords if not provided
+const defaultKeywords = `Mexican catering ${cityName}, New Mexican catering ${cityName}, corporate catering ${cityName}, event catering ${cityName}, wedding catering ${cityName}, authentic Mexican food ${cityName}`;
+
+// Enhance the structured data for catering pages
+const enhancedStructuredData = {
+  ...structuredData,
+  "@type": ["Restaurant", "FoodEstablishment", "CateringService"],
+  "areaServed": {
+    "@type": "City",
+    "name": cityName,
+    "containedIn": "Colorado"
+  },
+  "hasMenu": {
+    "@type": "Menu",
+    "name": "Catering Menu",
+    "offers": cateringPackages.map(pkg => ({
+      "@type": "MenuSection",
+      "name": pkg.title,
+      "description": pkg.description
+    }))
+  }
+};
+
+// Add FAQ Schema if FAQs are provided
+if (faqs && faqs.length > 0) {
+  enhancedStructuredData.mainEntity = {
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+}
 ---
 
 <Layout 
@@ -41,7 +81,8 @@ const {
   description={description}
   metaImage={metaImage}
   canonicalUrl={canonicalUrl}
-  structuredData={structuredData}
+  keywords={keywords || defaultKeywords}
+  structuredData={enhancedStructuredData}
 >
   <main class="container mx-auto px-4 py-36">
     <h1 class="text-4xl font-bold text-center mb-8">{cityName}'s Premier Mexican Catering Service</h1>
@@ -116,13 +157,17 @@ const {
     <!-- Side Options -->
     <section class="mb-12">
       <h2 class="text-2xl font-bold uppercase border-b-2 border-orange mb-6 pb-2">Side Dishes</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {sideOptions.map(side => (
-          <div class="p-4 bg-white rounded-lg shadow-sm">
-            <h3 class="font-medium mb-1">{side.name}</h3>
-            <p class="text-sm text-gray-600">{side.description}</p>
-          </div>
-        ))}
+      <div class="bg-white p-6 rounded-lg shadow-sm">
+        <h3 class="text-xl font-semibold mb-4">Available Sides</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          {sideOptions.map(side => (
+            <div class="border-b pb-4">
+              <h4 class="font-medium mb-2">{side.name}</h4>
+              <p class="text-gray-600 text-sm">{side.description}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-sm text-gray-500 mt-4">All entrees include choice of two sides. Additional sides can be added for $3 per person.</p>
       </div>
     </section>
 
@@ -210,28 +255,28 @@ const {
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div class="p-3 bg-white rounded shadow-sm text-center">Westminster</div>
         <div class="p-3 bg-white rounded shadow-sm text-center">
-          <a href="/catering/arvada" class="hover:text-orange-600">Arvada</a>
+          <a href="/arvada-mexican-catering" class="hover:text-orange-600">Arvada</a>
         </div>
         <div class="p-3 bg-white rounded shadow-sm text-center">
-          <a href="/catering/broomfield" class="hover:text-orange-600">Broomfield</a>
+          <a href="/broomfield-mexican-catering" class="hover:text-orange-600">Broomfield</a>
         </div>
         <div class="p-3 bg-white rounded shadow-sm text-center">
-          <a href="/catering/thornton" class="hover:text-orange-600">Thornton</a>
+          <a href="/thornton-mexican-catering" class="hover:text-orange-600">Thornton</a>
         </div>
         <div class="p-3 bg-white rounded shadow-sm text-center">
-          <a href="/catering/northglenn" class="hover:text-orange-600">Northglenn</a>
+          <a href="/northglenn-mexican-catering" class="hover:text-orange-600">Northglenn</a>
         </div>
         <div class="p-3 bg-white rounded shadow-sm text-center">
-          <a href="/catering/denver" class="hover:text-orange-600">Denver</a>
+          <a href="/denver-mexican-catering" class="hover:text-orange-600">Denver</a>
         </div>
         <div class="p-3 bg-white rounded shadow-sm text-center">
-          <a href="/catering/louisville" class="hover:text-orange-600">Louisville</a>
+          <a href="/louisville-mexican-catering" class="hover:text-orange-600">Louisville</a>
         </div>
         <div class="p-3 bg-white rounded shadow-sm text-center">
-          <a href="/catering/lafayette" class="hover:text-orange-600">Lafayette</a>
+          <a href="/lafayette-mexican-catering" class="hover:text-orange-600">Lafayette</a>
         </div>
         <div class="p-3 bg-white rounded shadow-sm text-center">
-          <a href="/catering/commerce-city" class="hover:text-orange-600">Commerce City</a>
+          <a href="/commerce-city-mexican-catering" class="hover:text-orange-600">Commerce City</a>
         </div>
       </div>
       <p class="text-sm text-gray-600 mt-4">* Delivery fees may apply based on distance</p>

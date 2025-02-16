@@ -1,0 +1,193 @@
+---
+import CateringLayout from '../../layouts/CateringLayout.astro';
+
+const cityName = "Arvada";
+const pageTitle = "Arvada Mexican Catering | Olde Town & Candelas Event Food Service";
+const pageDescription = "Quick Mexican catering delivery across Arvada. Preferred caterer for Olde Town businesses, Candelas community events, and Arvada Center gatherings. Local expertise in authentic Southwest cuisine from your Arvada-based catering specialists.";
+const pageKeywords = "Arvada Mexican catering, Olde Town Arvada corporate catering, Candelas event catering, Arvada Center food service, Water Tower Village catering, McIlvoy Park event food, Ralston Valley catering, authentic Mexican catering Arvada CO";
+
+const citySpecificContent = {
+  intro: "Your neighborhood Arvada catering experts, bringing authentic Southwest and New Mexican cuisine to local businesses and community events. With deep roots in the Arvada community, we understand the unique needs of Olde Town businesses, Candelas gatherings, and everything in between.",
+  locationBenefits: [
+    "Quick delivery throughout Arvada",
+    "Olde Town & Candelas specialists",
+    "Preferred Arvada Center caterer",
+    "Community event expertise",
+    "Local Arvada business since 1985"
+  ]
+};
+
+const venues = {
+  corporate: [
+    "Olde Town Arvada",
+    "Candelas Business Park",
+    "Ralston's Event Center",
+    "Arvada Ridge"
+  ],
+  events: [
+    "Arvada Center",
+    "McIlvoy Park",
+    "Infinity Park",
+    "Stenger Sports Complex"
+  ]
+};
+
+const faqs = [
+  {
+    question: "What areas of Arvada do you serve?",
+    answer: "We serve all of Arvada, including Olde Town, Candelas, Ralston Valley, and West Arvada. Our location allows us to quickly reach any Arvada venue with hot, fresh Mexican food."
+  },
+  {
+    question: "How far in advance should I book catering in Arvada?",
+    answer: "For Arvada events, we recommend booking at least 2 weeks in advance, especially for popular venues like the Arvada Center or community events. Peak seasons may require more advance notice."
+  },
+  {
+    question: "Do you offer special rates for Arvada businesses?",
+    answer: "Yes! We offer corporate rates for Arvada businesses, especially for regular catering services. We're proud to serve many businesses in Olde Town and the growing Candelas area."
+  },
+  {
+    question: "What's your delivery time within Arvada?",
+    answer: "Most Arvada locations can expect delivery within 30-45 minutes. We plan carefully around local traffic patterns and events to ensure your food arrives fresh and on time."
+  },
+  {
+    question: "Do you cater outdoor events in Arvada parks?",
+    answer: "Absolutely! We regularly cater at McIlvoy Park, Memorial Park, and other Arvada outdoor venues. We provide appropriate setup for outdoor catering, including covered serving stations when needed."
+  }
+];
+
+// Enhanced structured data specific to Arvada catering
+const arvadaStructuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": ["Restaurant", "FoodEstablishment", "CateringService"],
+    "name": "Rosita's New Mexican Cafe - Arvada Catering",
+    "image": "/rositas-catering-arvada.jpg",
+    "telephone": "+1-303-430-9155",
+    "priceRange": "$$",
+    "servesCuisine": ["New Mexican", "Mexican", "Catering"],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127",
+      "bestRating": "5"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Arvada",
+      "containedIn": "Colorado"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8050 Federal Blvd",
+      "addressLocality": "Westminster",
+      "addressRegion": "CO",
+      "postalCode": "80031",
+      "addressCountry": "US"
+    },
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "39.8028",
+        "longitude": "-105.0875"
+      },
+      "geoRadius": "15000"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Arvada Mexican Catering Services",
+    "provider": {
+      "@type": "FoodEstablishment",
+      "name": "Rosita's New Mexican Cafe"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Arvada",
+      "containedIn": "Colorado"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Catering Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Full-Service Catering",
+            "description": "Complete catering service including setup, service, and cleanup"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Drop-off Catering",
+            "description": "Fresh Mexican food delivered to your Arvada location"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Community Event Catering",
+            "description": "Specialized service for Arvada community events and gatherings"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "EventVenue",
+    "name": "Arvada Catering Venues",
+    "events": venues.events.map(venue => ({
+      "@type": "Event",
+      "location": {
+        "@type": "Place",
+        "name": venue,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Arvada",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "availabilityStarts": "2024-01-01",
+        "availabilityEnds": "2024-12-31"
+      }
+    }))
+  }
+];
+---
+
+<CateringLayout
+  title={pageTitle}
+  description={pageDescription}
+  metaImage="/images/arvada-catering-hero.jpg"
+  canonicalUrl="/arvada-mexican-catering"
+  cityName={cityName}
+  keywords={pageKeywords}
+  structuredData={arvadaStructuredData}
+  venues={venues}
+  faqs={faqs}
+  citySpecificContent={citySpecificContent}
+>
+  <!-- Page content will go here -->
+</CateringLayout> 

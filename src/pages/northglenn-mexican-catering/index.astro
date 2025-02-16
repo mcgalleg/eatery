@@ -1,0 +1,193 @@
+---
+import CateringLayout from '../../layouts/CateringLayout.astro';
+
+const cityName = "Northglenn";
+const pageTitle = "Northglenn Mexican Catering | Webster Lake & E.B. Rains Event Specialists";
+const pageDescription = "Quick Mexican catering delivery across Northglenn. Trusted caterer for Webster Lake businesses, E.B. Rains events, and Northglenn Recreation Center gatherings. Local expertise in authentic Southwest cuisine from your neighborhood catering team.";
+const pageKeywords = "Northglenn Mexican catering, Webster Lake corporate catering, E.B. Rains event food, Northglenn Recreation Center catering, Northglenn Marketplace catering, authentic Mexican catering Northglenn CO";
+
+const citySpecificContent = {
+  intro: "Your local Northglenn catering experts, perfectly positioned to serve the entire community with authentic Southwest and New Mexican cuisine. From corporate lunches at Webster Lake to community celebrations at E.B. Rains Jr. Memorial Park, we bring the flavors of Mexico to your Northglenn gathering.",
+  locationBenefits: [
+    "Quick delivery throughout Northglenn",
+    "Webster Lake & 120th Ave specialists",
+    "Experienced Recreation Center caterer",
+    "Community event expertise",
+    "Local family business since 1985"
+  ]
+};
+
+const venues = {
+  corporate: [
+    "Webster Lake Promenade",
+    "Northglenn Marketplace",
+    "120th Avenue Business District",
+    "Washington Street Plaza"
+  ],
+  events: [
+    "Northglenn Recreation Center",
+    "E.B. Rains Jr. Memorial Park",
+    "D.L. Parsons Theatre",
+    "Northglenn Senior Center"
+  ]
+};
+
+const faqs = [
+  {
+    question: "What areas of Northglenn do you serve?",
+    answer: "We serve all of Northglenn, including Webster Lake, E.B. Rains area, and the 120th Avenue corridor. Our central location allows us to quickly reach any Northglenn venue with hot, fresh Mexican food."
+  },
+  {
+    question: "How far in advance should I book catering in Northglenn?",
+    answer: "For Northglenn events, we recommend booking 2 weeks in advance, especially for community centers and corporate functions. Peak seasons and large events may require more advance notice."
+  },
+  {
+    question: "Do you offer special rates for Northglenn businesses?",
+    answer: "Yes! We offer corporate rates for Northglenn businesses, especially for regular catering services. We're proud to serve many businesses in the Webster Lake area and along the 120th Avenue corridor."
+  },
+  {
+    question: "What's your delivery time within Northglenn?",
+    answer: "Most Northglenn locations can expect delivery within 20-30 minutes. We're strategically located to serve all of Northglenn efficiently, ensuring your food arrives hot and fresh."
+  },
+  {
+    question: "Do you cater outdoor events in Northglenn parks?",
+    answer: "Absolutely! We regularly cater at E.B. Rains Jr. Memorial Park and other Northglenn outdoor venues. We provide appropriate setup for outdoor catering, including covered serving stations when needed."
+  }
+];
+
+// Enhanced structured data specific to Northglenn catering
+const northglennStructuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": ["Restaurant", "FoodEstablishment", "CateringService"],
+    "name": "Rosita's New Mexican Cafe - Northglenn Catering",
+    "image": "/rositas-catering-northglenn.jpg",
+    "telephone": "+1-303-430-9155",
+    "priceRange": "$$",
+    "servesCuisine": ["New Mexican", "Mexican", "Catering"],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127",
+      "bestRating": "5"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Northglenn",
+      "containedIn": "Colorado"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8050 Federal Blvd",
+      "addressLocality": "Westminster",
+      "addressRegion": "CO",
+      "postalCode": "80031",
+      "addressCountry": "US"
+    },
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "39.8850",
+        "longitude": "-104.9812"
+      },
+      "geoRadius": "12000"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Northglenn Mexican Catering Services",
+    "provider": {
+      "@type": "FoodEstablishment",
+      "name": "Rosita's New Mexican Cafe"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Northglenn",
+      "containedIn": "Colorado"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Catering Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Full-Service Catering",
+            "description": "Complete catering service including setup, service, and cleanup"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Community Event Catering",
+            "description": "Specialized service for Northglenn community events and gatherings"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Drop-off Catering",
+            "description": "Fresh Mexican food delivered to your Northglenn location"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "EventVenue",
+    "name": "Northglenn Catering Venues",
+    "events": venues.events.map(venue => ({
+      "@type": "Event",
+      "location": {
+        "@type": "Place",
+        "name": venue,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Northglenn",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "availabilityStarts": "2024-01-01",
+        "availabilityEnds": "2024-12-31"
+      }
+    }))
+  }
+];
+---
+
+<CateringLayout
+  title={pageTitle}
+  description={pageDescription}
+  metaImage="/images/northglenn-catering-hero.jpg"
+  canonicalUrl="/northglenn-mexican-catering"
+  cityName={cityName}
+  keywords={pageKeywords}
+  structuredData={northglennStructuredData}
+  venues={venues}
+  faqs={faqs}
+  citySpecificContent={citySpecificContent}
+>
+  <!-- Page content will go here -->
+</CateringLayout> 

@@ -1,0 +1,193 @@
+---
+import CateringLayout from '../../layouts/CateringLayout.astro';
+
+const cityName = "Lafayette";
+const pageTitle = "Lafayette Mexican Catering Services | Rosita's New Mexican Restaurant";
+const pageDescription = "Premier Mexican catering services in Lafayette, CO. Authentic New Mexican cuisine for corporate events, weddings, and private parties. Serving Old Town Lafayette, 287 Corridor, and Indian Peaks with 35+ years of catering excellence.";
+const pageKeywords = "Lafayette Mexican catering, Lafayette corporate catering, Lafayette wedding catering, Old Town Lafayette catering, Indian Peaks catering, 287 Corridor food delivery, authentic Mexican food Lafayette, New Mexican catering Lafayette";
+
+const citySpecificContent = {
+  intro: "Experience Lafayette's trusted Mexican catering service. For over 35 years, Rosita's has been delivering authentic Southwest and New Mexican cuisine to Lafayette's historic downtown, growing business districts, and special events.",
+  locationBenefits: [
+    "Quick service to all Lafayette areas",
+    "Easy access to Old Town & 287 Corridor",
+    "Serving Lafayette for over 35 years",
+    "Perfect for local businesses & events",
+    "Family-owned with community focus"
+  ]
+};
+
+const venues = {
+  corporate: [
+    "Lafayette Corporate Campus",
+    "287 Business District",
+    "Lafayette Marketplace",
+    "Vista Business Park"
+  ],
+  events: [
+    "The Arts Hub",
+    "Waneka Lake Park",
+    "Indian Peaks Golf Club",
+    "Bob L. Burger Recreation Center"
+  ]
+};
+
+const faqs = [
+  {
+    question: "What areas of Lafayette do you serve?",
+    answer: "We serve all of Lafayette, including Old Town, Indian Peaks area, and the 287 Corridor. Our central location allows us to quickly reach any Lafayette venue with hot, fresh Mexican food."
+  },
+  {
+    question: "How far in advance should I book catering in Lafayette?",
+    answer: "For Lafayette events, we recommend booking 2-3 weeks in advance, especially for downtown events and corporate functions. Peak seasons and large community events may require more advance notice."
+  },
+  {
+    question: "Do you offer special rates for Lafayette businesses?",
+    answer: "Yes! We offer corporate rates for Lafayette businesses, especially for regular catering services. We're proud to serve many businesses along the 287 Corridor and throughout Lafayette's business districts."
+  },
+  {
+    question: "What's your delivery time within Lafayette?",
+    answer: "Most Lafayette locations can expect delivery within 25-35 minutes. We're strategically located to serve all of Lafayette efficiently, ensuring your food arrives hot and fresh."
+  },
+  {
+    question: "Do you cater outdoor events in Lafayette?",
+    answer: "Absolutely! We regularly cater at Waneka Lake Park, LaMont Does Park, and other Lafayette outdoor venues. We provide appropriate setup for outdoor catering, including covered serving stations when needed."
+  }
+];
+
+// Enhanced structured data specific to Lafayette catering
+const lafayetteStructuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": ["Restaurant", "FoodEstablishment", "CateringService"],
+    "name": "Rosita's New Mexican Cafe - Lafayette Catering",
+    "image": "/rositas-catering-lafayette.jpg",
+    "telephone": "+1-303-430-9155",
+    "priceRange": "$$",
+    "servesCuisine": ["New Mexican", "Mexican", "Catering"],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127",
+      "bestRating": "5"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Lafayette",
+      "containedIn": "Colorado"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8050 Federal Blvd",
+      "addressLocality": "Westminster",
+      "addressRegion": "CO",
+      "postalCode": "80031",
+      "addressCountry": "US"
+    },
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "39.9994",
+        "longitude": "-105.0898"
+      },
+      "geoRadius": "15000"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Lafayette Mexican Catering Services",
+    "provider": {
+      "@type": "FoodEstablishment",
+      "name": "Rosita's New Mexican Cafe"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Lafayette",
+      "containedIn": "Colorado"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Catering Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Full-Service Catering",
+            "description": "Complete catering service including setup, service, and cleanup"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Community Event Catering",
+            "description": "Specialized service for Lafayette community events and gatherings"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Drop-off Catering",
+            "description": "Fresh Mexican food delivered to your Lafayette location"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "EventVenue",
+    "name": "Lafayette Catering Venues",
+    "events": venues.events.map(venue => ({
+      "@type": "Event",
+      "location": {
+        "@type": "Place",
+        "name": venue,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Lafayette",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "availabilityStarts": "2024-01-01",
+        "availabilityEnds": "2024-12-31"
+      }
+    }))
+  }
+];
+---
+
+<CateringLayout
+  title={pageTitle}
+  description={pageDescription}
+  metaImage="/images/lafayette-catering-hero.jpg"
+  canonicalUrl="/lafayette-mexican-catering"
+  cityName={cityName}
+  keywords={pageKeywords}
+  structuredData={lafayetteStructuredData}
+  venues={venues}
+  faqs={faqs}
+  citySpecificContent={citySpecificContent}
+>
+  <!-- Page content will go here -->
+</CateringLayout> 

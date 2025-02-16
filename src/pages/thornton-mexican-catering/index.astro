@@ -1,0 +1,193 @@
+---
+import CateringLayout from '../../layouts/CateringLayout.astro';
+
+const cityName = "Thornton";
+const pageTitle = "Thornton Mexican Catering | Authentic Southwest Cuisine Near I-25 & 120th";
+const pageDescription = "Local Mexican catering in Thornton with quick delivery. Specializing in corporate lunches, community events, and private parties across North Thornton, Washington Square, and Original Thornton. Family-owned with 35+ years of catering excellence.";
+const pageKeywords = "Thornton Mexican catering, North Thornton catering service, Washington Square corporate lunch, Original Thornton event catering, I-25 corridor catering, Trail Winds Recreation Center catering, Carpenter Recreation Center food service, authentic Mexican catering Thornton CO";
+
+const citySpecificContent = {
+  intro: "Your local Thornton Mexican catering experts, strategically located near I-25 & 120th for quick 20-30 minute delivery to all Thornton areas. For over 35 years, we've been the trusted choice for authentic Southwest and New Mexican cuisine at Thornton's corporate lunches, community gatherings, and special events.",
+  locationBenefits: [
+    "Quick delivery to all Thornton locations",
+    "Strategically located near I-25 & 120th Avenue",
+    "Specialized corporate lunch packages",
+    "Experienced with Thornton's major venues",
+    "Local family-owned business since 1985"
+  ]
+};
+
+const venues = {
+  corporate: [
+    "North Valley Tech Center",
+    "Washington Center",
+    "Thornton Business Center",
+    "Grant Street Plaza"
+  ],
+  events: [
+    "Carpenter Recreation Center",
+    "Margaret W. Carpenter Park",
+    "Thornton Community Center",
+    "Trail Winds Recreation Center"
+  ]
+};
+
+const faqs = [
+  {
+    question: "What areas of Thornton do you serve?",
+    answer: "We serve all of Thornton, including North Thornton, Washington Square, and Original Thornton areas. Our central location allows us to quickly reach any Thornton venue with hot, fresh Mexican food."
+  },
+  {
+    question: "How far in advance should I book catering in Thornton?",
+    answer: "For Thornton events, we recommend booking 2-3 weeks in advance, especially for community centers and corporate functions. Peak seasons and large events may require more advance notice."
+  },
+  {
+    question: "Do you offer special rates for Thornton businesses?",
+    answer: "Yes! We offer corporate rates for Thornton businesses, especially for regular catering services. We're proud to serve many businesses throughout Thornton's growing commercial districts."
+  },
+  {
+    question: "What's your delivery time within Thornton?",
+    answer: "Most Thornton locations can expect delivery within 20-30 minutes. We're strategically located to serve all of Thornton efficiently, ensuring your food arrives hot and fresh."
+  },
+  {
+    question: "Do you cater outdoor events in Thornton?",
+    answer: "Absolutely! We regularly cater at Margaret W. Carpenter Park, Thornton Community Park, and other Thornton outdoor venues. We provide appropriate setup for outdoor catering, including covered serving stations when needed."
+  }
+];
+
+// Enhanced structured data specific to Thornton catering
+const thorntonStructuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": ["Restaurant", "FoodEstablishment", "CateringService"],
+    "name": "Rosita's New Mexican Cafe - Thornton Catering",
+    "image": "/rositas-catering-thornton.jpg",
+    "telephone": "+1-303-430-9155",
+    "priceRange": "$$",
+    "servesCuisine": ["New Mexican", "Mexican", "Catering"],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127",
+      "bestRating": "5"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Thornton",
+      "containedIn": "Colorado"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8050 Federal Blvd",
+      "addressLocality": "Westminster",
+      "addressRegion": "CO",
+      "postalCode": "80031",
+      "addressCountry": "US"
+    },
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "39.8680",
+        "longitude": "-104.9719"
+      },
+      "geoRadius": "15000"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Thornton Mexican Catering Services",
+    "provider": {
+      "@type": "FoodEstablishment",
+      "name": "Rosita's New Mexican Cafe"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Thornton",
+      "containedIn": "Colorado"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Catering Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Full-Service Catering",
+            "description": "Complete catering service including setup, service, and cleanup"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Community Event Catering",
+            "description": "Specialized service for Thornton community events and gatherings"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Drop-off Catering",
+            "description": "Fresh Mexican food delivered to your Thornton location"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "EventVenue",
+    "name": "Thornton Catering Venues",
+    "events": venues.events.map(venue => ({
+      "@type": "Event",
+      "location": {
+        "@type": "Place",
+        "name": venue,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Thornton",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "availabilityStarts": "2024-01-01",
+        "availabilityEnds": "2024-12-31"
+      }
+    }))
+  }
+];
+---
+
+<CateringLayout
+  title={pageTitle}
+  description={pageDescription}
+  metaImage="/images/thornton-catering-hero.jpg"
+  canonicalUrl="/thornton-mexican-catering"
+  cityName={cityName}
+  keywords={pageKeywords}
+  structuredData={thorntonStructuredData}
+  venues={venues}
+  faqs={faqs}
+  citySpecificContent={citySpecificContent}
+>
+  <!-- Page content will go here -->
+</CateringLayout> 

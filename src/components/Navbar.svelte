@@ -38,7 +38,7 @@
       <!-- Logo/Brand (Centered) -->
       <div class="flex-shrink-0 mb-4 flex justify-center w-full md:w-auto md:mb-4">
         <a href="/" class="block">
-          <img src="/rositas-logo.svg" alt="Uncle Julio's" class="h-16 md:h-20 w-auto" />
+          <img src="/rositas-logo.svg" alt="Rosita's Restaurant Logo" class="h-16 md:h-20 w-auto" />
         </a>
       </div>
 
