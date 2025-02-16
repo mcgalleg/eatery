@@ -2,7 +2,13 @@ import type { APIRoute } from 'astro';
 import sgMail from '@sendgrid/mail';
 
 // Initialize SendGrid with API key
-sgMail.setApiKey(import.meta.env.SENDGRID_API_KEY);
+const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
+
+if (!SENDGRID_API_KEY) {
+  throw new Error('SENDGRID_API_KEY environment variable is not set');
+}
+
+sgMail.setApiKey(SENDGRID_API_KEY);
 
 export const prerender = false;
 
