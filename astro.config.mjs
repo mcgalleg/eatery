@@ -18,6 +18,6 @@ export default defineConfig({
       lastmod: new Date()
     })
   ],
-  output: 'server',
+  output: 'hybrid',
   adapter: vercel()
 });
