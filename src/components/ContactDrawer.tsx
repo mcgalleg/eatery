@@ -152,7 +152,7 @@ export function ContactDrawer({ isOpen: initialIsOpen = false, onClose }: Contac
 
   return (
     <Drawer open={isDrawerOpen} onClose={handleClose}>
-      <DrawerContent className="mt-8 mx-4 flex flex-col h-[calc(100vh-1rem)] bg-white overflow-hidden z-50">
+      <DrawerContent className="mt-8 mx-4 flex flex-col h-[calc(100vh-1rem)] bg-[url('/texture-transparent.webp')] bg-repeat bg-center overflow-hidden z-50">
         <DrawerHeader>
           <DrawerTitle>Request a Quote</DrawerTitle>
           <DrawerClose onClick={handleClose} />
@@ -160,7 +160,7 @@ export function ContactDrawer({ isOpen: initialIsOpen = false, onClose }: Contac
         <div className="flex-1 min-h-0">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col h-full">
-              <div className="flex-1 min-h-0 overflow-y-auto px-4">
+              <div className="flex-1 min-h-0 overflow-y-auto px-4 bg-white/90 backdrop-blur-sm">
                 {submitStatus.message && (
                   <div className={`p-4 mb-4 rounded-lg ${
                     submitStatus.success ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
@@ -332,7 +332,7 @@ export function ContactDrawer({ isOpen: initialIsOpen = false, onClose }: Contac
                       <FormItem>
                         <FormLabel>Additional Details</FormLabel>
                         <FormControl>
-                          <Textarea rows={4} {...field} />
+                          <Textarea rows={2} {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

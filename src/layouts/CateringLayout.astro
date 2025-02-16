@@ -114,7 +114,7 @@ if (faqs && faqs.length > 0) {
           <div class="p-6 rounded-lg shadow-sm bg-white">
             <div class="flex justify-between items-baseline mb-2">
               <h3 class="font-semibold text-xl">{pkg.title}</h3>
-              <span class="text-orange font-medium">
+              <span class="text-gray-600 font-medium">
                 ${pkg.price}{pkg.perPerson ? '/person' : ''}
               </span>
             </div>
@@ -144,7 +144,7 @@ if (faqs && faqs.length > 0) {
                 <div class="border-b pb-4">
                   <div class="flex justify-between items-start mb-2">
                     <h4 class="font-medium">{item.name}</h4>
-                    <span class="text-orange-700">${item.price}{item.perGuest ? '/guest' : ''}</span>
+                    <span class="text-gray-600">${item.price}{item.perGuest ? '/guest' : ''}</span>
                   </div>
                   <p class="text-gray-600 text-sm">{item.description}</p>
                 </div>
@@ -183,7 +183,7 @@ if (faqs && faqs.length > 0) {
           <div class="p-4 bg-white rounded-lg shadow-sm">
             <div class="flex justify-between items-baseline mb-2">
               <span class="font-medium">{station.name}</span>
-              <span class="text-orange">${station.price}/person</span>
+              <span class="text-gray-600">${station.price}/person</span>
             </div>
             <p class="text-sm text-gray-600">{station.description}</p>
           </div>
@@ -196,7 +196,7 @@ if (faqs && faqs.length > 0) {
           <div class="p-4 bg-white rounded-lg shadow-sm">
             <div class="flex justify-between items-baseline mb-2">
               <span class="font-medium">{drink.name}</span>
-              <span class="text-orange">${drink.price}/person</span>
+              <span class="text-gray-600">${drink.price}/person</span>
             </div>
             <p class="text-sm text-gray-600">{drink.description}</p>
           </div>
@@ -209,7 +209,7 @@ if (faqs && faqs.length > 0) {
           <div class="p-4 bg-white rounded-lg shadow-sm">
             <div class="flex justify-between items-baseline mb-2">
               <span class="font-medium">{dessert.name}</span>
-              <span class="text-orange">${dessert.price}/person</span>
+              <span class="text-gray-600">${dessert.price}/person</span>
             </div>
             <p class="text-sm text-gray-600">{dessert.description}</p>
           </div>
@@ -222,7 +222,7 @@ if (faqs && faqs.length > 0) {
           <div class="p-4 bg-white rounded-lg shadow-sm">
             <div class="flex justify-between items-baseline mb-2">
               <span class="font-medium">{extra.name}</span>
-              <span class="text-orange">
+              <span class="text-gray-600">
                 ${extra.price}{extra.perPerson ? '/person' : ''}
                 {extra.serves ? ` (serves ${extra.serves})` : ''}
               </span>
@@ -241,7 +241,7 @@ if (faqs && faqs.length > 0) {
           <div class="p-4 bg-white rounded-lg shadow-sm">
             <div class="flex justify-between items-baseline mb-2">
               <span class="font-medium">{service.name}</span>
-              <span class="text-orange">${service.price}</span>
+              <span class="text-gray-600">${service.price}</span>
             </div>
             <p class="text-sm text-gray-600 mb-1">{service.description}</p>
             {service.note && <p class="text-sm text-orange-600 italic">{service.note}</p>}
@@ -337,8 +337,8 @@ if (faqs && faqs.length > 0) {
     <section class="text-center mt-12 bg-orange-50 p-8 rounded-lg">
       <h2 class="text-2xl font-bold mb-6">Book Your Mexican Catering in {cityName}</h2>
       <p class="mb-4">Contact {cityName}'s favorite Mexican caterers:</p>
-      <p class="mb-2">Call: <a href="tel:7207978897" class="text-orange hover:underline">(720) 797-8897</a></p>
-      <p>Email: <a href="mailto:catering@rositas.biz" class="text-orange hover:underline">catering@rositas.biz</a></p>
+      <p class="mb-2">Call: <a href="tel:7207978897" class="text-gray-600 hover:underline">(720) 797-8897</a></p>
+      <p>Email: <a href="mailto:catering@rositas.biz" class="text-gray-600 hover:underline">catering@rositas.biz</a></p>
       <p class="font-medium mt-4">Conveniently located at: 8050 N Federal Blvd, Westminster, CO 80031</p>
       <p class="text-sm text-gray-600 mt-4">Available Monday-Friday 9am-5pm</p>
     </section>
