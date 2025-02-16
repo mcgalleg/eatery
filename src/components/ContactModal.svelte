@@ -10,12 +10,14 @@
   }
   
   let formData = {
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
     eventDate: '',
     guestCount: '',
     eventType: 'Corporate',
+    package: 'Special Delivery',
     venue: '',
     message: ''
   };
@@ -28,12 +30,14 @@
     isOpen = false;
     document.body.classList.remove('modal-open');
     formData = {
-      name: '',
+      firstName: '',
+      lastName: '',
       email: '',
       phone: '',
       eventDate: '',
       guestCount: '',
       eventType: 'Corporate',
+      package: 'Special Delivery',
       venue: '',
       message: ''
     };
@@ -125,11 +129,22 @@
         <form on:submit={handleSubmit} class="space-y-4">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name *</label>
+              <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name *</label>
               <input
                 type="text"
-                id="name"
-                bind:value={formData.name}
+                id="firstName"
+                bind:value={formData.firstName}
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange focus:border-orange"
+              />
+            </div>
+            
+            <div>
+              <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name *</label>
+              <input
+                type="text"
+                id="lastName"
+                bind:value={formData.lastName}
                 required
                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange focus:border-orange"
               />
@@ -178,7 +193,7 @@
               />
             </div>
             
-            <div>
+            <div class="md:col-span-2">
               <label for="eventType" class="block text-sm font-medium text-gray-700 mb-1">Event Type</label>
               <select
                 id="eventType"
@@ -188,7 +203,21 @@
                 <option value="Corporate">Corporate</option>
                 <option value="Wedding">Wedding</option>
                 <option value="Birthday">Birthday</option>
+                <option value="Memorial Service">Memorial Service</option>
                 <option value="Other">Other</option>
+              </select>
+            </div>
+            
+            <div class="md:col-span-2">
+              <label for="package" class="block text-sm font-medium text-gray-700 mb-1">Package</label>
+              <select
+                id="package"
+                bind:value={formData.package}
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange focus:border-orange"
+              >
+                <option value="Special Delivery">Special Delivery</option>
+                <option value="Staffed Event">Staffed Event</option>
+                <option value="Venue Reservation">Venue Reservation</option>
               </select>
             </div>
           </div>

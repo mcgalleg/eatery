@@ -10,48 +10,170 @@ export const POST: APIRoute = async ({ request }) => {
   try {
     const data = await request.json();
     const {
-      name,
+      firstName,
+      lastName,
       email,
       phone,
       eventDate,
       guestCount,
       eventType,
+      package: packageSelection,
       venue,
       message
     } = data;
 
     // Validate required fields
-    if (!name || !email || !phone) {
+    if (!firstName || !lastName || !email || !phone) {
       return new Response(
         JSON.stringify({
-          message: 'Name, email, and phone are required fields'
+          message: 'First name, last name, email, and phone are required fields'
         }),
         { status: 400 }
       );
     }
 
-    // Format the email content
-    const emailContent = `
+    // Format the email content with HTML
+    const htmlContent = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <style>
+            .email-container {
+              max-width: 600px;
+              margin: 0 auto;
+              font-family: Arial, sans-serif;
+              color: #333333;
+            }
+            .header {
+              background-color: #FF6B35;
+              color: white;
+              padding: 20px;
+              text-align: center;
+              border-radius: 8px 8px 0 0;
+            }
+            .content {
+              background-color: #ffffff;
+              padding: 20px;
+              border: 1px solid #dddddd;
+              border-radius: 0 0 8px 8px;
+            }
+            .section {
+              margin-bottom: 20px;
+            }
+            .section-title {
+              font-weight: bold;
+              color: #FF6B35;
+              margin-bottom: 10px;
+              font-size: 16px;
+              border-bottom: 2px solid #FF6B35;
+              padding-bottom: 5px;
+            }
+            .field {
+              margin-bottom: 10px;
+            }
+            .label {
+              font-weight: bold;
+              color: #666666;
+            }
+            .value {
+              color: #333333;
+            }
+            .message-box {
+              background-color: #f9f9f9;
+              padding: 15px;
+              border-radius: 4px;
+              margin-top: 10px;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="email-container">
+            <div class="header">
+              <h1 style="margin: 0;">New Catering Quote Request</h1>
+            </div>
+            
+            <div class="content">
+              <div class="section">
+                <div class="section-title">Contact Information</div>
+                <div class="field">
+                  <span class="label">Name:</span>
+                  <span class="value">${firstName} ${lastName}</span>
+                </div>
+                <div class="field">
+                  <span class="label">Email:</span>
+                  <span class="value">${email}</span>
+                </div>
+                <div class="field">
+                  <span class="label">Phone:</span>
+                  <span class="value">${phone}</span>
+                </div>
+              </div>
+
+              <div class="section">
+                <div class="section-title">Event Details</div>
+                <div class="field">
+                  <span class="label">Event Type:</span>
+                  <span class="value">${eventType}</span>
+                </div>
+                <div class="field">
+                  <span class="label">Package Selected:</span>
+                  <span class="value">${packageSelection}</span>
+                </div>
+                <div class="field">
+                  <span class="label">Event Date:</span>
+                  <span class="value">${eventDate || 'Not specified'}</span>
+                </div>
+                <div class="field">
+                  <span class="label">Guest Count:</span>
+                  <span class="value">${guestCount || 'Not specified'}</span>
+                </div>
+                <div class="field">
+                  <span class="label">Venue:</span>
+                  <span class="value">${venue || 'Not specified'}</span>
+                </div>
+              </div>
+
+              ${message ? `
+                <div class="section">
+                  <div class="section-title">Additional Details</div>
+                  <div class="message-box">
+                    ${message.replace(/\n/g, '<br>')}
+                  </div>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        </body>
+      </html>
+    `;
+
+    // Keep a plain text version for email clients that don't support HTML
+    const plainTextContent = `
       New Catering Quote Request
-      
-      Name: ${name}
+
+      Contact Information:
+      Name: ${firstName} ${lastName}
       Email: ${email}
       Phone: ${phone}
+
+      Event Details:
+      Event Type: ${eventType}
+      Package Selected: ${packageSelection}
       Event Date: ${eventDate || 'Not specified'}
       Guest Count: ${guestCount || 'Not specified'}
-      Event Type: ${eventType}
       Venue: ${venue || 'Not specified'}
-      
+
       Additional Details:
       ${message || 'None provided'}
     `;
 
-    // Send email using SendGrid
+    // Send email using SendGrid with HTML content
     await sgMail.send({
-      to: 'catering@rositas.biz', // Your business email
-      from: 'catering@rositas.biz', // Your verified sender
+      to: 'catering@rositas.biz',
+      from: 'catering@rositas.biz',
       subject: 'New Catering Quote Request',
-      text: emailContent,
+      text: plainTextContent, // Fallback plain text content
+      html: htmlContent,      // HTML content
       replyTo: email
     });
 
