@@ -1,0 +1,86 @@
+---
+const phoneNumber = '7207978897';
+const email = 'catering@rositas.biz';
+import ContactModal from './ContactModal.svelte';
+---
+
+<div class="fixed bottom-0 left-0 right-0 bg-white shadow-lg z-50">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="hidden md:block">
+      <h3 class="text-lg font-semibold">Ready to Book Your Catering?</h3>
+      <p class="text-sm text-gray-600">Get a free quote today!</p>
+    </div>
+    
+    <div class="flex items-center gap-4">
+      <a 
+        href={`tel:${phoneNumber}`}
+        class="flex items-center gap-2 px-4 py-2 bg-orange text-gray-600 rounded-lg hover:opacity-90 transition-opacity"
+      >
+        📞 <span>Call Now</span>
+      </a>
+      
+      <a 
+        href={`mailto:${email}`}
+        class="flex items-center gap-2 px-4 py-2 bg-orange text-gray-600 rounded-lg hover:opacity-90 transition-opacity"
+      >
+        ✉️ <span>Email Us</span>
+      </a>
+      
+      <button 
+        id="openQuoteModal"
+        class="px-6 py-2 bg-orange text-gray-600 rounded-lg hover:opacity-90 transition-opacity font-semibold"
+      >
+        Request a Quote
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="quoteModal">
+  <ContactModal client:load />
+</div>
+
+<script>
+  declare global {
+    interface Window {
+      openQuoteModal?: () => void;
+    }
+  }
+
+  // Wait for client-side hydration
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Content Loaded');
+    const openButton = document.getElementById('openQuoteModal');
+    
+    console.log('Found button:', !!openButton);
+    
+    if (openButton) {
+      openButton.addEventListener('click', () => {
+        console.log('Button clicked');
+        if (window.openQuoteModal) {
+          window.openQuoteModal();
+        } else {
+          console.log('openQuoteModal function not found on window');
+        }
+      });
+    }
+  });
+</script>
+
+<style>
+  @media (max-width: 768px) {
+    .flex.items-center.gap-4 {
+      width: 100%;
+      justify-content: space-between;
+    }
+    
+    .flex.items-center.gap-4 a {
+      padding: 0.5rem;
+      font-size: 0.875rem;
+    }
+    
+    .flex.items-center.gap-4 a span {
+      display: none;
+    }
+  }
+</style> 

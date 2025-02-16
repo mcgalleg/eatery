@@ -1,6 +1,7 @@
 ---
 import Layout from './Layout.astro';
 import { cateringPackages, menuPackages, enhancements, sideOptions, additionalServices } from '../data/catering';
+import StickyCtaBanner from '../components/StickyCtaBanner.astro';
 
 export interface Props {
   title: string;
@@ -84,6 +85,7 @@ if (faqs && faqs.length > 0) {
   keywords={keywords || defaultKeywords}
   structuredData={enhancedStructuredData}
 >
+  <StickyCtaBanner />
   <main class="container mx-auto px-4 py-36">
     <h1 class="text-4xl font-bold text-center mb-8">{cityName}'s Premier Mexican Catering Service</h1>
 
