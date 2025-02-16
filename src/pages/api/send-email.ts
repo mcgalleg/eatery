@@ -57,6 +57,11 @@ export const POST: APIRoute = async ({ request }) => {
               text-align: center;
               border-radius: 8px 8px 0 0;
             }
+            .logo {
+              width: 200px;
+              height: auto;
+              margin-bottom: 15px;
+            }
             .content {
               background-color: #ffffff;
               padding: 20px;
@@ -95,6 +100,7 @@ export const POST: APIRoute = async ({ request }) => {
         <body>
           <div class="email-container">
             <div class="header">
+              <img src="https://rositas.biz/rositas-logo.svg" alt="Rosita's Logo" class="logo" />
               <h1 style="margin: 0;">New Catering Quote Request</h1>
             </div>
             
@@ -177,7 +183,7 @@ export const POST: APIRoute = async ({ request }) => {
     await sgMail.send({
       to: 'catering@rositas.biz',
       from: 'catering@rositas.biz',
-      subject: 'New Catering Quote Request',
+      subject: `New Catering Quote Request: ${firstName} ${lastName} - ${eventType}`,
       text: plainTextContent, // Fallback plain text content
       html: htmlContent,      // HTML content
       replyTo: email

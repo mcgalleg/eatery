@@ -14,21 +14,21 @@ import ContactModal from './ContactModal.svelte';
     <div class="flex items-center gap-4">
       <a 
         href={`tel:${phoneNumber}`}
-        class="flex items-center gap-2 px-4 py-2 bg-orange text-gray-600 rounded-lg hover:opacity-90 transition-opacity"
+        class="flex items-center gap-2 px-4 py-2 bg-grey text-white rounded-full hover:bg-orange transition-opacity"
       >
         📞 <span>Call Now</span>
       </a>
       
       <a 
         href={`mailto:${email}`}
-        class="flex items-center gap-2 px-4 py-2 bg-orange text-gray-600 rounded-lg hover:opacity-90 transition-opacity"
+        class="flex items-center gap-2 px-4 py-2 bg-grey text-white rounded-full hover:bg-orange transition-opacity"
       >
         ✉️ <span>Email Us</span>
       </a>
       
       <button 
         id="openQuoteModal"
-        class="px-6 py-2 bg-orange text-gray-600 rounded-lg hover:opacity-90 transition-opacity font-semibold"
+        class="px-6 py-2 bg-orange text-white rounded-full hover:bg-grey transition-opacity font-semibold"
       >
         Request a Quote
       </button>
