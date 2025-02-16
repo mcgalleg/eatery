@@ -95,7 +95,7 @@ export const POST: APIRoute = async ({ request }) => {
         <body>
           <div class="email-container">
             <div class="header">
-              <h1 style="margin: 0;">New Catering Quote Request</h1>
+              <h1 style="margin: 0;">New Catering Request</h1>
             </div>
             
             <div class="content">
@@ -176,8 +176,8 @@ export const POST: APIRoute = async ({ request }) => {
     // Send email using SendGrid with HTML content
     await sgMail.send({
       to: 'catering@rositas.biz',
-      from: 'catering@rositas.biz',
-      subject: `New Catering Quote Request: ${firstName} ${lastName} - ${eventType}`,
+      from: 'Rositas Catering <catering@rositas.biz>',
+      subject: `New Catering Request: ${firstName} ${lastName} - ${eventType}`,
       text: plainTextContent,
       html: htmlContent,
       replyTo: email
