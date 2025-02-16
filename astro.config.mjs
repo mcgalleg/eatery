@@ -19,5 +19,19 @@ export default defineConfig({
     lastmod: new Date()
   }), react()],
   output: 'server',
-  adapter: vercel()
+  adapter: vercel(),
+  vite: {
+    optimizeDeps: {
+      include: ['lucide-react']
+    },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'lucide-react': ['lucide-react']
+          }
+        }
+      }
+    }
+  }
 });
