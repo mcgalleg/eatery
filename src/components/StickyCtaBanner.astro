@@ -1,7 +1,7 @@
 ---
 const phoneNumber = '7207978897';
 const email = 'catering@rositas.biz';
-import ContactModal from './ContactModal.svelte';
+import { ContactDrawer } from './ContactDrawer';
 ---
 
 <div class="fixed bottom-0 left-0 right-0 bg-white shadow-lg z-50">
@@ -27,7 +27,7 @@ import ContactModal from './ContactModal.svelte';
       </a>
       
       <button 
-        id="openQuoteModal"
+        id="openQuoteDrawer"
         class="px-6 py-2 bg-orange text-white rounded-full hover:bg-grey transition-opacity font-semibold"
       >
         Request a Quote
@@ -36,35 +36,32 @@ import ContactModal from './ContactModal.svelte';
   </div>
 </div>
 
-<div id="quoteModal">
-  <ContactModal client:load />
-</div>
+<ContactDrawer client:load isOpen={false} onClose={() => {}} />
 
 <script>
-  declare global {
-    interface Window {
-      openQuoteModal?: () => void;
-    }
+  function setupDrawer() {
+    const openButton = document.getElementById('openQuoteDrawer');
+    if (!openButton) return;
+
+    const handleClick = () => {
+      const drawerEvent = new CustomEvent('toggleDrawer', {
+        detail: { isOpen: true },
+        bubbles: true,
+      });
+      window.dispatchEvent(drawerEvent);
+    };
+
+    // Remove existing listeners to prevent duplicates
+    openButton.removeEventListener('click', handleClick);
+    // Add new listener
+    openButton.addEventListener('click', handleClick);
   }
 
-  // Wait for client-side hydration
-  document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM Content Loaded');
-    const openButton = document.getElementById('openQuoteModal');
-    
-    console.log('Found button:', !!openButton);
-    
-    if (openButton) {
-      openButton.addEventListener('click', () => {
-        console.log('Button clicked');
-        if (window.openQuoteModal) {
-          window.openQuoteModal();
-        } else {
-          console.log('openQuoteModal function not found on window');
-        }
-      });
-    }
-  });
+  // Setup on initial load
+  setupDrawer();
+
+  // Setup on view transitions
+  document.addEventListener('astro:page-load', setupDrawer);
 </script>
 
 <style>
