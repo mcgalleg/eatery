@@ -152,53 +152,54 @@ export function ContactDrawer({ isOpen: initialIsOpen = false, onClose }: Contac
 
   return (
     <Drawer open={isDrawerOpen} onClose={handleClose}>
-      <DrawerContent className="mt-4">
-        <div className="mx-auto w-full max-w-2xl">
-          <DrawerHeader>
-            <DrawerTitle>Request a Quote</DrawerTitle>
-            <DrawerClose onClick={handleClose} />
-          </DrawerHeader>
-          
-          {submitStatus.message && (
-            <div className={`p-4 mb-4 rounded-lg ${
-              submitStatus.success ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
-            }`}>
-              {submitStatus.message}
-            </div>
-          )}
+      <DrawerContent className="mt-8 mx-4 flex flex-col h-[calc(100vh-1rem)] bg-white overflow-hidden z-50">
+        <DrawerHeader>
+          <DrawerTitle>Request a Quote</DrawerTitle>
+          <DrawerClose onClick={handleClose} />
+        </DrawerHeader>
+        <div className="flex-1 min-h-0">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col h-full">
+              <div className="flex-1 min-h-0 overflow-y-auto px-4">
+                {submitStatus.message && (
+                  <div className={`p-4 mb-4 rounded-lg ${
+                    submitStatus.success ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+                  }`}>
+                    {submitStatus.message}
+                  </div>
+                )}
+                <div className="mx-auto w-full max-w-2xl space-y-4">
+                  {/* Row: First Name & Last Name */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <FormField
+                      control={form.control}
+                      name="firstName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>First Name *</FormLabel>
+                          <FormControl>
+                            <Input {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="lastName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Last Name *</FormLabel>
+                          <FormControl>
+                            <Input {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
 
-          <div className="p-4">
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <FormField
-                    control={form.control}
-                    name="firstName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>First Name *</FormLabel>
-                        <FormControl>
-                          <Input {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="lastName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Last Name *</FormLabel>
-                        <FormControl>
-                          <Input {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
+                  {/* Email Field */}
                   <FormField
                     control={form.control}
                     name="email"
@@ -213,20 +214,37 @@ export function ContactDrawer({ isOpen: initialIsOpen = false, onClose }: Contac
                     )}
                   />
 
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Phone *</FormLabel>
-                        <FormControl>
-                          <Input type="tel" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  {/* Row: Phone & Number of Guests */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Phone *</FormLabel>
+                          <FormControl>
+                            <Input type="tel" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="guestCount"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Number of Guests</FormLabel>
+                          <FormControl>
+                            <Input type="number" min="1" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
 
+                  {/* Event Date Field */}
                   <FormField
                     control={form.control}
                     name="eventDate"
@@ -241,97 +259,88 @@ export function ContactDrawer({ isOpen: initialIsOpen = false, onClose }: Contac
                     )}
                   />
 
+                  {/* Row: Event Type & Package (Always two columns on mobile and desktop) */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <FormField
+                      control={form.control}
+                      name="eventType"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Event Type</FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select event type" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="Corporate">Corporate</SelectItem>
+                              <SelectItem value="Wedding">Wedding</SelectItem>
+                              <SelectItem value="Birthday">Birthday</SelectItem>
+                              <SelectItem value="Memorial Service">Memorial Service</SelectItem>
+                              <SelectItem value="Other">Other</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="package"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Package</FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select package" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="Special Delivery">Special Delivery</SelectItem>
+                              <SelectItem value="Staffed Event">Staffed Event</SelectItem>
+                              <SelectItem value="Venue Reservation">Venue Reservation</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+
+                  {/* Venue Field */}
                   <FormField
                     control={form.control}
-                    name="guestCount"
+                    name="venue"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Number of Guests</FormLabel>
+                        <FormLabel>Venue Address (if known)</FormLabel>
                         <FormControl>
-                          <Input type="number" min="1" {...field} />
+                          <Input {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
 
+                  {/* Additional Details */}
                   <FormField
                     control={form.control}
-                    name="eventType"
+                    name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Event Type</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Select event type" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="Corporate">Corporate</SelectItem>
-                            <SelectItem value="Wedding">Wedding</SelectItem>
-                            <SelectItem value="Birthday">Birthday</SelectItem>
-                            <SelectItem value="Memorial Service">Memorial Service</SelectItem>
-                            <SelectItem value="Other">Other</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="package"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Package</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Select package" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="Special Delivery">Special Delivery</SelectItem>
-                            <SelectItem value="Staffed Event">Staffed Event</SelectItem>
-                            <SelectItem value="Venue Reservation">Venue Reservation</SelectItem>
-                          </SelectContent>
-                        </Select>
+                        <FormLabel>Additional Details</FormLabel>
+                        <FormControl>
+                          <Textarea rows={4} {...field} />
+                        </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
                 </div>
-
-                <FormField
-                  control={form.control}
-                  name="venue"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Venue Address (if known)</FormLabel>
-                      <FormControl>
-                        <Input {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Additional Details</FormLabel>
-                      <FormControl>
-                        <Textarea rows={4} {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
+              </div>
+              <div className="px-4 py-4 bg-white border-t">
                 <Button 
                   type="submit" 
                   disabled={isSubmitting}
@@ -339,9 +348,9 @@ export function ContactDrawer({ isOpen: initialIsOpen = false, onClose }: Contac
                 >
                   {isSubmitting ? 'Sending...' : 'Submit Request'}
                 </Button>
-              </form>
-            </Form>
-          </div>
+              </div>
+            </form>
+          </Form>
         </div>
       </DrawerContent>
     </Drawer>
