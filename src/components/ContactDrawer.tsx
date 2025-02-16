@@ -23,7 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Calendar } from "@/components/ui/calendar"
-import { Calendar as CalendarIcon } from "lucide-react"
+import { Calendar as CalendarIcon } from "@/lib/icons"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 
 const formSchema = z.object({

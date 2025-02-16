@@ -3,7 +3,6 @@ import tailwind from '@astrojs/tailwind';
 import svelte from '@astrojs/svelte';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel/serverless';
-
 import react from '@astrojs/react';
 
 export default defineConfig({
@@ -21,14 +20,16 @@ export default defineConfig({
   output: 'server',
   adapter: vercel(),
   vite: {
-    optimizeDeps: {
-      include: ['lucide-react']
+    ssr: {
+      noExternal: ['lucide-react']
     },
     build: {
       rollupOptions: {
         output: {
-          manualChunks: {
-            'lucide-react': ['lucide-react']
+          manualChunks(id) {
+            if (id.includes('node_modules/lucide-react')) {
+              return 'lucide-react';
+            }
           }
         }
       }
