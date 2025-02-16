@@ -1,7 +1,7 @@
 {
     "build": {
       "env": {
-        "SENDGRID_API_KEY": "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"
+        "SENDGRID_API_KEY": "@sendgrid_api_key"
       }
     }
   }
