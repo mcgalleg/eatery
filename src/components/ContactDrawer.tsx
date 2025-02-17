@@ -1,76 +1,25 @@
-import { useState, useEffect } from "react"
-import { zodResolver } from "@hookform/resolvers/zod"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
-import type { UseFormReturn } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerClose } from "@/components/ui/drawer"
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
 import { Button } from "@/components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import { Calendar } from "@/components/ui/calendar"
-import { Calendar as CalendarIcon } from "@/lib/icons"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { ContactForm } from "./ContactForm"
+import { formSchema } from "./ContactForm.schema"
 
-const formSchema = z.object({
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().min(1, "Phone number is required"),
-  eventDate: z.string().optional(),
-  guestCount: z.string().optional(),
-  eventType: z.enum(["Corporate", "Wedding", "Birthday", "Memorial Service", "Other"]),
-  package: z.enum(["Special Delivery", "Staffed Event", "Venue Reservation"]),
-  venue: z.string().optional(),
-  message: z.string().optional(),
-})
-
-interface ContactDrawerProps {
-  isOpen: boolean
-  onClose: () => void
-}
-
-export function ContactDrawer({ isOpen: initialIsOpen = false, onClose }: ContactDrawerProps) {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(initialIsOpen)
+export function ContactDrawer() {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<{ success: boolean; message: string }>({
-    success: false,
-    message: "",
-  })
-
-  useEffect(() => {
-    const handleDrawerToggle = (event: Event) => {
-      const customEvent = event as CustomEvent<{ isOpen: boolean }>
-      setIsDrawerOpen(customEvent.detail.isOpen)
-    }
-
-    // Add event listener to window to ensure it catches events from any source
-    window.addEventListener('toggleDrawer', handleDrawerToggle)
-
-    // Cleanup
-    return () => {
-      window.removeEventListener('toggleDrawer', handleDrawerToggle)
-    }
-  }, []) // Empty dependency array means this only runs once on mount
-
-  const handleClose = () => {
-    setIsDrawerOpen(false)
-    onClose()
-  }
+  const [submitStatus, setSubmitStatus] = useState({ success: false, message: "" })
+  const [open, setOpen] = useState(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -79,278 +28,101 @@ export function ContactDrawer({ isOpen: initialIsOpen = false, onClose }: Contac
       lastName: "",
       email: "",
       phone: "",
-      eventDate: "",
-      guestCount: "",
-      eventType: "Corporate",
-      package: "Special Delivery",
-      venue: "",
+      eventDate: undefined,
+      guestCount: undefined,
+      eventLocation: "",
+      eventType: undefined,
+      package: undefined,
       message: "",
     },
   })
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    if (isSubmitting) return
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsSubmitting(true)
-    
     try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
+      const response = await fetch("/api/send-email", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(values),
       })
-      
-      const data = await response.json()
-      
-      if (response.ok) {
-        setSubmitStatus({
-          success: true,
-          message: 'Thank you for your inquiry! We will get back to you shortly.'
-        })
-        setTimeout(() => {
-          handleClose();
-          form.reset();
-          setSubmitStatus({ success: false, message: "" });
-        }, 2000);
-      } else {
-        throw new Error(data.message || 'Something went wrong')
+
+      if (!response.ok) {
+        throw new Error("Failed to send message")
       }
+
+      const responseData = await response.json();
+
+      setSubmitStatus({
+        success: true,
+        message: responseData.message || "Your message has been sent successfully!",
+      })
+      form.reset()
+      setTimeout(() => setOpen(false), 3000)
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to send message. Please try again.";
       setSubmitStatus({
         success: false,
-        message: error instanceof Error ? error.message : 'Failed to send message. Please try again.'
+        message: errorMessage,
       })
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  function DatePickerField({ value, onChange }: { value?: string; onChange: (value: string) => void }) {
-    return (
-      <Popover>
-        <PopoverTrigger asChild>
-          <Button variant="outline" className="w-full text-left" tabIndex={0}>
-            {value ? value : "Select date"}
-            <CalendarIcon className="ml-2 h-4 w-4 text-muted-foreground" />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="p-0">
-          <Calendar
-            mode="single"
-            selected={value ? new Date(value) : undefined}
-            onSelect={(date) => {
-              if (date) {
-                onChange(date.toISOString().split('T')[0]);
-              }
-            }}
-          />
-        </PopoverContent>
-      </Popover>
-    );
-  }
-
   return (
-    <Drawer open={isDrawerOpen} onClose={handleClose}>
-      <DrawerContent className="mt-8 mx-4 flex flex-col h-[calc(100vh-1rem)] bg-[url('/texture-transparent.webp')] bg-repeat bg-center overflow-hidden z-50">
-        <DrawerHeader>
-          <DrawerTitle>Request a Quote</DrawerTitle>
-          <DrawerClose onClick={handleClose} />
-        </DrawerHeader>
-        <div className="flex-1 min-h-0">
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col h-full">
-              <div className="flex-1 min-h-0 overflow-y-auto px-4 bg-white/90 backdrop-blur-sm">
-                {submitStatus.message && (
-                  <div className={`p-4 mb-4 rounded-lg ${
-                    submitStatus.success ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
-                  }`}>
-                    {submitStatus.message}
-                  </div>
-                )}
-                <div className="mx-auto w-full max-w-2xl space-y-4">
-                  {/* Row: First Name & Last Name */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="firstName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>First Name *</FormLabel>
-                          <FormControl>
-                            <Input {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="lastName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Last Name *</FormLabel>
-                          <FormControl>
-                            <Input {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-
-                  {/* Email Field */}
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Email *</FormLabel>
-                        <FormControl>
-                          <Input type="email" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  {/* Row: Phone & Number of Guests */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="phone"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Phone *</FormLabel>
-                          <FormControl>
-                            <Input type="tel" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="guestCount"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Number of Guests</FormLabel>
-                          <FormControl>
-                            <Input type="number" min="1" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-
-                  {/* Event Date Field */}
-                  <FormField
-                    control={form.control}
-                    name="eventDate"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Event Date</FormLabel>
-                        <FormControl>
-                          <DatePickerField value={field.value} onChange={field.onChange} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  {/* Row: Event Type & Package (Always two columns on mobile and desktop) */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="eventType"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Event Type</FormLabel>
-                          <Select onValueChange={field.onChange} defaultValue={field.value}>
-                            <FormControl>
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select event type" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              <SelectItem value="Corporate">Corporate</SelectItem>
-                              <SelectItem value="Wedding">Wedding</SelectItem>
-                              <SelectItem value="Birthday">Birthday</SelectItem>
-                              <SelectItem value="Memorial Service">Memorial Service</SelectItem>
-                              <SelectItem value="Other">Other</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="package"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Package</FormLabel>
-                          <Select onValueChange={field.onChange} defaultValue={field.value}>
-                            <FormControl>
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select package" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              <SelectItem value="Special Delivery">Special Delivery</SelectItem>
-                              <SelectItem value="Staffed Event">Staffed Event</SelectItem>
-                              <SelectItem value="Venue Reservation">Venue Reservation</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-
-                  {/* Venue Field */}
-                  <FormField
-                    control={form.control}
-                    name="venue"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Venue Address (if known)</FormLabel>
-                        <FormControl>
-                          <Input {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  {/* Additional Details */}
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Additional Details</FormLabel>
-                        <FormControl>
-                          <Textarea rows={2} {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+    <Drawer open={open} onOpenChange={setOpen}>
+      <DrawerTrigger asChild>
+        <Button
+          variant="default"
+          className="flex items-center gap-2 px-4 py-2 bg-orange text-gray-700 rounded-full hover:bg-gray-500 hover:text-white transition-opacity"
+        >
+          📝 <span>Receive Quote</span>
+        </Button>
+      </DrawerTrigger>
+      <DrawerContent
+        style={{ backgroundImage: "url('/texture-transparent.webp')" }}
+        className="bg-black text-white h-[90vh] md:h-[75vh] bg-cover bg-repeat"
+      >
+        <div className="w-full h-full flex flex-col overflow-hidden">
+          <DrawerHeader className="text-center">
+            <DrawerTitle className="text-2xl font-bold text-white">Request a Catering Estimate</DrawerTitle>
+            <DrawerDescription className="text-gray-400">
+              Fill out the form below and we'll get back to you with a detailed quote.
+            </DrawerDescription>
+          </DrawerHeader>
+          <div className="flex-1 overflow-y-auto">
+            <div className="p-4 md:p-6">
+              <div className="max-w-7xl mx-auto">
+                <ContactForm
+                  form={form}
+                  onSubmit={onSubmit}
+                  isSubmitting={isSubmitting}
+                  submitStatus={submitStatus}
+                />
+              </div>
+            </div>
+          </div>
+          <DrawerFooter>
+            <div className="relative flex justify-end">
+              {submitStatus.message && (
+                <div className={`absolute inset-0 flex items-center justify-center p-2 rounded-md z-10 ${
+                  submitStatus.success ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'
+                }`}>
+                  {submitStatus.message}
                 </div>
-              </div>
-              <div className="px-4 py-4 bg-white border-t">
-                <Button 
-                  type="submit" 
-                  disabled={isSubmitting}
-                  className="w-full bg-orange text-white rounded-full border border-orange hover:bg-gray-500 hover:border-gray-500"
-                >
-                  {isSubmitting ? 'Sending...' : 'Submit Request'}
-                </Button>
-              </div>
-            </form>
-          </Form>
+              )}
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-auto bg-orange text-gray-700 rounded-full px-4 py-2 hover:bg-white hover:text-gray-700 transition-colors relative z-0"
+                onClick={form.handleSubmit(onSubmit)}
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </Button>
+            </div>
+          </DrawerFooter>
         </div>
       </DrawerContent>
     </Drawer>

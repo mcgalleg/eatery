@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import sgMail from '@sendgrid/mail';
+import { format } from "date-fns";
 
 // Initialize SendGrid with API key
 const SENDGRID_API_KEY = import.meta.env.SENDGRID_API_KEY;
@@ -24,15 +25,17 @@ export const POST: APIRoute = async ({ request }) => {
       guestCount,
       eventType,
       package: packageSelection,
-      venue,
+      eventLocation,
       message
     } = data;
 
+    const formattedEventDate = eventDate ? format(new Date(eventDate), "MM/dd/yyyy") : "Not specified";
+
     // Validate required fields
-    if (!firstName || !lastName || !email || !phone) {
+    if (!firstName || !lastName || !email) {
       return new Response(
         JSON.stringify({
-          message: 'First name, last name, email, and phone are required fields'
+          message: 'First name, last name, and email are required fields'
         }),
         { status: 400 }
       );
@@ -111,7 +114,7 @@ export const POST: APIRoute = async ({ request }) => {
                 </div>
                 <div class="field">
                   <span class="label">Phone:</span>
-                  <span class="value">${phone}</span>
+                  <span class="value">${phone || 'Not specified'}</span>
                 </div>
               </div>
 
@@ -127,15 +130,15 @@ export const POST: APIRoute = async ({ request }) => {
                 </div>
                 <div class="field">
                   <span class="label">Event Date:</span>
-                  <span class="value">${eventDate || 'Not specified'}</span>
+                  <span class="value">${formattedEventDate}</span>
                 </div>
                 <div class="field">
                   <span class="label">Guest Count:</span>
                   <span class="value">${guestCount || 'Not specified'}</span>
                 </div>
                 <div class="field">
-                  <span class="label">Venue:</span>
-                  <span class="value">${venue || 'Not specified'}</span>
+                  <span class="label">Event Location:</span>
+                  <span class="value">${eventLocation || 'Not specified'}</span>
                 </div>
               </div>
 
@@ -160,14 +163,14 @@ export const POST: APIRoute = async ({ request }) => {
       Contact Information:
       Name: ${firstName} ${lastName}
       Email: ${email}
-      Phone: ${phone}
+      Phone: ${phone || 'Not specified'}
 
       Event Details:
       Event Type: ${eventType}
       Package Selected: ${packageSelection}
-      Event Date: ${eventDate || 'Not specified'}
+      Event Date: ${formattedEventDate}
       Guest Count: ${guestCount || 'Not specified'}
-      Venue: ${venue || 'Not specified'}
+      Event Location: ${eventLocation || 'Not specified'}
 
       Additional Details:
       ${message || 'None provided'}
@@ -185,7 +188,8 @@ export const POST: APIRoute = async ({ request }) => {
 
     return new Response(
       JSON.stringify({
-        message: 'Email sent successfully'
+        message: 'Email sent successfully',
+        success: true
       }),
       { status: 200 }
     );
@@ -193,7 +197,8 @@ export const POST: APIRoute = async ({ request }) => {
     console.error('Error sending email:', error);
     return new Response(
       JSON.stringify({
-        message: 'Failed to send email'
+        message: 'Failed to send email',
+        success: false
       }),
       { status: 500 }
     );

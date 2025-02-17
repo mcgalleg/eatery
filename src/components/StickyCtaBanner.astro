@@ -1,7 +1,7 @@
 ---
+import ContactDrawerLoader from './ContactDrawerLoader';
 const phoneNumber = '7207978897';
 const email = 'catering@rositas.biz';
-import { ContactDrawer } from './ContactDrawer';
 ---
 
 <div class="fixed bottom-0 left-0 right-0 bg-white shadow-lg z-50">
@@ -26,43 +26,10 @@ import { ContactDrawer } from './ContactDrawer';
         ✉️ <span>Email Us</span>
       </a>
       
-      <button 
-        id="openQuoteDrawer"
-        class="px-6 py-2 bg-orange text-gray-600 rounded-full hover:bg-grey hover:text-white transition-opacity font-semibold"
-      >
-        Request a Quote
-      </button>
+      <ContactDrawerLoader client:only="react" />
     </div>
   </div>
 </div>
-
-<ContactDrawer client:load isOpen={false} onClose={() => {}} />
-
-<script>
-  function setupDrawer() {
-    const openButton = document.getElementById('openQuoteDrawer');
-    if (!openButton) return;
-
-    const handleClick = () => {
-      const drawerEvent = new CustomEvent('toggleDrawer', {
-        detail: { isOpen: true },
-        bubbles: true,
-      });
-      window.dispatchEvent(drawerEvent);
-    };
-
-    // Remove existing listeners to prevent duplicates
-    openButton.removeEventListener('click', handleClick);
-    // Add new listener
-    openButton.addEventListener('click', handleClick);
-  }
-
-  // Setup on initial load
-  setupDrawer();
-
-  // Setup on view transitions
-  document.addEventListener('astro:page-load', setupDrawer);
-</script>
 
 <style>
   @media (max-width: 768px) {
