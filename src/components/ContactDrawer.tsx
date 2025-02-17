@@ -76,7 +76,7 @@ export function ContactDrawer() {
       <DrawerTrigger asChild>
         <Button
           variant="default"
-          className="flex items-center gap-2 px-4 py-2 bg-orange text-gray-700 rounded-full hover:bg-gray-500 hover:text-white transition-opacity"
+          className="flex items-center gap-2 px-4 py-2 bg-gray-500 text-white rounded-full hover:bg-orange hover:text-gray-700 transition-opacity"
         >
           📝 <span>Receive Quote</span>
         </Button>
@@ -107,7 +107,7 @@ export function ContactDrawer() {
           <DrawerFooter>
             <div className="relative flex justify-end">
               {submitStatus.message && (
-                <div className={`absolute inset-0 flex items-center justify-center p-2 rounded-md z-10 ${
+                <div className={`absolute inset-x-0 bottom-full mb-2 flex items-center justify-center p-2 rounded-md z-10 ${
                   submitStatus.success ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'
                 }`}>
                   {submitStatus.message}
