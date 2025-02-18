@@ -84,7 +84,7 @@ export function ContactDrawer() {
       </DrawerTrigger>
       <DrawerContent
         style={{ backgroundImage: "url('/texture-transparent.webp')" }}
-        className="bg-black text-white h-[90vh] md:h-[75vh] bg-cover bg-repeat"
+        className="bg-black text-white h-[90vh] md:h-[85vh] bg-cover bg-repeat"
       >
         <div className="w-full h-full flex flex-col overflow-hidden">
           <DrawerHeader className="text-center">
@@ -106,9 +106,9 @@ export function ContactDrawer() {
             </div>
           </div>
           <DrawerFooter>
-            <div className="relative flex justify-end">
+            <div className="flex flex-col items-end gap-2">
               {submitStatus.message && (
-                <div className={`absolute inset-x-0 bottom-full mb-2 flex items-center justify-center p-2 rounded-md z-10 ${
+                <div className={`w-full flex items-center justify-center p-2 rounded-md ${
                   submitStatus.success ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'
                 }`}>
                   {submitStatus.message}
@@ -117,7 +117,7 @@ export function ContactDrawer() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-auto bg-orange text-gray-700 rounded-full px-4 py-2 hover:bg-white hover:text-gray-700 transition-colors relative z-0"
+                className="w-auto bg-orange text-gray-700 rounded-full px-4 py-2 hover:bg-white hover:text-gray-700 transition-colors"
                 onClick={form.handleSubmit(onSubmit)}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}

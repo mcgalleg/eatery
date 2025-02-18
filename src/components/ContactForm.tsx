@@ -14,6 +14,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Button } from "@/components/ui/button"
 import { formSchema } from "./ContactForm.schema"
 import { DatePicker } from "@/components/ui/date-picker"
+import { useEffect } from 'react'
 
 interface ContactFormProps {
   form: UseFormReturn<z.infer<typeof formSchema>>
@@ -23,6 +24,34 @@ interface ContactFormProps {
 }
 
 export function ContactForm({ form, onSubmit, isSubmitting, submitStatus }: ContactFormProps) {
+  // Add helper function to generate time options between 7:00 AM and 9:00 PM, in 30 minute increments
+  const generateTimeOptions = () => {
+    const options = [];
+    for (let minutes = 7 * 60; minutes <= 21 * 60; minutes += 30) {
+      const hour24 = Math.floor(minutes / 60);
+      const min = minutes % 60;
+      const period = hour24 >= 12 ? "PM" : "AM";
+      const hour12 = hour24 % 12 === 0 ? 12 : hour24 % 12;
+      const minuteStr = min === 0 ? "00" : min.toString();
+      const formattedTime = `${hour12}:${minuteStr} ${period}`;
+      options.push(
+        <SelectItem key={minutes} value={formattedTime}>
+          {formattedTime}
+        </SelectItem>
+      );
+    }
+    return options;
+  };
+
+  // Get the current package value from the form
+  const selectedPackage = form.watch('package');
+
+  useEffect(() => {
+    if (selectedPackage === 'Venue Reservation') {
+      form.setValue('eventLocation', '');
+    }
+  }, [selectedPackage, form]);
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -107,7 +136,14 @@ export function ContactForm({ form, onSubmit, isSubmitting, submitStatus }: Cont
                   <FormItem>
                     <FormLabel>Event Time</FormLabel>
                     <FormControl>
-                      <Input {...field} type="time" />
+                      <Select value={field.value} onValueChange={field.onChange}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select time" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {generateTimeOptions()}
+                        </SelectContent>
+                      </Select>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -179,19 +215,22 @@ export function ContactForm({ form, onSubmit, isSubmitting, submitStatus }: Cont
             )}
           />
           
-          <FormField
-            control={form.control}
-            name="eventLocation"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Event Location</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          {/* Conditionally render Event Location based on package selection */}
+          {selectedPackage !== 'Venue Reservation' && (
+            <FormField
+              control={form.control}
+              name="eventLocation"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Event Location</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          )}
         </div>
 
         {/* Full width fields */}
@@ -213,14 +252,6 @@ export function ContactForm({ form, onSubmit, isSubmitting, submitStatus }: Cont
             )}
           />
         </div>
-
-        {submitStatus.message && (
-          <div className={`p-4 rounded-md ${
-            submitStatus.success ? 'bg-green-900 text-white' : 'bg-red-100 text-red-700'
-          }`}>
-            {submitStatus.message}
-          </div>
-        )}
       </form>
     </Form>
   )
