@@ -33,6 +33,7 @@ export function ContactDrawer() {
       eventLocation: "",
       eventType: undefined,
       package: undefined,
+      eventTime: "",
       message: "",
     },
   })

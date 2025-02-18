@@ -83,19 +83,38 @@ export function ContactForm({ form, onSubmit, isSubmitting, submitStatus }: Cont
             )}
           />
           
-          <FormField
-            control={form.control}
-            name="eventDate"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Event Date</FormLabel>
-                <FormControl>
-                  <DatePicker value={field.value} onChange={field.onChange} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <div className="flex gap-4">
+            <div className="flex-1">
+              <FormField
+                control={form.control}
+                name="eventDate"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Event Date</FormLabel>
+                    <FormControl>
+                      <DatePicker value={field.value} onChange={field.onChange} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="flex-1">
+              <FormField
+                control={form.control}
+                name="eventTime"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Event Time</FormLabel>
+                    <FormControl>
+                      <Input {...field} type="time" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          </div>
           
           <FormField
             control={form.control}

@@ -26,6 +26,7 @@ export const POST: APIRoute = async ({ request }) => {
       eventType,
       package: packageSelection,
       eventLocation,
+      eventTime,
       message
     } = data;
 
@@ -133,6 +134,10 @@ export const POST: APIRoute = async ({ request }) => {
                   <span class="value">${formattedEventDate}</span>
                 </div>
                 <div class="field">
+                  <span class="label">Event Time:</span>
+                  <span class="value">${eventTime || 'Not specified'}</span>
+                </div>
+                <div class="field">
                   <span class="label">Guest Count:</span>
                   <span class="value">${guestCount || 'Not specified'}</span>
                 </div>
@@ -169,6 +174,7 @@ export const POST: APIRoute = async ({ request }) => {
       Event Type: ${eventType}
       Package Selected: ${packageSelection}
       Event Date: ${formattedEventDate}
+      Event Time: ${eventTime || 'Not specified'}
       Guest Count: ${guestCount || 'Not specified'}
       Event Location: ${eventLocation || 'Not specified'}
 

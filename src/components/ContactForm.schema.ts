@@ -12,6 +12,7 @@ export const formSchema = z.object({
     if (arg instanceof Date) return arg
     return undefined
   }, z.date().optional()),
+  eventTime: z.string().optional(),
   guestCount: z.preprocess((val) => {
     if (typeof val === "string" && val.trim() === "") return undefined
     return Number(val)

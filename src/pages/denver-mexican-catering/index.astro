@@ -156,6 +156,9 @@ const denverStructuredData = [
     "name": "Denver Catering Venues",
     "events": venues.events.map(venue => ({
       "@type": "Event",
+      "name": `Catering at ${venue}`,
+      "startDate": "2024-01-01T00:00:00",
+      "endDate": "2024-12-31T23:59:59",
       "location": {
         "@type": "Place",
         "name": venue,
