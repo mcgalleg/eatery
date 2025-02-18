@@ -12,11 +12,7 @@ export default defineConfig({
   },
   integrations: [tailwind({
     applyBaseStyles: false,
-  }), svelte(), sitemap({
-    changefreq: 'weekly',
-    priority: 0.7,
-    lastmod: new Date()
-  }), react()],
+  }), svelte(), sitemap(), react()],
   output: 'server',
   adapter: vercel(),
   vite: {
