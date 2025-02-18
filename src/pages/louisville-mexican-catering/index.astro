@@ -59,9 +59,11 @@ const faqs = [
 const louisvilleStructuredData = [
   {
     "@context": "https://schema.org",
-    "@type": ["Restaurant", "FoodEstablishment", "CateringService"],
+    "@type": ["FoodEstablishment", "CateringService"],
     "name": "Rosita's New Mexican Cafe - Louisville Catering",
-    "image": "/rositas-catering-louisville.jpg",
+    "image": "https://rositascafe.com/rositas-catering-louisville.jpg",
+    "description": "Premium Mexican and New Mexican catering services in Louisville, specializing in tech company lunches and corporate events at Colorado Technology Center. Serving Downtown Louisville, McCaslin area, and surrounding communities with over 35 years of experience.",
+    "url": "https://rositascafe.com/louisville-mexican-catering",
     "telephone": "+1-303-430-9155",
     "priceRange": "$$",
     "servesCuisine": ["New Mexican", "Mexican", "Catering"],
@@ -92,20 +94,6 @@ const louisvilleStructuredData = [
         "longitude": "-105.1319"
       },
       "geoRadius": "15000"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Louisville Mexican Catering Services",
-    "provider": {
-      "@type": "FoodEstablishment",
-      "name": "Rosita's New Mexican Cafe"
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": "Louisville",
-      "containedIn": "Colorado"
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -115,25 +103,37 @@ const louisvilleStructuredData = [
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Full-Service Catering",
-            "description": "Complete catering service including setup, service, and cleanup"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "FoodService",
-            "name": "Tech Company Catering",
+            "name": "Tech Company Package",
             "description": "Specialized service for Louisville tech companies and corporate events"
-          }
+          },
+          "price": "18.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/louisville-mexican-catering#tech"
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Drop-off Catering",
+            "name": "Full-Service Catering Package",
+            "description": "Complete catering service including setup, service, and cleanup"
+          },
+          "price": "25.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/louisville-mexican-catering#full-service"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Drop-off Catering Package",
             "description": "Fresh Mexican food delivered to your Louisville location"
-          }
+          },
+          "price": "12.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/louisville-mexican-catering#drop-off"
         }
       ]
     }

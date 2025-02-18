@@ -59,9 +59,11 @@ const faqs = [
 const broomfieldStructuredData = [
   {
     "@context": "https://schema.org",
-    "@type": ["Restaurant", "FoodEstablishment", "CateringService"],
+    "@type": ["FoodEstablishment", "CateringService"],
     "name": "Rosita's New Mexican Cafe - Broomfield Catering",
-    "image": "/rositas-catering-broomfield.jpg",
+    "image": "https://rositascafe.com/rositas-catering-broomfield.jpg",
+    "description": "Premium Mexican and New Mexican catering services in Broomfield, specializing in corporate events, tech company lunches, and large venue catering. Serving Interlocken, FlatIron Crossing, and surrounding areas.",
+    "url": "https://rositascafe.com/broomfield-mexican-catering",
     "telephone": "+1-303-430-9155",
     "priceRange": "$$",
     "servesCuisine": ["New Mexican", "Mexican", "Catering"],
@@ -92,20 +94,6 @@ const broomfieldStructuredData = [
         "longitude": "-105.0867"
       },
       "geoRadius": "15000"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Broomfield Mexican Catering Services",
-    "provider": {
-      "@type": "FoodEstablishment",
-      "name": "Rosita's New Mexican Cafe"
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": "Broomfield",
-      "containedIn": "Colorado"
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -115,25 +103,37 @@ const broomfieldStructuredData = [
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Corporate Catering",
-            "description": "Specialized service for Broomfield businesses and tech companies"
-          }
+            "name": "Corporate Catering Package",
+            "description": "Professional catering service for Broomfield businesses and tech companies"
+          },
+          "price": "15.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/broomfield-mexican-catering#corporate"
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Full-Service Catering",
+            "name": "Full-Service Catering Package",
             "description": "Complete catering service including setup, service, and cleanup"
-          }
+          },
+          "price": "25.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/broomfield-mexican-catering#full-service"
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Drop-off Catering",
+            "name": "Drop-off Catering Package",
             "description": "Fresh Mexican food delivered to your Broomfield location"
-          }
+          },
+          "price": "12.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/broomfield-mexican-catering#drop-off"
         }
       ]
     }

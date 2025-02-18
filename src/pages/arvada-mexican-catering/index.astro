@@ -59,9 +59,11 @@ const faqs = [
 const arvadaStructuredData = [
   {
     "@context": "https://schema.org",
-    "@type": ["Restaurant", "FoodEstablishment", "CateringService"],
+    "@type": ["FoodEstablishment", "CateringService"],
     "name": "Rosita's New Mexican Cafe - Arvada Catering",
-    "image": "/rositas-catering-arvada.jpg",
+    "image": "https://rositascafe.com/rositas-catering-arvada.jpg",
+    "description": "Premium Mexican and New Mexican catering services in Arvada, specializing in Olde Town business events and Candelas community gatherings. Serving as preferred caterer for the Arvada Center and local venues throughout the area.",
+    "url": "https://rositascafe.com/arvada-mexican-catering",
     "telephone": "+1-303-430-9155",
     "priceRange": "$$",
     "servesCuisine": ["New Mexican", "Mexican", "Catering"],
@@ -92,20 +94,6 @@ const arvadaStructuredData = [
         "longitude": "-105.0875"
       },
       "geoRadius": "15000"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Arvada Mexican Catering Services",
-    "provider": {
-      "@type": "FoodEstablishment",
-      "name": "Rosita's New Mexican Cafe"
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": "Arvada",
-      "containedIn": "Colorado"
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -115,25 +103,37 @@ const arvadaStructuredData = [
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Full-Service Catering",
+            "name": "Full-Service Catering Package",
             "description": "Complete catering service including setup, service, and cleanup"
-          }
+          },
+          "price": "25.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/arvada-mexican-catering#full-service"
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Drop-off Catering",
-            "description": "Fresh Mexican food delivered to your Arvada location"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "FoodService",
-            "name": "Community Event Catering",
+            "name": "Community Event Package",
             "description": "Specialized service for Arvada community events and gatherings"
-          }
+          },
+          "price": "20.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/arvada-mexican-catering#community"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Drop-off Catering Package",
+            "description": "Fresh Mexican food delivered to your Arvada location"
+          },
+          "price": "12.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/arvada-mexican-catering#drop-off"
         }
       ]
     }

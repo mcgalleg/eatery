@@ -59,9 +59,11 @@ const faqs = [
 const thorntonStructuredData = [
   {
     "@context": "https://schema.org",
-    "@type": ["Restaurant", "FoodEstablishment", "CateringService"],
+    "@type": ["FoodEstablishment", "CateringService"],
     "name": "Rosita's New Mexican Cafe - Thornton Catering",
-    "image": "/rositas-catering-thornton.jpg",
+    "image": "https://rositascafe.com/rositas-catering-thornton.jpg",
+    "description": "Premium Mexican and New Mexican catering services in Thornton, specializing in corporate lunches and community events. Serving North Thornton, Washington Square, Original Thornton, and surrounding areas with quick delivery from our I-25 & 120th location.",
+    "url": "https://rositascafe.com/thornton-mexican-catering",
     "telephone": "+1-303-430-9155",
     "priceRange": "$$",
     "servesCuisine": ["New Mexican", "Mexican", "Catering"],
@@ -92,20 +94,6 @@ const thorntonStructuredData = [
         "longitude": "-104.9719"
       },
       "geoRadius": "15000"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Thornton Mexican Catering Services",
-    "provider": {
-      "@type": "FoodEstablishment",
-      "name": "Rosita's New Mexican Cafe"
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": "Thornton",
-      "containedIn": "Colorado"
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -115,25 +103,37 @@ const thorntonStructuredData = [
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Full-Service Catering",
+            "name": "Full-Service Catering Package",
             "description": "Complete catering service including setup, service, and cleanup"
-          }
+          },
+          "price": "25.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/thornton-mexican-catering#full-service"
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Community Event Catering",
+            "name": "Community Event Package",
             "description": "Specialized service for Thornton community events and gatherings"
-          }
+          },
+          "price": "20.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/thornton-mexican-catering#community"
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Drop-off Catering",
+            "name": "Drop-off Catering Package",
             "description": "Fresh Mexican food delivered to your Thornton location"
-          }
+          },
+          "price": "12.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/thornton-mexican-catering#drop-off"
         }
       ]
     }

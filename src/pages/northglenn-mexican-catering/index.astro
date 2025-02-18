@@ -59,9 +59,11 @@ const faqs = [
 const northglennStructuredData = [
   {
     "@context": "https://schema.org",
-    "@type": ["Restaurant", "FoodEstablishment", "CateringService"],
+    "@type": ["FoodEstablishment", "CateringService"],
     "name": "Rosita's New Mexican Cafe - Northglenn Catering",
-    "image": "/rositas-catering-northglenn.jpg",
+    "image": "https://rositascafe.com/rositas-catering-northglenn.jpg",
+    "description": "Premium Mexican and New Mexican catering services in Northglenn, specializing in community events, corporate functions, and local gatherings. Serving Webster Lake, E.B. Rains Memorial Park, and surrounding areas.",
+    "url": "https://rositascafe.com/northglenn-mexican-catering",
     "telephone": "+1-303-430-9155",
     "priceRange": "$$",
     "servesCuisine": ["New Mexican", "Mexican", "Catering"],
@@ -92,20 +94,6 @@ const northglennStructuredData = [
         "longitude": "-104.9812"
       },
       "geoRadius": "12000"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Northglenn Mexican Catering Services",
-    "provider": {
-      "@type": "FoodEstablishment",
-      "name": "Rosita's New Mexican Cafe"
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": "Northglenn",
-      "containedIn": "Colorado"
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -115,25 +103,37 @@ const northglennStructuredData = [
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Full-Service Catering",
+            "name": "Full-Service Catering Package",
             "description": "Complete catering service including setup, service, and cleanup"
-          }
+          },
+          "price": "25.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/northglenn-mexican-catering#full-service"
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Community Event Catering",
+            "name": "Community Event Package",
             "description": "Specialized service for Northglenn community events and gatherings"
-          }
+          },
+          "price": "20.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/northglenn-mexican-catering#community"
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Drop-off Catering",
+            "name": "Drop-off Catering Package",
             "description": "Fresh Mexican food delivered to your Northglenn location"
-          }
+          },
+          "price": "12.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/northglenn-mexican-catering#drop-off"
         }
       ]
     }

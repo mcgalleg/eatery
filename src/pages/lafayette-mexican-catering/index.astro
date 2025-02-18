@@ -59,9 +59,11 @@ const faqs = [
 const lafayetteStructuredData = [
   {
     "@context": "https://schema.org",
-    "@type": ["Restaurant", "FoodEstablishment", "CateringService"],
+    "@type": ["FoodEstablishment", "CateringService"],
     "name": "Rosita's New Mexican Cafe - Lafayette Catering",
-    "image": "/rositas-catering-lafayette.jpg",
+    "image": "https://rositascafe.com/rositas-catering-lafayette.jpg",
+    "description": "Premium Mexican and New Mexican catering services in Lafayette, specializing in Old Town events and 287 Corridor business catering. Serving Lafayette's historic downtown, Indian Peaks area, and surrounding communities with over 35 years of experience.",
+    "url": "https://rositascafe.com/lafayette-mexican-catering",
     "telephone": "+1-303-430-9155",
     "priceRange": "$$",
     "servesCuisine": ["New Mexican", "Mexican", "Catering"],
@@ -92,20 +94,6 @@ const lafayetteStructuredData = [
         "longitude": "-105.0898"
       },
       "geoRadius": "15000"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Lafayette Mexican Catering Services",
-    "provider": {
-      "@type": "FoodEstablishment",
-      "name": "Rosita's New Mexican Cafe"
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": "Lafayette",
-      "containedIn": "Colorado"
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -115,25 +103,37 @@ const lafayetteStructuredData = [
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Full-Service Catering",
+            "name": "Full-Service Catering Package",
             "description": "Complete catering service including setup, service, and cleanup"
-          }
+          },
+          "price": "25.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/lafayette-mexican-catering#full-service"
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Community Event Catering",
+            "name": "Community Event Package",
             "description": "Specialized service for Lafayette community events and gatherings"
-          }
+          },
+          "price": "20.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/lafayette-mexican-catering#community"
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Drop-off Catering",
+            "name": "Drop-off Catering Package",
             "description": "Fresh Mexican food delivered to your Lafayette location"
-          }
+          },
+          "price": "12.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/lafayette-mexican-catering#drop-off"
         }
       ]
     }

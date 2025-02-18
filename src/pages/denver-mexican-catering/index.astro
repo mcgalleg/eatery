@@ -59,9 +59,11 @@ const faqs = [
 const denverStructuredData = [
   {
     "@context": "https://schema.org",
-    "@type": ["Restaurant", "FoodEstablishment", "CateringService"],
+    "@type": ["FoodEstablishment", "CateringService"],
     "name": "Rosita's New Mexican Cafe - Denver Catering",
-    "image": "/rositas-catering-denver.jpg",
+    "image": "https://rositascafe.com/rositas-catering-denver.jpg",
+    "description": "Premium Mexican and New Mexican catering services throughout Denver, specializing in corporate events at Denver Tech Center, downtown gatherings, and RiNo venues. Serving the Mile High City with rush-hour optimized delivery routes.",
+    "url": "https://rositascafe.com/denver-mexican-catering",
     "telephone": "+1-303-430-9155",
     "priceRange": "$$",
     "servesCuisine": ["New Mexican", "Mexican", "Catering"],
@@ -92,20 +94,6 @@ const denverStructuredData = [
         "longitude": "-104.9903"
       },
       "geoRadius": "30000"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Denver Mexican Catering Services",
-    "provider": {
-      "@type": "FoodEstablishment",
-      "name": "Rosita's New Mexican Cafe"
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": "Denver",
-      "containedIn": "Colorado"
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -115,25 +103,37 @@ const denverStructuredData = [
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Full-Service Catering",
+            "name": "Corporate Catering Package",
+            "description": "Specialized service for Denver Tech Center and downtown businesses"
+          },
+          "price": "18.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/denver-mexican-catering#corporate"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "FoodService",
+            "name": "Full-Service Catering Package",
             "description": "Complete catering service including setup, service, and cleanup"
-          }
+          },
+          "price": "28.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/denver-mexican-catering#full-service"
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Drop-off Catering",
+            "name": "Drop-off Catering Package",
             "description": "Fresh Mexican food delivered to your Denver location"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "FoodService",
-            "name": "Corporate Catering",
-            "description": "Specialized service for Denver businesses and corporate events"
-          }
+          },
+          "price": "15.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/denver-mexican-catering#drop-off"
         }
       ]
     }

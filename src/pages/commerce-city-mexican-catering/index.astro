@@ -59,9 +59,11 @@ const faqs = [
 const commerceCityStructuredData = [
   {
     "@context": "https://schema.org",
-    "@type": ["Restaurant", "FoodEstablishment", "CateringService"],
+    "@type": ["FoodEstablishment", "CateringService"],
     "name": "Rosita's New Mexican Cafe - Commerce City Catering",
-    "image": "/rositas-catering-commerce-city.jpg",
+    "image": "https://rositascafe.com/rositas-catering-commerce-city.jpg",
+    "description": "Premium Mexican and New Mexican catering services in Commerce City, specializing in sporting events at Dick's Sporting Goods Park and industrial business catering. Serving the industrial district, Rocky Mountain Arsenal area, and surrounding locations.",
+    "url": "https://rositascafe.com/commerce-city-mexican-catering",
     "telephone": "+1-303-430-9155",
     "priceRange": "$$",
     "servesCuisine": ["New Mexican", "Mexican", "Catering"],
@@ -92,20 +94,6 @@ const commerceCityStructuredData = [
         "longitude": "-104.9339"
       },
       "geoRadius": "20000"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Commerce City Mexican Catering Services",
-    "provider": {
-      "@type": "FoodEstablishment",
-      "name": "Rosita's New Mexican Cafe"
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": "Commerce City",
-      "containedIn": "Colorado"
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -115,25 +103,37 @@ const commerceCityStructuredData = [
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Sporting Event Catering",
+            "name": "Sporting Event Package",
             "description": "Specialized service for Dick's Sporting Goods Park and sports events"
-          }
+          },
+          "price": "22.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/commerce-city-mexican-catering#sporting"
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Industrial Business Catering",
+            "name": "Industrial Business Package",
             "description": "Customized catering for Commerce City industrial businesses"
-          }
+          },
+          "price": "18.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/commerce-city-mexican-catering#industrial"
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "FoodService",
-            "name": "Drop-off Catering",
+            "name": "Drop-off Catering Package",
             "description": "Fresh Mexican food delivered to your Commerce City location"
-          }
+          },
+          "price": "12.00",
+          "priceCurrency": "USD",
+          "validFrom": "2024-01-01",
+          "url": "https://rositascafe.com/commerce-city-mexican-catering#drop-off"
         }
       ]
     }
