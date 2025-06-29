@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import FeaturedCards from '../components/FeaturedCards.astro';
+import StickyCtaBanner from '../components/StickyCtaBanner.astro';
+import ClosureModal from '../components/ClosureModal.astro';
 
 /* Define your card data here */
 const cards = [
@@ -182,4 +184,6 @@ export const frontmatter = {
       </a>
     </div>
   </div>
+  <StickyCtaBanner />
+  <ClosureModal />
 </Layout>
