@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Navbar from '../components/Navbar.svelte';
 import Footer from '../components/Footer.astro';
+import ClosureModal from '../components/ClosureModal.astro';
 import { ClientRouter } from 'astro:transitions';
 
 interface Props {
@@ -89,6 +90,7 @@ const jsonLD = structuredData || defaultStructuredData;
 	</head>
 	<body class="bg-peach">
 		<Navbar client:load />
+		<ClosureModal />
 		<div >
 			<slot />
 		</div>

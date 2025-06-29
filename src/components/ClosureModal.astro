@@ -1,0 +1,53 @@
+---
+---
+
+<div id="closureModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4 text-center">
+    <h2 class="text-2xl font-bold mb-4">Rosita's is Closed</h2>
+    <p class="text-lg mb-4">We regret to inform you that Rosita's is currently closed.</p>
+    <p class="text-lg mb-6">Please check out <a href="https://penelopes.cafe" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">Penelope's Cafe</a> for a similar dining experience.</p>
+    <button id="closeModalBtn" class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">Close</button>
+  </div>
+</div>
+
+<script is:inline>
+  function initModal() {
+    const modal = document.getElementById('closureModal');
+    const closeBtn = document.getElementById('closeModalBtn');
+    
+    if (!modal || !closeBtn) return;
+    
+    // Remove any existing event listeners to prevent duplicates
+    closeBtn.replaceWith(closeBtn.cloneNode(true));
+    const newCloseBtn = document.getElementById('closeModalBtn');
+    
+    // Check if modal was previously closed
+    if (sessionStorage.getItem('modalClosed') === 'true') {
+      modal.classList.add('hidden');
+      return;
+    }
+    
+    newCloseBtn.addEventListener('click', function() {
+      modal.classList.add('hidden');
+      sessionStorage.setItem('modalClosed', 'true');
+    });
+    
+    // Also allow clicking outside the modal to close it
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+        sessionStorage.setItem('modalClosed', 'true');
+      }
+    });
+  }
+  
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initModal);
+  } else {
+    initModal();
+  }
+  
+  // Re-initialize on page navigation (for Astro transitions)
+  document.addEventListener('astro:page-load', initModal);
+</script> 
